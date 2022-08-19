@@ -1,0 +1,811 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
+		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
+		2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F228AE29C300B73E6F /* Assets.xcassets */; };
+		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
+		2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F728AE29C300B73E6F /* Persistence.swift */; };
+		2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */; };
+		2FA3770528AE29C300B73E6F /* tribieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3770428AE29C300B73E6F /* tribieTests.swift */; };
+		2FA3770F28AE29C300B73E6F /* tribieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3770E28AE29C300B73E6F /* tribieUITests.swift */; };
+		2FA3771128AE29C300B73E6F /* tribieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3771028AE29C300B73E6F /* tribieUITestsLaunchTests.swift */; };
+		2FA628C928AF61D900F83B92 /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628C628AF61D900F83B92 /* OutlinedButton.swift */; };
+		2FA628CA28AF61D900F83B92 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628C728AF61D900F83B92 /* CircleButton.swift */; };
+		2FA628CB28AF61D900F83B92 /* ElevatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628C828AF61D900F83B92 /* ElevatedButton.swift */; };
+		2FA628CD28AF673E00F83B92 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628CC28AF673E00F83B92 /* TextField.swift */; };
+		2FA628CF28AF676200F83B92 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628CE28AF676200F83B92 /* AsyncImage.swift */; };
+		2FA628D428AF682500F83B92 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D328AF682400F83B92 /* OnboardingView.swift */; };
+		2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D528AF685C00F83B92 /* AuthView.swift */; };
+		2FA628D828AF686B00F83B92 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D728AF686B00F83B92 /* DashboardView.swift */; };
+		2FA628DA28AF688A00F83B92 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D928AF688A00F83B92 /* ScreenView.swift */; };
+		2FA628E028AF6A5C00F83B92 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628DE28AF6A5C00F83B92 /* GlobalVariables.swift */; };
+		2FA628E128AF6A5C00F83B92 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628DF28AF6A5C00F83B92 /* Color.swift */; };
+		2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E228AF6A6800F83B92 /* Colors.swift */; };
+		2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E328AF6A6800F83B92 /* Scheme.swift */; };
+		2FA628E728AF6A6800F83B92 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E428AF6A6800F83B92 /* Strings.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FA3770128AE29C300B73E6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FA376E328AE29C100B73E6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FA376EA28AE29C100B73E6F;
+			remoteInfo = tribie;
+		};
+		2FA3770B28AE29C300B73E6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FA376E328AE29C100B73E6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FA376EA28AE29C100B73E6F;
+			remoteInfo = tribie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
+		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2FA376F228AE29C300B73E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2FA376F728AE29C300B73E6F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tribie.xcdatamodel; sourceTree = "<group>"; };
+		2FA3770028AE29C300B73E6F /* tribieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tribieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA3770428AE29C300B73E6F /* tribieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieTests.swift; sourceTree = "<group>"; };
+		2FA3770A28AE29C300B73E6F /* tribieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tribieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA3770E28AE29C300B73E6F /* tribieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieUITests.swift; sourceTree = "<group>"; };
+		2FA3771028AE29C300B73E6F /* tribieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2FA628C628AF61D900F83B92 /* OutlinedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
+		2FA628C728AF61D900F83B92 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		2FA628C828AF61D900F83B92 /* ElevatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElevatedButton.swift; sourceTree = "<group>"; };
+		2FA628CC28AF673E00F83B92 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		2FA628CE28AF676200F83B92 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		2FA628D328AF682400F83B92 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2FA628D528AF685C00F83B92 /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		2FA628D728AF686B00F83B92 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		2FA628D928AF688A00F83B92 /* ScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
+		2FA628DE28AF6A5C00F83B92 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		2FA628DF28AF6A5C00F83B92 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		2FA628E228AF6A6800F83B92 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2FA628E328AF6A6800F83B92 /* Scheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
+		2FA628E428AF6A6800F83B92 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FA376E828AE29C100B73E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA376FD28AE29C300B73E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA3770728AE29C300B73E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2FA376E228AE29C100B73E6F = {
+			isa = PBXGroup;
+			children = (
+				2FA376ED28AE29C100B73E6F /* tribie */,
+				2FA3770328AE29C300B73E6F /* tribieTests */,
+				2FA3770D28AE29C300B73E6F /* tribieUITests */,
+				2FA376EC28AE29C100B73E6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2FA376EC28AE29C100B73E6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FA376EB28AE29C100B73E6F /* tribie.app */,
+				2FA3770028AE29C300B73E6F /* tribieTests.xctest */,
+				2FA3770A28AE29C300B73E6F /* tribieUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FA376ED28AE29C100B73E6F /* tribie */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628DD28AF6A4F00F83B92 /* Helpers */,
+				2FA628BE28AF616500F83B92 /* Component */,
+				2FA628BD28AF615300F83B92 /* Service */,
+				2FA628BC28AF613800F83B92 /* Constant */,
+				2FA3771F28AE2A7400B73E6F /* Model */,
+				2FA3771E28AE2A6B00B73E6F /* ViewModel */,
+				2FA3771D28AE2A5600B73E6F /* View */,
+				2FA376EE28AE29C100B73E6F /* tribieApp.swift */,
+				2FA376F028AE29C100B73E6F /* ContentView.swift */,
+				2FA376F228AE29C300B73E6F /* Assets.xcassets */,
+				2FA376F728AE29C300B73E6F /* Persistence.swift */,
+				2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */,
+				2FA376F428AE29C300B73E6F /* Preview Content */,
+			);
+			path = tribie;
+			sourceTree = "<group>";
+		};
+		2FA376F428AE29C300B73E6F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2FA3770328AE29C300B73E6F /* tribieTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FA3770428AE29C300B73E6F /* tribieTests.swift */,
+			);
+			path = tribieTests;
+			sourceTree = "<group>";
+		};
+		2FA3770D28AE29C300B73E6F /* tribieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2FA3770E28AE29C300B73E6F /* tribieUITests.swift */,
+				2FA3771028AE29C300B73E6F /* tribieUITestsLaunchTests.swift */,
+			);
+			path = tribieUITests;
+			sourceTree = "<group>";
+		};
+		2FA3771D28AE2A5600B73E6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628D228AF678600F83B92 /* OnBoarding */,
+				2FA628D128AF677F00F83B92 /* Dashboard */,
+				2FA628D028AF677800F83B92 /* Auth */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FA3771E28AE2A6B00B73E6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FA3771F28AE2A7400B73E6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FA628BC28AF613800F83B92 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628E228AF6A6800F83B92 /* Colors.swift */,
+				2FA628E328AF6A6800F83B92 /* Scheme.swift */,
+				2FA628E428AF6A6800F83B92 /* Strings.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		2FA628BD28AF615300F83B92 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2FA628BE28AF616500F83B92 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628C128AF618000F83B92 /* Organigram */,
+				2FA628C028AF617400F83B92 /* Molecul */,
+				2FA628BF28AF616E00F83B92 /* Atom */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		2FA628BF28AF616E00F83B92 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628C428AF61BD00F83B92 /* Image */,
+				2FA628C328AF61B300F83B92 /* Textfield */,
+				2FA628C228AF61AE00F83B92 /* Button */,
+			);
+			path = Atom;
+			sourceTree = "<group>";
+		};
+		2FA628C028AF617400F83B92 /* Molecul */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628C528AF61C900F83B92 /* Card */,
+			);
+			path = Molecul;
+			sourceTree = "<group>";
+		};
+		2FA628C128AF618000F83B92 /* Organigram */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Organigram;
+			sourceTree = "<group>";
+		};
+		2FA628C228AF61AE00F83B92 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628C728AF61D900F83B92 /* CircleButton.swift */,
+				2FA628C828AF61D900F83B92 /* ElevatedButton.swift */,
+				2FA628C628AF61D900F83B92 /* OutlinedButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		2FA628C328AF61B300F83B92 /* Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628CC28AF673E00F83B92 /* TextField.swift */,
+			);
+			path = Textfield;
+			sourceTree = "<group>";
+		};
+		2FA628C428AF61BD00F83B92 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628CE28AF676200F83B92 /* AsyncImage.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		2FA628C528AF61C900F83B92 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		2FA628D028AF677800F83B92 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628D528AF685C00F83B92 /* AuthView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2FA628D128AF677F00F83B92 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628DB28AF688D00F83B92 /* Screen */,
+				2FA628D928AF688A00F83B92 /* ScreenView.swift */,
+				2FA628D728AF686B00F83B92 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		2FA628D228AF678600F83B92 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628D328AF682400F83B92 /* OnboardingView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		2FA628DB28AF688D00F83B92 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		2FA628DD28AF6A4F00F83B92 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2FA628DF28AF6A5C00F83B92 /* Color.swift */,
+				2FA628DE28AF6A5C00F83B92 /* GlobalVariables.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FA376EA28AE29C100B73E6F /* tribie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA3771428AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribie" */;
+			buildPhases = (
+				2FA376E728AE29C100B73E6F /* Sources */,
+				2FA376E828AE29C100B73E6F /* Frameworks */,
+				2FA376E928AE29C100B73E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tribie;
+			productName = tribie;
+			productReference = 2FA376EB28AE29C100B73E6F /* tribie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2FA376FF28AE29C300B73E6F /* tribieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA3771728AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribieTests" */;
+			buildPhases = (
+				2FA376FC28AE29C300B73E6F /* Sources */,
+				2FA376FD28AE29C300B73E6F /* Frameworks */,
+				2FA376FE28AE29C300B73E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FA3770228AE29C300B73E6F /* PBXTargetDependency */,
+			);
+			name = tribieTests;
+			productName = tribieTests;
+			productReference = 2FA3770028AE29C300B73E6F /* tribieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2FA3770928AE29C300B73E6F /* tribieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA3771A28AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribieUITests" */;
+			buildPhases = (
+				2FA3770628AE29C300B73E6F /* Sources */,
+				2FA3770728AE29C300B73E6F /* Frameworks */,
+				2FA3770828AE29C300B73E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FA3770C28AE29C300B73E6F /* PBXTargetDependency */,
+			);
+			name = tribieUITests;
+			productName = tribieUITests;
+			productReference = 2FA3770A28AE29C300B73E6F /* tribieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FA376E328AE29C100B73E6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					2FA376EA28AE29C100B73E6F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					2FA376FF28AE29C300B73E6F = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 2FA376EA28AE29C100B73E6F;
+					};
+					2FA3770928AE29C300B73E6F = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 2FA376EA28AE29C100B73E6F;
+					};
+				};
+			};
+			buildConfigurationList = 2FA376E628AE29C100B73E6F /* Build configuration list for PBXProject "tribie" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2FA376E228AE29C100B73E6F;
+			productRefGroup = 2FA376EC28AE29C100B73E6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FA376EA28AE29C100B73E6F /* tribie */,
+				2FA376FF28AE29C300B73E6F /* tribieTests */,
+				2FA3770928AE29C300B73E6F /* tribieUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FA376E928AE29C100B73E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */,
+				2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA376FE28AE29C300B73E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA3770828AE29C300B73E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FA376E728AE29C100B73E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA628C928AF61D900F83B92 /* OutlinedButton.swift in Sources */,
+				2FA628D828AF686B00F83B92 /* DashboardView.swift in Sources */,
+				2FA628CF28AF676200F83B92 /* AsyncImage.swift in Sources */,
+				2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */,
+				2FA628E028AF6A5C00F83B92 /* GlobalVariables.swift in Sources */,
+				2FA628DA28AF688A00F83B92 /* ScreenView.swift in Sources */,
+				2FA628D428AF682500F83B92 /* OnboardingView.swift in Sources */,
+				2FA628CB28AF61D900F83B92 /* ElevatedButton.swift in Sources */,
+				2FA628E128AF6A5C00F83B92 /* Color.swift in Sources */,
+				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
+				2FA628E728AF6A6800F83B92 /* Strings.swift in Sources */,
+				2FA628CD28AF673E00F83B92 /* TextField.swift in Sources */,
+				2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */,
+				2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */,
+				2FA628CA28AF61D900F83B92 /* CircleButton.swift in Sources */,
+				2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */,
+				2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */,
+				2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA376FC28AE29C300B73E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA3770528AE29C300B73E6F /* tribieTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA3770628AE29C300B73E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA3770F28AE29C300B73E6F /* tribieUITests.swift in Sources */,
+				2FA3771128AE29C300B73E6F /* tribieUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FA3770228AE29C300B73E6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FA376EA28AE29C100B73E6F /* tribie */;
+			targetProxy = 2FA3770128AE29C300B73E6F /* PBXContainerItemProxy */;
+		};
+		2FA3770C28AE29C300B73E6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FA376EA28AE29C100B73E6F /* tribie */;
+			targetProxy = 2FA3770B28AE29C300B73E6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2FA3771228AE29C300B73E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2FA3771328AE29C300B73E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2FA3771528AE29C300B73E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"tribie/Preview Content\"";
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2FA3771628AE29C300B73E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"tribie/Preview Content\"";
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2FA3771828AE29C300B73E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tribie.app/tribie";
+			};
+			name = Debug;
+		};
+		2FA3771928AE29C300B73E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tribie.app/tribie";
+			};
+			name = Release;
+		};
+		2FA3771B28AE29C300B73E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tribie;
+			};
+			name = Debug;
+		};
+		2FA3771C28AE29C300B73E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adventron.tribie.tribieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tribie;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FA376E628AE29C100B73E6F /* Build configuration list for PBXProject "tribie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA3771228AE29C300B73E6F /* Debug */,
+				2FA3771328AE29C300B73E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FA3771428AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA3771528AE29C300B73E6F /* Debug */,
+				2FA3771628AE29C300B73E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FA3771728AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA3771828AE29C300B73E6F /* Debug */,
+				2FA3771928AE29C300B73E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FA3771A28AE29C300B73E6F /* Build configuration list for PBXNativeTarget "tribieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA3771B28AE29C300B73E6F /* Debug */,
+				2FA3771C28AE29C300B73E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */,
+			);
+			currentVersion = 2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */;
+			path = tribie.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2FA376E328AE29C100B73E6F /* Project object */;
+}
