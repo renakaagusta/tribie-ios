@@ -15,9 +15,9 @@ enum AppCircleImageSource{
 }
 
 struct AppCircleImage<Component: View>: View {
-    @State var size: Double = 0.0
-    @State var url: String = ""
-    @State var source: AppCircleImageSource = AppCircleImageSource.Network
+    var size: Double
+    var url: String
+    var source: AppCircleImageSource = AppCircleImageSource.Network
     var component: () -> Component
     
     init(size: CGFloat = 100, url: String = "https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236__340.png", source: AppCircleImageSource = AppCircleImageSource.Network, @ViewBuilder component: @escaping () -> Component) {

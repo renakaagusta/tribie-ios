@@ -10,6 +10,7 @@ import SwiftUI
 struct MemberCard<Content: View>: View {
     @State var image: AppCircleImage<Content>
     @State var userName: String
+    @State var backgroundColor: Color = Color.white
     
     var onClick: () -> Void = {}
     
@@ -20,7 +21,7 @@ struct MemberCard<Content: View>: View {
             Text(userName)
             Spacer()
             Image(systemName: "chevron.right")
-        }.padding().cornerRadius(10)
+        }.padding().background(backgroundColor).cornerRadius(10)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppRadio: View {
-    @State var selected: Bool = true
+    @State var selected: Bool = false
     @State var size: Double = 40.0
     @State var color: Color = Color.black
     
