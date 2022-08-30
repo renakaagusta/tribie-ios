@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AppImageButton: View {
-    @State var label: String = "Button"
     @State var height: Double = 0.0
     @State var width: Double = 0.0
     @State var borderColor: Color = Color.primaryColor!
@@ -27,6 +26,6 @@ struct AppImageButton: View {
 
 struct AppImageButton_Previews: PreviewProvider {
     static var previews: some View {
-        AppImageButton(label: "Button")
+        AppImageButton()
     }
 }

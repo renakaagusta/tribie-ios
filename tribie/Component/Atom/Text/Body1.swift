@@ -11,9 +11,10 @@ struct AppBody1: View {
     var text: String
     var color: Color = Color.black
     var fontWeight: Font.Weight = Font.Weight.light
+    var textAlign: TextAlignment = TextAlignment.center
     
     var body: some View {
-        Text(text).font(.system(size: 15, weight: fontWeight)).foregroundColor(color)
+        Text(text).multilineTextAlignment(textAlign).font(.system(size: 15, weight: fontWeight)).foregroundColor(color)
     }
 }
 

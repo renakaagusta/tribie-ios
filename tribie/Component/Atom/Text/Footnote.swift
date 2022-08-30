@@ -11,14 +11,15 @@ struct AppFootnote: View {
     var text: String
     var color: Color = Color.gray
     var fontWeight: Font.Weight = Font.Weight.thin
+    var textAlign: TextAlignment = TextAlignment.center
     
     var body: some View {
-        Text(text).font(.system(size: 15, weight: fontWeight)).foregroundColor(color)
+        Text(text).multilineTextAlignment(textAlign).font(.system(size: 15, weight: fontWeight)).foregroundColor(color).frame(alignment:.leading)
     }
 }
 
 struct AppFootnote_Previews: PreviewProvider {
     static var previews: some View {
-        AppFootnote(text: "Add a new transaction to this group")
+        AppFootnote(text: "Add a new transaction to this group", textAlign: TextAlignment.leading)
     }
 }
