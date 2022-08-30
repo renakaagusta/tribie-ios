@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
 		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
-		2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F228AE29C300B73E6F /* Assets.xcassets */; };
 		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
 		2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F728AE29C300B73E6F /* Persistence.swift */; };
 		2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */; };
@@ -76,6 +75,7 @@
 		2FE7876C28B8CE95002E5F9B /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7876B28B8CE95002E5F9B /* Radio.swift */; };
 		2FE7876E28B8D369002E5F9B /* OutlinedCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7876D28B8D369002E5F9B /* OutlinedCircleButton.swift */; };
 		2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7877128B8F451002E5F9B /* ItemCard.swift */; };
+		B88FF03528BDDD80008D36DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88FF03428BDDD80008D36DA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +99,6 @@
 		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
 		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2FA376F228AE29C300B73E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2FA376F728AE29C300B73E6F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tribie.xcdatamodel; sourceTree = "<group>"; };
@@ -164,6 +163,7 @@
 		2FE7876B28B8CE95002E5F9B /* Radio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
 		2FE7876D28B8D369002E5F9B /* OutlinedCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedCircleButton.swift; sourceTree = "<group>"; };
 		2FE7877128B8F451002E5F9B /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		B88FF03428BDDD80008D36DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +229,7 @@
 				2FA3771D28AE2A5600B73E6F /* View */,
 				2FA376EE28AE29C100B73E6F /* tribieApp.swift */,
 				2FA376F028AE29C100B73E6F /* ContentView.swift */,
-				2FA376F228AE29C300B73E6F /* Assets.xcassets */,
+				B88FF03428BDDD80008D36DA /* Assets.xcassets */,
 				2FA376F728AE29C300B73E6F /* Persistence.swift */,
 				2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */,
 				2FA376F428AE29C300B73E6F /* Preview Content */,
@@ -693,7 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */,
-				2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */,
+				B88FF03528BDDD80008D36DA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
