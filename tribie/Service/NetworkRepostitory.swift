@@ -37,7 +37,7 @@ class NetworkRepository : ApiServices {
     }
     
     func getTripMemberList(tripId: String) -> Observable<[TripMember]?> {
-        return service.requestGet(urlString: baseUrl + "/trips/\(tripId)/members")
+        return service.requestGet(urlString: baseUrl + "/trips/\(tripId)/trip-members")
     }
     
     func getTripTransactionList(tripId: String) -> Observable<[Transaction]?> {

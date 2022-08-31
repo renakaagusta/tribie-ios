@@ -24,7 +24,6 @@ struct ItemCard: View {
     var body: some View {
         HStack {
             AppTextField(placeholder: "Item Name", field: fieldName).frame(width: 120).onChange(of: fieldName.wrappedValue) { newValue in
-                print(newValue)
             }
             Spacer()
             HStack{

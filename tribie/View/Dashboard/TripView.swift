@@ -46,15 +46,9 @@ struct TripView: View {
             }
             
             if(tripViewModel.state == AppState.Exist){
-                //                ForEach(tripViewModel.tripMemberList) {
-                //                    tripMember in HStack {
-                //                        Text(getMemberExpenses(tripMemberId: tripMember.id))
-                //                    }
-                //                }
                 NavigationView{
                     ScrollView {
                         VStack {
-                            SpendingCard(totalSpending: calculateTotalExpenses())
                             HStack{
                                 VStack(alignment: .leading) {
                                     Text("Recent Transactions")
@@ -99,7 +93,6 @@ struct TripView: View {
             if(tripViewModel.state == AppState.Empty){
                 NavigationView{
                     VStack {
-                        SpendingCard(totalSpending: 70000)
                         HStack{
                             VStack(alignment: .leading) {
                                 Text("Recent Transactions")

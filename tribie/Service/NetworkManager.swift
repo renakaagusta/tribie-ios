@@ -34,15 +34,10 @@ class NetworkManager {
                 AppConstant.ACCEPT : AppConstant.APPLICATION_JSON,
                 AppConstant.AUTHORIZATION : "Bearer \(self.appKeychain.appToken())"
             ]).response { response in
-                print("response :::")
                 print(urlString)
-                print(response.result)
                 switch response.result {
                 case .success(let value):
-                    print("value :::")
-                    print(value)
                     if let json = value {
-                        print(json)
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         do {
@@ -50,7 +45,13 @@ class NetworkManager {
                             observer.onNext(result)
                             observer.onCompleted()
                         } catch let error {
-                            observer.onError(error)
+                            do {
+                                let result = try decoder.decode([T].self, from: json)
+                                observer.onNext(result as! T)
+                                observer.onCompleted()
+                            } catch let error {
+                                observer.onError(error)
+                            }
                         }
                     } else {
                         observer.onError(ApiError.responseNil)

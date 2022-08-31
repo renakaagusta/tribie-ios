@@ -19,9 +19,7 @@ class TransactionListViewModel: ObservableObject {
     public func fetchTransactionList(){
         do {
             self.transactionList = [
-                Transaction(id: "0", tripId: "0", title: "Cak Har", description: "uwaw", createdAt: Date(), updatedAt: Date()),
-                Transaction(id: "1", tripId: "1", title: "Cak Lur", description: "wowowow", createdAt: Date(), updatedAt: Date()),
-                Transaction(id: "2", tripId: "2", title: "Cak Mang", description: "Nice", createdAt: Date(), updatedAt: Date())
+                
             ]
         } catch let error {
             print(error.localizedDescription)
@@ -51,9 +49,7 @@ class TransactionListViewModel: ObservableObject {
     public func fetchTripMemberList(){
         do {
             self.tripMemberList = [
-                TripMember(id: "0", tripId: "0", userId: "0", name: "Gusde", createdAt: Date(), updatedAt: Date()),
-                TripMember(id: "1", tripId: "1", userId: "1", name: "Arnold", createdAt: Date(), updatedAt: Date()),
-                TripMember(id: "2", tripId: "2", userId: "2", name: "Winnie", createdAt: Date(), updatedAt: Date()),
+
             ]
             if (transactionItemList.count != 0) {
                 self.state = AppState.Exist
@@ -69,9 +65,7 @@ class TransactionListViewModel: ObservableObject {
     public func fetchTransactionExpensesList(){
         do {
             self.transactionExpensesList = [
-                TransactionExpenses(id: "0", itemId: "0", tripMemberId: "0", transactionId: "0", quantity: 2, createdAt: Date(), updatedAt: Date()),
-                TransactionExpenses(id: "1", itemId: "1", tripMemberId: "1", transactionId: "1", quantity: 4, createdAt: Date(), updatedAt: Date()),
-                TransactionExpenses(id: "2", itemId: "2", tripMemberId: "2", transactionId: "3", quantity: 5, createdAt: Date(), updatedAt: Date()),
+                
             ]
             if (transactionItemList.count != 0) {
                 self.state = AppState.Exist

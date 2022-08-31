@@ -91,9 +91,8 @@ class TripViewModel: ObservableObject {
     
     public func fetchTransactionSettlementList(){
         do {
-            self.transactionSettlementList = [
-                TransactionSettlement(id: "0", itemId: "", tripMemberId: "", transactionId: "", nominal: 20000, createdAt: Date(), updatedAt: Date())
-            ]
+            self.transactionSettlementList = []
+ 
             if (transactionSettlementList.count != 0) {
                 self.state = AppState.Exist
             } else {

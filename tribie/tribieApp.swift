@@ -15,7 +15,7 @@ struct tribieApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            TripView()
+            MemberListView()
         }
     }
 }

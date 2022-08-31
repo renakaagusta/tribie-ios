@@ -12,6 +12,12 @@
 		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
 		2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */; };
 		2F68DC4E28BF2D5500DB5C2A /* NetworkRepostitory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC4D28BF2D5500DB5C2A /* NetworkRepostitory.swift */; };
+		2F68DC5428BF776000DB5C2A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5328BF776000DB5C2A /* Transaction.swift */; };
+		2F68DC5628BF776B00DB5C2A /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */; };
+		2F68DC5828BF779E00DB5C2A /* TripMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5728BF779E00DB5C2A /* TripMember.swift */; };
+		2F68DC5A28BF77B200DB5C2A /* TransactionExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */; };
+		2F68DC5D28BF77D100DB5C2A /* TransactionSettlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */; };
+		2F68DC5F28BF780900DB5C2A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5E28BF780900DB5C2A /* Trip.swift */; };
 		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
 		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
 		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
@@ -103,6 +109,12 @@
 		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAvatarButton.swift; sourceTree = "<group>"; };
 		2F68DC4D28BF2D5500DB5C2A /* NetworkRepostitory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepostitory.swift; sourceTree = "<group>"; };
+		2F68DC5328BF776000DB5C2A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
+		2F68DC5728BF779E00DB5C2A /* TripMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMember.swift; sourceTree = "<group>"; };
+		2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExpenses.swift; sourceTree = "<group>"; };
+		2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSettlement.swift; sourceTree = "<group>"; };
+		2F68DC5E28BF780900DB5C2A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
 		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -302,6 +314,12 @@
 			isa = PBXGroup;
 			children = (
 				2FE645E428B4E4EA00ADF984 /* User.swift */,
+				2F68DC5E28BF780900DB5C2A /* Trip.swift */,
+				2F68DC5728BF779E00DB5C2A /* TripMember.swift */,
+				2F68DC5328BF776000DB5C2A /* Transaction.swift */,
+				2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */,
+				2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */,
+				2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -724,8 +742,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F68DC5A28BF77B200DB5C2A /* TransactionExpenses.swift in Sources */,
 				2FA628C928AF61D900F83B92 /* OutlinedButton.swift in Sources */,
 				2FD6222028BAD05E0012BA86 /* SpendingCard.swift in Sources */,
+				2F68DC5D28BF77D100DB5C2A /* TransactionSettlement.swift in Sources */,
 				2FE7875E28B8B956002E5F9B /* Image.swift in Sources */,
 				2FE7875B28B8B395002E5F9B /* AvatarImage.swift in Sources */,
 				2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */,
@@ -758,6 +778,7 @@
 				2FD6228228BB1EFC0012BA86 /* MemberListViewModel.swift in Sources */,
 				2FD6222D28BB03420012BA86 /* TransactionListView.swift in Sources */,
 				2FD6227228BB1AE10012BA86 /* LiveData.swift in Sources */,
+				2F68DC5828BF779E00DB5C2A /* TripMember.swift in Sources */,
 				2FA628E128AF6A5C00F83B92 /* Color.swift in Sources */,
 				2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */,
 				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
@@ -776,9 +797,12 @@
 				2FA628CA28AF61D900F83B92 /* CircleButton.swift in Sources */,
 				2FD6225228BB187A0012BA86 /* SplitBillView.swift in Sources */,
 				2FE7875828B8AD3B002E5F9B /* CircleImage.swift in Sources */,
+				2F68DC5428BF776000DB5C2A /* Transaction.swift in Sources */,
 				2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */,
 				2FD6224D28BB13440012BA86 /* LinkButton.swift in Sources */,
+				2F68DC5628BF776B00DB5C2A /* TransactionItem.swift in Sources */,
 				2F1FC25828BD95F100938D23 /* Screen.swift in Sources */,
+				2F68DC5F28BF780900DB5C2A /* Trip.swift in Sources */,
 				2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */,
 				2F1FC25A28BD979000938D23 /* Binding.swift in Sources */,
 				2FD6224328BB0D840012BA86 /* Title1.swift in Sources */,
