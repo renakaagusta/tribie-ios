@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		2F1FC25828BD95F100938D23 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25728BD95F100938D23 /* Screen.swift */; };
 		2F1FC25A28BD979000938D23 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25928BD979000938D23 /* Binding.swift */; };
+		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
 		2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */; };
 		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
 		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
-		2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F228AE29C300B73E6F /* Assets.xcassets */; };
 		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
 		2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F728AE29C300B73E6F /* Persistence.swift */; };
 		2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */; };
@@ -101,11 +101,11 @@
 /* Begin PBXFileReference section */
 		2F1FC25728BD95F100938D23 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		2F1FC25928BD979000938D23 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAvatarButton.swift; sourceTree = "<group>"; };
 		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
 		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2FA376F228AE29C300B73E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2FA376F728AE29C300B73E6F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tribie.xcdatamodel; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 				2FA3771D28AE2A5600B73E6F /* View */,
 				2FA376EE28AE29C100B73E6F /* tribieApp.swift */,
 				2FA376F028AE29C100B73E6F /* ContentView.swift */,
-				2FA376F228AE29C300B73E6F /* Assets.xcassets */,
+				2F1FC25D28BF20B500938D23 /* Assets.xcassets */,
 				2FA376F728AE29C300B73E6F /* Persistence.swift */,
 				2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */,
 				2FA376F428AE29C300B73E6F /* Preview Content */,
@@ -702,7 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */,
-				2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */,
+				2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

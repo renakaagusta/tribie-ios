@@ -55,6 +55,7 @@ struct TransactionExpenses: Hashable, Codable, Identifiable {
     var id: String?
     var itemId: String?
     var tripMemberId: String?
+    var transactionId: String?
     var quantity: Int?
     var createdAt: Date?
     var updatedAt: Date?
