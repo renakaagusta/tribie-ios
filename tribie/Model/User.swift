@@ -6,12 +6,3 @@
 //
 
 import Foundation
-
-struct User: Hashable, Codable, Identifiable{
-    var id: Int
-    var recordId: String
-    var appleUserId: String = ""
-    var deviceId: String = ""
-    var name: String = ""
-    var email: String = ""
-}

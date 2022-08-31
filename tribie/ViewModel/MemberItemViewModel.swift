@@ -7,58 +7,68 @@
 
 import Foundation
 
-struct Trip: Hashable, Codable, Identifiable {
-    var id: String?
-    var description: String?
-    var createdAt: Date?
-    var updatedAt: Date?
-}
-
-struct TripMember: Hashable, Codable, Identifiable {
-    var id: String?
-    var tripId: String?
-    var userId: String?
-    var name: String?
-    var createdAt: Date?
-    var updatedAt: Date?
-}
-
-struct Transaction: Hashable, Codable, Identifiable {
-    var id: String?
-    var tripId: String? 
-    var title: String?
-    var description: String?
-    var createdAt: Date?
-    var updatedAt: Date?
-    var userPaidId: String?
-}
-
-struct TransactionItem: Hashable, Codable, Identifiable {
-    var id: String?
-    var title: String?
-    var description: String?
-    var price: Int?
-    var quantity: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
-}
-
-struct TransactionExpenses: Hashable, Codable, Identifiable {
-    var id: String?
-    var itemId: String?
-    var transactionId: String?
-    var tripMemberId: String?
-    var quantity: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
-}
-
-struct TransactionSettlement: Hashable, Codable, Identifiable {
-    var id: String?
-    var itemId: String?
-    var tripMemberId: String?
-    var transactionId: String?
-    var nominal: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
+class MemberItemListViewModel: ObservableObject {
+    @Published var state: AppState = AppState.Initial
+    @Published var transactionItemList: [TransactionItem] = []
+    @Published var tripMemberList : [TripMember] = []
+    @Published var transactionExpenseList : [TransactionExpenses] = []
+    @Published var selectedUserId: String?
+    
+    public func fetchTransactionItemList(){
+        do {
+            self.transactionItemList = [
+                TransactionItem(id: "0",title: "Nasi Putih", price: 10000, quantity: 3),
+                TransactionItem(id: "1",title: "Nasi Putih", price: 10000, quantity: 3),
+                TransactionItem(id: "2",title: "Nasi Putih", price: 10000, quantity: 3)
+            ]
+            if (transactionItemList.count != 0) {
+                self.state = AppState.Exist
+            } else {
+                self.state = AppState.Empty
+            }
+        } catch let error {
+            state = AppState.Error
+        }
+    }
+    
+    public func fetchTripMemberList(){
+        do {
+            self.tripMemberList = [
+                TripMember(id: "0", tripId: "", userId: "", name: "Kaka"),
+                TripMember(id: "1", tripId: "", userId: "", name: "Arnold"),
+                TripMember(id: "2", tripId: "", userId: "", name: "Gusde"),
+            ]
+            if (tripMemberList.count != 0) {
+                self.state = AppState.Exist
+            } else {
+                self.state = AppState.Empty
+            }
+        } catch let error {
+            state = AppState.Error
+        }
+    }
+    
+    public func fetchTransactionExpenseList(){
+        do {
+            self.transactionExpenseList = [
+                TransactionExpenses(id: "0", itemId: "0", tripMemberId: "0", quantity: 1),
+                TransactionExpenses(id: "1", itemId: "1", tripMemberId: "1", quantity: 3),
+                TransactionExpenses(id: "2", itemId: "2", tripMemberId: "2", quantity: 2),
+            ]
+            if (transactionExpenseList.count != 0) {
+                self.state = AppState.Exist
+            } else {
+                self.state = AppState.Empty
+            }
+        } catch let error {
+            state = AppState.Error
+        }
+    }
+    
+    public func fetchData() {
+        self.state = AppState.Loading
+        fetchTripMemberList()
+        fetchTransactionItemList()
+        fetchTransactionExpenseList()
+    }
 }

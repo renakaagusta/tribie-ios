@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct MemberSpendingView: View {
+    
+    @ObservedObject var memberSpendingViewModel: MemberSpendingListViewModel = MemberSpendingListViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if(memberSpendingViewModel.state == AppState.Loading) {
+                AppBody1(text: "Loading")
+            }
+            if(memberSpendingViewModel.state == AppState.Exist) {
+                ForEach(memberSpendingViewModel.tripMemberList) {
+                    tripMember in HStack{}
+                }
+            }
+            if(memberSpendingViewModel.state == AppState.Empty) {
+                AppBody1(text: "Empty")
+            }
+            if(memberSpendingViewModel.state == AppState.Error) {
+                AppBody1(text: "Error")
+            }
+        }.onAppear {
+            memberSpendingViewModel.fetchData()
+        }
     }
 }
 
