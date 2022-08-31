@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class TripViewModel: ObservableObject {
     @Published var state: AppState = AppState.Initial
@@ -15,19 +16,23 @@ class TripViewModel: ObservableObject {
     @Published var transactionExpensesList: [TransactionExpenses] = []
     @Published var transactionSettlementList: [TransactionSettlement] = []
     
+    private var repository: NetworkRepository = NetworkRepository()
+    private let disposeBag: DisposeBag =  DisposeBag()
     
     public func fetchTransactionList(){
         do {
-            self.transactionList = [
-                Transaction(id: "0", tripId: "", title: "Cak Har", description: "", createdAt: Date(), updatedAt: Date()),
-                Transaction(id: "1", tripId: "", title: "Cak Su", description: "", createdAt: Date(), updatedAt: Date()),
-                Transaction(id: "2", tripId: "", title: "Cak Lim", description: "", createdAt: Date(), updatedAt: Date())
-            ]
-            if (transactionList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
+            repository.getTransactionItemList(transactionId: "7fec302b-a335-412b-99c7-271011c81cc2")
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { response in
+                    self.transactionItemList = response!
+                    if (self.transactionList.count != 0) {
+                        self.state = AppState.Exist
+                    } else {
+                        self.state = AppState.Empty
+                    }
+                }, onError: {error in
+                    self.state = AppState.Error
+                }).disposed(by: disposeBag)
         } catch let error {
             state = AppState.Error
         }

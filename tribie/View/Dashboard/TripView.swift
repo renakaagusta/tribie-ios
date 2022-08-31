@@ -16,7 +16,7 @@ struct TripView: View {
         var totalExpenses: Int = 0
         
         for transactionExpenses in tripViewModel.transactionExpensesList {
-            totalExpenses += transactionExpenses.quantity! * tripViewModel.transactionItemList.first(where: { $0.id == transactionExpenses.itemId})!.price!
+            totalExpenses += transactionExpenses.quantity! * Int(tripViewModel.transactionItemList.first(where: { $0.id == transactionExpenses.itemId})!.price!)
         }
         return totalExpenses
     }
@@ -26,7 +26,7 @@ struct TripView: View {
         
         for transactionExpenses in tripViewModel.transactionExpensesList {
             if(transactionExpenses.transactionId == transactionId){
-                totalExpensesPerTransaction += transactionExpenses.quantity! * tripViewModel.transactionItemList.first(where: { $0.id == transactionExpenses.itemId})!.price!
+                totalExpensesPerTransaction += transactionExpenses.quantity! * Int(tripViewModel.transactionItemList.first(where: { $0.id == transactionExpenses.itemId})!.price!)
             }
             return totalExpensesPerTransaction
         }

@@ -12,15 +12,15 @@ struct User: Hashable, Codable, Identifiable {
     var name: String?
     var appleId: String?
     var email: String?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct Trip: Hashable, Codable, Identifiable {
     var id: String?
     var description: String?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct TripMember: Hashable, Codable, Identifiable {
@@ -28,8 +28,8 @@ struct TripMember: Hashable, Codable, Identifiable {
     var tripId: String?
     var userId: String?
     var name: String?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct Transaction: Hashable, Codable, Identifiable {
@@ -39,18 +39,23 @@ struct Transaction: Hashable, Codable, Identifiable {
     var userPaidId: String?
     var title: String?
     var description: String?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case tripId = "trip_id"
+        case transactionId = "transaction_id"
+    }
 }
 
 struct TransactionItem: Hashable, Codable, Identifiable {
     var id: String?
     var title: String?
     var description: String?
-    var price: Int?
-    var quantity: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var price: Double?
+    var quantity: Double?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct TransactionExpenses: Hashable, Codable, Identifiable {
@@ -59,8 +64,8 @@ struct TransactionExpenses: Hashable, Codable, Identifiable {
     var tripMemberId: String?
     var transactionId: String?
     var quantity: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct TransactionSettlement: Hashable, Codable, Identifiable {
@@ -69,8 +74,8 @@ struct TransactionSettlement: Hashable, Codable, Identifiable {
     var tripMemberId: String?
     var transactionId: String?
     var nominal: Int?
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
 }
 
 struct MemberItemListView: View {
@@ -105,7 +110,7 @@ struct MemberItemListView: View {
             AppFootnote(text: "What & how many items did member 1 order?")
             ForEach(memberItemListViewModel.transactionItemList){
                 transactionItem in HStack {
-                    MemberItemCard(name: transactionItem.title ?? "-", quantity: transactionItem.quantity!, onIncrement: {}, onDecrement: {})
+                    MemberItemCard(name: transactionItem.title ?? "-", quantity: Int(transactionItem.quantity!), onIncrement: {}, onDecrement: {})
                 }
             }
             Spacer()

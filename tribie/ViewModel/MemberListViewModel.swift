@@ -77,7 +77,7 @@ class MemberListViewModel: ObservableObject {
         
         for memberExpenses in transactionExpensesList {
             if memberExpenses.tripMemberId == memberId {
-                totalExpenses += memberExpenses.quantity! * transactionItemList.first(where: {$0.id == memberExpenses.itemId})!.price!
+                totalExpenses += memberExpenses.quantity! * Int(transactionItemList.first(where: {$0.id == memberExpenses.itemId})!.price!)
             }
         }
         
