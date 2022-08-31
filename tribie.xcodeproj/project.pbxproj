@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1FC25828BD95F100938D23 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25728BD95F100938D23 /* Screen.swift */; };
+		2F1FC25A28BD979000938D23 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25928BD979000938D23 /* Binding.swift */; };
+		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
+		2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */; };
 		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
 		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
-		2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F228AE29C300B73E6F /* Assets.xcassets */; };
 		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
 		2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F728AE29C300B73E6F /* Persistence.swift */; };
 		2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */; };
@@ -96,10 +99,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F1FC25728BD95F100938D23 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		2F1FC25928BD979000938D23 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAvatarButton.swift; sourceTree = "<group>"; };
 		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
 		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2FA376F228AE29C300B73E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2FA376F728AE29C300B73E6F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2FA376FA28AE29C300B73E6F /* tribie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tribie.xcdatamodel; sourceTree = "<group>"; };
@@ -196,6 +202,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */ = {
+			isa = PBXGroup;
+			children = (
+				2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */,
+			);
+			path = MemberAvatarButton;
+			sourceTree = "<group>";
+		};
 		2FA376E228AE29C100B73E6F = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +243,7 @@
 				2FA3771D28AE2A5600B73E6F /* View */,
 				2FA376EE28AE29C100B73E6F /* tribieApp.swift */,
 				2FA376F028AE29C100B73E6F /* ContentView.swift */,
-				2FA376F228AE29C300B73E6F /* Assets.xcassets */,
+				2F1FC25D28BF20B500938D23 /* Assets.xcassets */,
 				2FA376F728AE29C300B73E6F /* Persistence.swift */,
 				2FA376F928AE29C300B73E6F /* tribie.xcdatamodeld */,
 				2FA376F428AE29C300B73E6F /* Preview Content */,
@@ -321,6 +335,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
 				2FD6223D28BB0B290012BA86 /* MemberSelectCard */,
 				2FD6222528BAFDB90012BA86 /* MemberSpendingCard */,
 				2FE7875F28B8C5E4002E5F9B /* MemberCard */,
@@ -329,7 +344,6 @@
 				2FD6221B28BAD02A0012BA86 /* SettlementCard */,
 				2FE7877028B8F43D002E5F9B /* ItemCard */,
 				2FE7876428B8CC45002E5F9B /* MemberItemCard */,
-				2FD6222828BAFE140012BA86 /* Card */,
 			);
 			path = Molecul;
 			sourceTree = "<group>";
@@ -408,6 +422,7 @@
 				2FD6227128BB1AE10012BA86 /* LiveData.swift */,
 				2FD6227328BB1B3F0012BA86 /* ConstantURL.swift */,
 				2FD6227B28BB1D610012BA86 /* NetworkRepository.swift */,
+				2F1FC25928BD979000938D23 /* Binding.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -450,13 +465,6 @@
 				2FD6222628BAFDCF0012BA86 /* MemberSpendingCard.swift */,
 			);
 			path = MemberSpendingCard;
-			sourceTree = "<group>";
-		};
-		2FD6222828BAFE140012BA86 /* Card */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Card;
 			sourceTree = "<group>";
 		};
 		2FD6222928BAFE320012BA86 /* Image */ = {
@@ -514,6 +522,7 @@
 				2FD6226F28BB1A600012BA86 /* State.swift */,
 				2FD6227D28BB1DAF0012BA86 /* Constant.swift */,
 				2FD6227F28BB1E040012BA86 /* Keychain.swift */,
+				2F1FC25728BD95F100938D23 /* Screen.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -693,7 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */,
-				2FA376F328AE29C300B73E6F /* Assets.xcassets in Resources */,
+				2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +753,7 @@
 				2FA628CB28AF61D900F83B92 /* ElevatedButton.swift in Sources */,
 				2FD6223128BB037E0012BA86 /* MemberSpendingView.swift in Sources */,
 				2FD6224528BB0EA60012BA86 /* Caption1.swift in Sources */,
+				2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */,
 				2FD6224128BB0CF30012BA86 /* TextButton.swift in Sources */,
 				2FD6224A28BB11280012BA86 /* ImageButton.swift in Sources */,
 				2FE645E528B4E4EA00ADF984 /* User.swift in Sources */,
@@ -772,7 +782,9 @@
 				2FE7875828B8AD3B002E5F9B /* CircleImage.swift in Sources */,
 				2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */,
 				2FD6224D28BB13440012BA86 /* LinkButton.swift in Sources */,
+				2F1FC25828BD95F100938D23 /* Screen.swift in Sources */,
 				2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */,
+				2F1FC25A28BD979000938D23 /* Binding.swift in Sources */,
 				2FD6224328BB0D840012BA86 /* Title1.swift in Sources */,
 				2FD6227E28BB1DAF0012BA86 /* Constant.swift in Sources */,
 				2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */,
