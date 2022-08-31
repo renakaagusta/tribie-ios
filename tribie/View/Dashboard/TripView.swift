@@ -59,9 +59,9 @@ struct TripView: View {
                                 VStack(alignment: .leading) {
                                     Text("Recent Transactions")
                                 }
-                                AppImageButton(label: "Info", height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                 Spacer()
-                                AppImageButton(label: "Add", height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
                             }
                             .padding(.horizontal)
                             
@@ -78,7 +78,7 @@ struct TripView: View {
                                 VStack(alignment: .leading) {
                                     Text("Settlements")
                                 }
-                                AppImageButton(label: "Info", height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                 Spacer()
                             }
                             .padding(.horizontal)
@@ -91,7 +91,7 @@ struct TripView: View {
                             
                             Spacer()
                         }
-                        .navigationBarItems(trailing: AppImageButton(label: "Export",height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
+                        .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
                     }
                 }
             }
@@ -104,9 +104,9 @@ struct TripView: View {
                             VStack(alignment: .leading) {
                                 Text("Recent Transactions")
                             }
-                            AppImageButton(label: "Info", height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                            AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                             Spacer()
-                            AppImageButton(label: "Add", height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
+                            AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
                         }
                         .padding(.horizontal)
                         
@@ -118,7 +118,7 @@ struct TripView: View {
                             VStack(alignment: .leading) {
                                 Text("Settlements")
                             }
-                            AppImageButton(label: "Info", height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                            AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                             Spacer()
                         }
                         .padding(.horizontal)
@@ -127,7 +127,7 @@ struct TripView: View {
                             .padding(.horizontal)
                         Spacer()
                     }
-                    .navigationBarItems(trailing: AppImageButton(label: "Export",height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
+                    .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
                 }
             }
             

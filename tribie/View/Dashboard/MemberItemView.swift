@@ -35,6 +35,8 @@ struct TripMember: Hashable, Codable, Identifiable {
 struct Transaction: Hashable, Codable, Identifiable {
     var id: String?
     var tripId: String?
+    var transactionId: String?
+    var userPaidId: String?
     var title: String?
     var description: String?
     var createdAt: Date?

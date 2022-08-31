@@ -70,9 +70,9 @@ class TripViewModel: ObservableObject {
     public func fetchTransactionExpensesList(){
         do {
             self.transactionExpensesList = [
-                TransactionExpenses(id: "0", itemId: "0", transactionId: "0", tripMemberId: "0", quantity: 1),
-                TransactionExpenses(id: "1", itemId: "1", transactionId: "1", tripMemberId: "1", quantity: 3),
-                TransactionExpenses(id: "2", itemId: "2", transactionId: "2", tripMemberId: "2", quantity: 2),
+                TransactionExpenses(id: "0", itemId: "0", tripMemberId: "0", transactionId: "0", quantity: 1),
+                TransactionExpenses(id: "1", itemId: "1", tripMemberId: "1", transactionId: "1", quantity: 3),
+                TransactionExpenses(id: "2", itemId: "2", tripMemberId: "2", transactionId: "2", quantity: 2),
             ]
             if (transactionExpensesList.count != 0) {
                 self.state = AppState.Exist
