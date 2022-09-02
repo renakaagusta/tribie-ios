@@ -10,7 +10,7 @@ import SwiftUI
 struct AppImageButton: View {
     @State var height: Double = 0.0
     @State var width: Double = 0.0
-    @State var borderColor: Color = Color.primaryColor!
+    @State var borderColor: Color = Color.primaryColor
     @State var image: AppImage = AppImage(height: 40.0, width: 100.0, component: {})
     
     var onClick: () -> Void = {}

@@ -10,7 +10,7 @@ import SwiftUI
 struct MemberAvatarButton<Content: View>: View {
     @State var image: AppCircleImage<Content>
     @State var selected: Bool = true
-    @State var color: Color = Color.primaryColor!
+    @State var color: Color = Color.primaryColor
     @State var size: CGFloat = 40
     
     var onClick: () -> Void = {}

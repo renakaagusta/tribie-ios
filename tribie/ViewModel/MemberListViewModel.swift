@@ -22,7 +22,7 @@ class MemberListViewModel: ObservableObject {
     
     public func fetchTransactionItemList(){
         do {
-            repository.getTransactionItemList(transactionId: "7fec302b-a335-412b-99c7-271011c81cc2")
+            repository.getTransactionItemList(transactionId: AppConstant.DUMMY_DATA_TRANSACTION_ID)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: { response in
                     self.transactionItemList = response!
@@ -41,7 +41,7 @@ class MemberListViewModel: ObservableObject {
     
     public func fetchTripMemberList(){
         do {
-            repository.getTripMemberList(tripId: "9c25dafa-e299-409e-a84d-1c69f49df028")
+            repository.getTripMemberList(tripId: AppConstant.DUMMY_DATA_TRIP_ID)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: { response in
                     self.tripMemberList = response ?? []
@@ -51,8 +51,9 @@ class MemberListViewModel: ObservableObject {
                         self.state = AppState.Empty
                     }
                 }, onError: {error in
+                    print("..transaction item list error")
+                    print(error)
                     self.state = AppState.Error
-                    
                 }).disposed(by: disposeBag)
         } catch let error {
             state = AppState.Error
@@ -61,16 +62,16 @@ class MemberListViewModel: ObservableObject {
     
     public func fetchTransactionExpensesList(){
         do {
-            repository.getTripTransactionExpensesList(tripId: "9c25dafa-e299-409e-a84d-1c69f49df028")
+            repository.getTripTransactionExpensesList(tripId: AppConstant.DUMMY_DATA_TRIP_ID)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: { response in
-                    self.transactionExpensesList = response!
                     if (self.transactionExpensesList.count != 0) {
                         self.state = AppState.Exist
                     } else {
                         self.state = AppState.Empty
                     }
                 }, onError: {error in
+                    
                     self.state = AppState.Error
                 }).disposed(by: disposeBag)
         } catch let error {
@@ -94,8 +95,8 @@ class MemberListViewModel: ObservableObject {
     public func fetchData() {
         self.state = AppState.Loading
         fetchTripMemberList()
-//        fetchTransactionItemList()
-//        fetchTransactionExpensesList()
-//        fetchTransactionItemList()
+        fetchTransactionItemList()
+        fetchTransactionExpensesList()
+        fetchTransactionItemList()
     }
 }

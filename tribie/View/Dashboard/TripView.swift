@@ -36,7 +36,12 @@ struct TripView: View {
     
     func getUserPaid(userPaidId: String) -> TripMember {
         
-        return tripViewModel.tripMemberList[0]
+        if(tripViewModel.tripMemberList.count > 0){
+            return tripViewModel.tripMemberList[0]
+        }
+        else {
+            return TripMember(name:"-")
+        }
     }
     
     var body: some View {
@@ -46,46 +51,49 @@ struct TripView: View {
             }
             
             if(tripViewModel.state == AppState.Exist){
-                NavigationView{
-                    ScrollView {
-                        VStack {
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text("Recent Transactions")
+                if(tripViewModel.tripMemberList.count > 0 && tripViewModel.transactionList.count > 0 && tripViewModel.transactionItemList.count > 0 && tripViewModel.transactionExpensesList.count > 0){
+                    NavigationView{
+                        ScrollView {
+                            VStack {
+                                HStack{
+                                    VStack(alignment: .leading) {
+                                        Text("Recent Transactions")
+                                    }
+    //                                SpendingCard(totalSpending: calculateTotalExpenses())
+                                    AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                    Spacer()
+                                    AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
                                 }
-                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
-                                Spacer()
-                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
-                            }
-                            .padding(.horizontal)
-                            
-                            ForEach(tripViewModel.transactionList) {
-                                transaction in RecentTransactionCard(memberPaid: getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: calculateTotalExpensesPerTransaction(transactionId: "0"))
+                                .padding(.horizontal)
+                                
+                                ForEach(tripViewModel.transactionList) {
+                                    transaction in RecentTransactionCard(memberPaid: getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
+                                        .padding(.horizontal)
+                                }
+                                
+                                AppLinkButton(label: "See all")
                                     .padding(.horizontal)
-                            }
-                            
-                            AppLinkButton(label: "See all")
-                                .padding(.horizontal)
-                            Spacer()
-                            
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text("Settlements")
+                                Spacer()
+                                
+                                HStack{
+                                    VStack(alignment: .leading) {
+                                        Text("Settlements")
+                                    }
+                                    AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                    Spacer()
                                 }
-                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                .padding(.horizontal)
+                                
+                                SettlementCard(userFrom: "Arnold", userTo: "Kaka", amount: 20000)
+                                    .padding(.horizontal)
+                                
+                                AppLinkButton(label: "See all")
+                                    .padding(.horizontal)
+                                
                                 Spacer()
                             }
-                            .padding(.horizontal)
-                            
-                            SettlementCard(userFrom: "Arnold", userTo: "Kaka", amount: 20000)
-                                .padding(.horizontal)
-                            
-                            AppLinkButton(label: "See all")
-                                .padding(.horizontal)
-                            
-                            Spacer()
+                            .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
                         }
-                        .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
                     }
                 }
             }

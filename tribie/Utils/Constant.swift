@@ -41,4 +41,8 @@ class AppConstant {
     /* Date Format */
     static let DEFAULT_EMPTY_DATE = "1997-05-02"
     static let DEFAULT_DATE_FORMAT = "yyyy-MM-dd"
+    
+    /* ID FOR DUMMY DATA*/
+    static let DUMMY_DATA_TRIP_ID = "9c25dafa-e299-409e-a84d-1c69f49df028"
+    static let DUMMY_DATA_TRANSACTION_ID = "7fec302b-a335-412b-99c7-271011c81cc2"
 }

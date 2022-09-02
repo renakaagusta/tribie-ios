@@ -19,12 +19,12 @@ class TripViewModel: ObservableObject {
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
     
-    public func fetchTransactionList(){
+    public func fetchTripTransactionList(){
         do {
-            repository.getTransactionItemList(transactionId: "7fec302b-a335-412b-99c7-271011c81cc2")
+            repository.getTripTransactionList(tripId: AppConstant.DUMMY_DATA_TRIP_ID)
                 .observe(on: MainScheduler.instance)
                 .subscribe(onNext: { response in
-                    self.transactionItemList = response!
+                    self.transactionList = response!
                     if (self.transactionList.count != 0) {
                         self.state = AppState.Exist
                     } else {
@@ -40,16 +40,18 @@ class TripViewModel: ObservableObject {
     
     public func fetchTransactionItemList(){
         do {
-            self.transactionItemList = [
-                TransactionItem(id: "0",title: "Nasi Putih", price: 10000, quantity: 3),
-                TransactionItem(id: "1",title: "Nasi Putih", price: 10000, quantity: 3),
-                TransactionItem(id: "2",title: "Nasi Putih", price: 10000, quantity: 3)
-            ]
-            if (transactionItemList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
+            repository.getTransactionItemList(transactionId: AppConstant.DUMMY_DATA_TRANSACTION_ID)
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { response in
+                    self.transactionItemList = response!
+                    if (self.transactionItemList.count != 0) {
+                        self.state = AppState.Exist
+                    } else {
+                        self.state = AppState.Empty
+                    }
+                }, onError: {error in
+                    self.state = AppState.Error
+                }).disposed(by: disposeBag)
         } catch let error {
             state = AppState.Error
         }
@@ -57,55 +59,63 @@ class TripViewModel: ObservableObject {
     
     public func fetchTripMemberList(){
         do {
-            self.tripMemberList = [
-                TripMember(id: "0", tripId: "", userId: "", name: "Kaka"),
-                TripMember(id: "1", tripId: "", userId: "", name: "Arnold"),
-                TripMember(id: "2", tripId: "", userId: "", name: "Gusde"),
-            ]
-            if (tripMemberList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
-        } catch  let error {
+            repository.getTripMemberList(tripId: AppConstant.DUMMY_DATA_TRIP_ID)
+                .subscribe(onNext: { response in
+                    self.tripMemberList = response!
+                    if (self.tripMemberList.count != 0) {
+                        self.state = AppState.Exist
+                    } else {
+                        self.state = AppState.Empty
+                    }
+                }, onError: {error in
+                    self.state = AppState.Error
+                }).disposed(by: disposeBag)
+        } catch let error {
             state = AppState.Error
         }
     }
     
     public func fetchTransactionExpensesList(){
         do {
-            self.transactionExpensesList = [
-                TransactionExpenses(id: "0", itemId: "0", tripMemberId: "0", transactionId: "0", quantity: 1),
-                TransactionExpenses(id: "1", itemId: "1", tripMemberId: "1", transactionId: "1", quantity: 3),
-                TransactionExpenses(id: "2", itemId: "2", tripMemberId: "2", transactionId: "2", quantity: 2),
-            ]
-            if (transactionExpensesList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
-        } catch  let error {
+            repository.getTransactionExpensesList(transactionId:
+                                                    AppConstant.DUMMY_DATA_TRANSACTION_ID)
+                .subscribe(onNext: { response in
+                    self.transactionExpensesList = response!
+                    if (self.transactionExpensesList.count != 0) {
+                        self.state = AppState.Exist
+                    } else {
+                        self.state = AppState.Empty
+                    }
+                }, onError: {error in
+                    self.state = AppState.Error
+                }).disposed(by: disposeBag)
+        } catch let error {
             state = AppState.Error
         }
     }
     
     public func fetchTransactionSettlementList(){
         do {
-            self.transactionSettlementList = []
- 
-            if (transactionSettlementList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
-        } catch  let error {
+            repository.getTransactionSettlementList(transactionId:
+                                                        AppConstant.DUMMY_DATA_TRANSACTION_ID)
+                .subscribe(onNext: { response in
+                    self.transactionSettlementList = response!
+                    if (self.transactionSettlementList.count != 0) {
+                        self.state = AppState.Exist
+                    } else {
+                        self.state = AppState.Empty
+                    }
+                }, onError: {error in
+                    self.state = AppState.Error
+                }).disposed(by: disposeBag)
+        } catch let error {
             state = AppState.Error
         }
     }
     
     public func fetchData() {
         self.state = AppState.Loading
-        fetchTransactionList()
+        fetchTripTransactionList()
         fetchTripMemberList()
         fetchTransactionItemList()
         fetchTransactionExpensesList()

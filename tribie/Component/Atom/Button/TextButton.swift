@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AppTextButton: View {
-    @State var color: Color = Color.primaryColor!
+    @State var color: Color = Color.primaryColor
     @State var label: String = "Button"
     @State var height: Double = 0.0
     @State var width: Double = 0.0
-    @State var borderColor: Color = Color.primaryColor!
+    @State var borderColor: Color = Color.primaryColor
     
     var onClick: () -> Void = {}
     

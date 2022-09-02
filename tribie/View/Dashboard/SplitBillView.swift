@@ -17,18 +17,19 @@ struct SplitBillView: View {
                 Text("Loading")
             }
             if(splitBillViewModel.state == AppState.Exist) {
-                VStack {
+                if(splitBillViewModel.transactionItemList.count > 0 && splitBillViewModel.tripMemberList.count > 0 && splitBillViewModel.transaction != nil) {
+                    VStack {
                     VStack(alignment: .leading) {
                         AppCard(width: .infinity, height: 40, backgroundColor: Color.white, component: {
-                            AppTitle1(text: splitBillViewModel.transaction!.title!).padding()
+                            AppTitle1(text: splitBillViewModel.transaction!.title!, fontSize: 18).padding()
                         })
                         Spacer().frame(height: 40)
                         AppBody1(text: "Total Amount").frame(width: UIScreen.width, alignment: .center)
                         Spacer().frame(height: 10)
-                        AppHeader(text: "Rp \(String(splitBillViewModel.grandTotal))").frame(width: UIScreen.width, alignment: .center)
+                        AppHeader(text: "Rp \(String(splitBillViewModel.getTransactionTotal()))").frame(width: UIScreen.width, alignment: .center)
                         Spacer().frame(height: 10)
                         AppFootnote(text: "Who Paid", textAlign: TextAlignment.leading).padding()
-                        MemberCard(image: AppCircleImage(size: 40.0, component: {}), userName: splitBillViewModel.userPaid?.name ?? "-", backgroundColor: Color.white).padding()
+                        MemberCard(image: AppCircleImage(size: 40.0, component: {}), userName: splitBillViewModel.getUserPaid().name ?? "-", backgroundColor: Color.white).padding().frame(width: UIScreen.width)
                         Spacer().frame(height: 10)
                         AppFootnote(text: "Split Method", textAlign: TextAlignment.leading).padding()
                     }.padding()
@@ -61,6 +62,7 @@ struct SplitBillView: View {
                         Spacer().frame(height: 10)
                     }.padding()
                     Spacer()
+                    }
                 }
             }
             if(splitBillViewModel.state == AppState.Error) {
@@ -69,7 +71,7 @@ struct SplitBillView: View {
             if(splitBillViewModel.state == AppState.Disconnect) {
                 Text("Disconnect")
             }
-        }.onAppear {
+        }.background(Color.tertiaryColor).onAppear {
             splitBillViewModel.fetchData()
         }
     }

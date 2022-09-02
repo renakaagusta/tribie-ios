@@ -16,7 +16,7 @@ protocol ApiServices {
     func getTripTransactionItemList(tripId: String) -> Observable<[TransactionItem]?>
     func getTripTransactionExpensesList(tripId: String) -> Observable<[TransactionExpenses]?>
     func getTripTransactionSettlementList(tripId: String) -> Observable<[TransactionSettlement]?>
-    func getTransactionData(transactionId: String) -> Observable<[Transaction]?>
+    func getTransactionData(transactionId: String) -> Observable<Transaction?>
     func getTransactionItemList(transactionId: String) -> Observable<[TransactionItem]?>
     func getTransactionExpensesList(transactionId: String) -> Observable<[TransactionExpenses]?>
     func getTransactionSettlementList(transactionId: String) -> Observable<[TransactionSettlement]?>
@@ -49,14 +49,14 @@ class NetworkRepository : ApiServices {
     }
     
     func getTripTransactionExpensesList(tripId: String) -> Observable<[TransactionExpenses]?> {
-        return service.requestGet(urlString: baseUrl + "/trips/\(tripId)/transaction-items")
+        return service.requestGet(urlString: baseUrl + "/trips/\(tripId)/transaction-expenses")
     }
     
     func getTripTransactionSettlementList(tripId: String) -> Observable<[TransactionSettlement]?> {
         return service.requestGet(urlString: baseUrl + "/trips/\(tripId)/transaction-payments")
     }
     
-    func getTransactionData(transactionId: String) -> Observable<[Transaction]?> {
+    func getTransactionData(transactionId: String) -> Observable<Transaction?> {
         return service.requestGet(urlString: baseUrl + "/transactions/\(transactionId)")
     }
     

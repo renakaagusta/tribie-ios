@@ -34,7 +34,6 @@ class NetworkManager {
                 AppConstant.ACCEPT : AppConstant.APPLICATION_JSON,
                 AppConstant.AUTHORIZATION : "Bearer \(self.appKeychain.appToken())"
             ]).response { response in
-                print(urlString)
                 switch response.result {
                 case .success(let value):
                     if let json = value {
@@ -42,18 +41,27 @@ class NetworkManager {
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         do {
                             let result = try decoder.decode(T.self, from: json)
+        
+                            Logger.info("======SEND GET REQUEST=======")
+                            Logger.info(urlString)
+                            Logger.info("===========RESPONSE===========")
+                            Logger.info(result)
+                            
                             observer.onNext(result)
                             observer.onCompleted()
                         } catch let error {
-                            do {
-                                let result = try decoder.decode([T].self, from: json)
-                                observer.onNext(result as! T)
-                                observer.onCompleted()
-                            } catch let error {
-                                observer.onError(error)
-                            }
+                            Logger.error("======SEND POST REQUEST=======")
+                            Logger.error(urlString)
+                            Logger.error("============ERROR=============")
+                            Logger.error(error)
+                                
+                            observer.onError(error)
                         }
                     } else {
+                        Logger.error("======SEND POST REQUEST=======")
+                        Logger.error(urlString)
+                        Logger.error("==========ERROR NIL============")
+                        
                         observer.onError(ApiError.responseNil)
                     }
                 case .failure(let error):
@@ -71,7 +79,6 @@ class NetworkManager {
     public func requestGetNoContentType<T: Codable>(urlString: String) -> Observable<T?> {
         return Observable<T?>.create { observer in
             let request = AF.request(urlString, method: .get, headers: [
-                //AppConstant.CONTENT_TYPE : AppConstant.APPLICATION_JSON,
                 AppConstant.CLIENT_KEY : "",
                 AppConstant.ACCEPT : AppConstant.APPLICATION_JSON,
                 AppConstant.AUTHORIZATION : "Bearer \(self.appKeychain.appToken())"
@@ -127,12 +134,29 @@ class NetworkManager {
                         do {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             let result = try decoder.decode(T.self, from: json)
+        
+                            Logger.info("======SEND POST REQUEST=======")
+                            Logger.info(urlString)
+                            Logger.info("===========RESPONSE===========")
+                            Logger.info(response)
+                            
                             observer.onNext(result)
                             observer.onCompleted()
                         } catch let error {
+                            
+                            Logger.error("======SEND POST REQUEST=======")
+                            Logger.error(urlString)
+                            Logger.error("============ERROR=============")
+                            Logger.error(error)
+                            
                             observer.onError(error)
                         }
                     } else {
+                        
+                        Logger.error("======SEND POST REQUEST=======")
+                        Logger.error(urlString)
+                        Logger.error("==========ERROR NIL============")
+                        
                         observer.onError(ApiError.responseNil)
                     }
                 case .failure(let error):

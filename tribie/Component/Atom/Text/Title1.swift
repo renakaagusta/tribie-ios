@@ -11,9 +11,10 @@ struct AppTitle1: View {
     var text: String
     var color: Color = Color.black
     var fontWeight: Font.Weight = Font.Weight.medium
+    var fontSize: CGFloat = 28
     
     var body: some View {
-        Text(text).font(.system(size: 28, weight: fontWeight)).foregroundColor(color)
+        Text(text).font(.system(size: fontSize, weight: fontWeight)).foregroundColor(color)
     }
 }
 

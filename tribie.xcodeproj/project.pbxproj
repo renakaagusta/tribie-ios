@@ -18,6 +18,7 @@
 		2F68DC5A28BF77B200DB5C2A /* TransactionExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */; };
 		2F68DC5D28BF77D100DB5C2A /* TransactionSettlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */; };
 		2F68DC5F28BF780900DB5C2A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5E28BF780900DB5C2A /* Trip.swift */; };
+		2F7355B528C0AE570080610B /* Headline1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7355B428C0AE570080610B /* Headline1.swift */; };
 		2FA376EF28AE29C100B73E6F /* tribieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376EE28AE29C100B73E6F /* tribieApp.swift */; };
 		2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA376F028AE29C100B73E6F /* ContentView.swift */; };
 		2FA376F628AE29C300B73E6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA376F528AE29C300B73E6F /* Preview Assets.xcassets */; };
@@ -33,10 +34,10 @@
 		2FA628CF28AF676200F83B92 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628CE28AF676200F83B92 /* AsyncImage.swift */; };
 		2FA628D428AF682500F83B92 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D328AF682400F83B92 /* OnboardingView.swift */; };
 		2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628D528AF685C00F83B92 /* AuthView.swift */; };
-		2FA628E128AF6A5C00F83B92 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628DF28AF6A5C00F83B92 /* Color.swift */; };
 		2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E228AF6A6800F83B92 /* Colors.swift */; };
 		2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E328AF6A6800F83B92 /* Scheme.swift */; };
 		2FA628EB28AF8BD400F83B92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628EA28AF8BD400F83B92 /* NetworkManager.swift */; };
+		2FC8FA2D28C1A54C005B90A9 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC8FA2C28C1A54C005B90A9 /* SwiftyBeaver */; };
 		2FD6221D28BAD0420012BA86 /* SettlementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6221C28BAD0420012BA86 /* SettlementCard.swift */; };
 		2FD6222028BAD05E0012BA86 /* SpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6221F28BAD05E0012BA86 /* SpendingCard.swift */; };
 		2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6222228BAD0780012BA86 /* RecentTransactionCard.swift */; };
@@ -115,6 +116,7 @@
 		2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExpenses.swift; sourceTree = "<group>"; };
 		2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSettlement.swift; sourceTree = "<group>"; };
 		2F68DC5E28BF780900DB5C2A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		2F7355B428C0AE570080610B /* Headline1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headline1.swift; sourceTree = "<group>"; };
 		2FA376EB28AE29C100B73E6F /* tribie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tribie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA376EE28AE29C100B73E6F /* tribieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribieApp.swift; sourceTree = "<group>"; };
 		2FA376F028AE29C100B73E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,7 +135,6 @@
 		2FA628CE28AF676200F83B92 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		2FA628D328AF682400F83B92 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2FA628D528AF685C00F83B92 /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		2FA628DF28AF6A5C00F83B92 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2FA628E228AF6A6800F83B92 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2FA628E328AF6A6800F83B92 /* Scheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
 		2FA628EA28AF8BD400F83B92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 				2FD6229428BB281F0012BA86 /* RxSwift in Frameworks */,
 				2FD6229728BB764D0012BA86 /* JWTDecode in Frameworks */,
 				2FD6226D28BB1A340012BA86 /* SwiftyJSON in Frameworks */,
+				2FC8FA2D28C1A54C005B90A9 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +436,6 @@
 		2FA628DD28AF6A4F00F83B92 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2FA628DF28AF6A5C00F83B92 /* Color.swift */,
 				2FD6227128BB1AE10012BA86 /* LiveData.swift */,
 				2F1FC25928BD979000938D23 /* Binding.swift */,
 			);
@@ -501,6 +502,7 @@
 				2FD6223B28BB0A260012BA86 /* Footnote.swift */,
 				2FD6224228BB0D840012BA86 /* Title1.swift */,
 				2FD6224428BB0EA60012BA86 /* Caption1.swift */,
+				2F7355B428C0AE570080610B /* Headline1.swift */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -620,6 +622,7 @@
 				2FD6227828BB1C7E0012BA86 /* Keychain */,
 				2FD6229328BB281F0012BA86 /* RxSwift */,
 				2FD6229628BB764D0012BA86 /* JWTDecode */,
+				2FC8FA2C28C1A54C005B90A9 /* SwiftyBeaver */,
 			);
 			productName = tribie;
 			productReference = 2FA376EB28AE29C100B73E6F /* tribie.app */;
@@ -699,6 +702,7 @@
 				2FD6227728BB1C7E0012BA86 /* XCRemoteSwiftPackageReference "Keychain.swift" */,
 				2FD6229228BB281F0012BA86 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2FD6229528BB764D0012BA86 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				2FC8FA2B28C1A54C005B90A9 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = 2FA376EC28AE29C100B73E6F /* Products */;
 			projectDirPath = "";
@@ -767,6 +771,7 @@
 				2FD6223A28BB093C0012BA86 /* Body1.swift in Sources */,
 				2FA628D428AF682500F83B92 /* OnboardingView.swift in Sources */,
 				2FA628CB28AF61D900F83B92 /* ElevatedButton.swift in Sources */,
+				2F7355B528C0AE570080610B /* Headline1.swift in Sources */,
 				2FD6223128BB037E0012BA86 /* MemberSpendingView.swift in Sources */,
 				2FD6224528BB0EA60012BA86 /* Caption1.swift in Sources */,
 				2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */,
@@ -779,7 +784,6 @@
 				2FD6222D28BB03420012BA86 /* TransactionListView.swift in Sources */,
 				2FD6227228BB1AE10012BA86 /* LiveData.swift in Sources */,
 				2F68DC5828BF779E00DB5C2A /* TripMember.swift in Sources */,
-				2FA628E128AF6A5C00F83B92 /* Color.swift in Sources */,
 				2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */,
 				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
 				2FD6223F28BB0B370012BA86 /* MemberSelectCard.swift in Sources */,
@@ -1139,6 +1143,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2FC8FA2B28C1A54C005B90A9 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		2FD6225328BB19CF0012BA86 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1182,6 +1194,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2FC8FA2C28C1A54C005B90A9 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FC8FA2B28C1A54C005B90A9 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
 		2FD6225428BB19CF0012BA86 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2FD6225328BB19CF0012BA86 /* XCRemoteSwiftPackageReference "Alamofire" */;

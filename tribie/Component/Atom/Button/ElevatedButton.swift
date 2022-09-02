@@ -12,7 +12,7 @@ struct AppElevatedButton: View {
     @State var height: Double = 0
     @State var width: Double = 0
     @State var color: Color = Color.white
-    @State var backgroundColor: Color = Color.primaryColor!
+    @State var backgroundColor: Color = Color.primaryColor
     
     var onClick: () -> Void = {}
     

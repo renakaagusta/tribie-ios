@@ -40,13 +40,19 @@ struct MemberListView: View {
                 }
                 //Exist State Condition
                 if (memberViewModel.state == AppState.Exist){
+                    
+                    if(memberViewModel.transactionItemList.count > 0 && memberViewModel.transactionExpensesList.count > 0 && memberViewModel.tripMemberList.count > 0) {
+                        
+                        List {
+                            ForEach(memberViewModel.tripMemberList) { tripMember in
+                                MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount: memberViewModel.getMemberExpenses(memberId: String(tripMember.id ?? "")) )
 
-                    List {
-                        ForEach(memberViewModel.tripMemberList) { tripMember in
-                            MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount: memberViewModel.getMemberExpenses(memberId: String(tripMember.id ?? "")) )
-
-                        } //ForEach
+                            } //ForEach
+                        }
+                        
                     }
+
+
                 }
                 
                 Spacer()
@@ -69,4 +75,3 @@ struct MemberListView_Previews: PreviewProvider {
         MemberListView().preferredColorScheme(scheme)
     }
 }
-                                
