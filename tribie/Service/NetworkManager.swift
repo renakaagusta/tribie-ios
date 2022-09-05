@@ -171,6 +171,67 @@ class NetworkManager {
         }
     }
     
+    public func requestPut<T: Codable, X: Codable>(
+        urlString: String,
+        parameters: X? = nil,
+        encoding: ParameterEncoding = URLEncoding.default
+    ) -> Observable<T?> {
+        return Observable<T?>.create { observer in
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            let data = try! encoder.encode(parameters)
+            
+            var urlRequest = URLRequest(url: URL(string: urlString)!)
+            urlRequest.httpMethod = "PUT"
+            urlRequest.addValue(AppConstant.APPLICATION_JSON, forHTTPHeaderField: AppConstant.CONTENT_TYPE)
+            urlRequest.addValue("Bearer \(self.appKeychain.appToken())", forHTTPHeaderField: AppConstant.AUTHORIZATION)
+            urlRequest.httpBody = data
+           
+            let request =  AF.request(urlRequest).response { response in
+                switch response.result {
+                case .success(let value):
+                    if let json = value {
+                        let decoder = JSONDecoder()
+                        do {
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            let result = try decoder.decode(T.self, from: json)
+        
+                            Logger.info("======SEND POST REQUEST=======")
+                            Logger.info(urlString)
+                            Logger.info("===========RESPONSE===========")
+                            Logger.info(response)
+                            
+                            observer.onNext(result)
+                            observer.onCompleted()
+                        } catch let error {
+                            
+                            Logger.error("======SEND POST REQUEST=======")
+                            Logger.error(urlString)
+                            Logger.error("============ERROR=============")
+                            Logger.error(error)
+                            
+                            observer.onError(error)
+                        }
+                    } else {
+                        
+                        Logger.error("======SEND POST REQUEST=======")
+                        Logger.error(urlString)
+                        Logger.error("==========ERROR NIL============")
+                        
+                        observer.onError(ApiError.responseNil)
+                    }
+                case .failure(let error):
+                    let errorException = self.getFailureError(statusCode: response.response?.statusCode, error: error)
+                    observer.onError(errorException)
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
+    
     private func getFailureError(statusCode: Int?, error: Error) -> Error {
         switch statusCode {
         case 403:

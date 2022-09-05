@@ -9,6 +9,8 @@ import Foundation
 
 struct TransactionSettlement: Hashable, Codable, Identifiable {
     var id: String?
+    var userFromId: String?
+    var userToId: String?
     var itemId: String?
     var tripMemberId: String?
     var transactionId: String?

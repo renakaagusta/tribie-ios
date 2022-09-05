@@ -14,4 +14,5 @@ enum AppState {
     case Loading
     case Error
     case Disconnect
+    case Finish
 }

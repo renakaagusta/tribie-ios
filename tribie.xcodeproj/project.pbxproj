@@ -38,6 +38,20 @@
 		2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628E328AF6A6800F83B92 /* Scheme.swift */; };
 		2FA628EB28AF8BD400F83B92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA628EA28AF8BD400F83B92 /* NetworkManager.swift */; };
 		2FC8FA2D28C1A54C005B90A9 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC8FA2C28C1A54C005B90A9 /* SwiftyBeaver */; };
+		2FC8FA2F28C20810005B90A9 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA2E28C20810005B90A9 /* NumberField.swift */; };
+		2FC8FA3128C2D2B5005B90A9 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3028C2D2B5005B90A9 /* Random.swift */; };
+		2FC8FA3328C361E9005B90A9 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3228C361E9005B90A9 /* SignInResponse.swift */; };
+		2FC8FA3528C372CD005B90A9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3428C372CD005B90A9 /* AuthViewModel.swift */; };
+		2FC8FA3728C375A5005B90A9 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3628C375A5005B90A9 /* SignInRequest.swift */; };
+		2FC8FA3928C3BA32005B90A9 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3828C3BA32005B90A9 /* TripListView.swift */; };
+		2FC8FA3B28C3BF73005B90A9 /* TripListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3A28C3BF73005B90A9 /* TripListViewModel.swift */; };
+		2FC8FA3E28C3E185005B90A9 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3D28C3E185005B90A9 /* Loading.swift */; };
+		2FC8FA4028C56AFC005B90A9 /* TripFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA3F28C56AFC005B90A9 /* TripFormView.swift */; };
+		2FC8FA4228C56B0E005B90A9 /* TransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA4128C56B0E005B90A9 /* TransactionFormView.swift */; };
+		2FC8FA4428C56B23005B90A9 /* TripFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA4328C56B23005B90A9 /* TripFormViewModel.swift */; };
+		2FC8FA4628C56B31005B90A9 /* TransactionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA4528C56B31005B90A9 /* TransactionFormViewModel.swift */; };
+		2FC8FA4928C57461005B90A9 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8FA4828C57461005B90A9 /* Link.swift */; };
+		2FD3ECB928C5A67600CA9A6E /* ElevatedLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3ECB828C5A67500CA9A6E /* ElevatedLink.swift */; };
 		2FD6221D28BAD0420012BA86 /* SettlementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6221C28BAD0420012BA86 /* SettlementCard.swift */; };
 		2FD6222028BAD05E0012BA86 /* SpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6221F28BAD05E0012BA86 /* SpendingCard.swift */; };
 		2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6222228BAD0780012BA86 /* RecentTransactionCard.swift */; };
@@ -138,6 +152,20 @@
 		2FA628E228AF6A6800F83B92 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2FA628E328AF6A6800F83B92 /* Scheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
 		2FA628EA28AF8BD400F83B92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2FC8FA2E28C20810005B90A9 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		2FC8FA3028C2D2B5005B90A9 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		2FC8FA3228C361E9005B90A9 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		2FC8FA3428C372CD005B90A9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		2FC8FA3628C375A5005B90A9 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
+		2FC8FA3828C3BA32005B90A9 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
+		2FC8FA3A28C3BF73005B90A9 /* TripListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListViewModel.swift; sourceTree = "<group>"; };
+		2FC8FA3D28C3E185005B90A9 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		2FC8FA3F28C56AFC005B90A9 /* TripFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFormView.swift; sourceTree = "<group>"; };
+		2FC8FA4128C56B0E005B90A9 /* TransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFormView.swift; sourceTree = "<group>"; };
+		2FC8FA4328C56B23005B90A9 /* TripFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFormViewModel.swift; sourceTree = "<group>"; };
+		2FC8FA4528C56B31005B90A9 /* TransactionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFormViewModel.swift; sourceTree = "<group>"; };
+		2FC8FA4828C57461005B90A9 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		2FD3ECB828C5A67500CA9A6E /* ElevatedLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatedLink.swift; sourceTree = "<group>"; };
 		2FD6221C28BAD0420012BA86 /* SettlementCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettlementCard.swift; sourceTree = "<group>"; };
 		2FD6221F28BAD05E0012BA86 /* SpendingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpendingCard.swift; sourceTree = "<group>"; };
 		2FD6222228BAD0780012BA86 /* RecentTransactionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTransactionCard.swift; sourceTree = "<group>"; };
@@ -308,6 +336,10 @@
 				2FD6228928BB1F5E0012BA86 /* MemberItemViewModel.swift */,
 				2FD6228B28BB1F700012BA86 /* SplitBillViewModel.swift */,
 				2FD6228D28BB1F880012BA86 /* MemberSpendingViewModel.swift */,
+				2FC8FA3428C372CD005B90A9 /* AuthViewModel.swift */,
+				2FC8FA3A28C3BF73005B90A9 /* TripListViewModel.swift */,
+				2FC8FA4328C56B23005B90A9 /* TripFormViewModel.swift */,
+				2FC8FA4528C56B31005B90A9 /* TransactionFormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -320,8 +352,10 @@
 				2F68DC5728BF779E00DB5C2A /* TripMember.swift */,
 				2F68DC5328BF776000DB5C2A /* Transaction.swift */,
 				2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */,
+				2FC8FA3628C375A5005B90A9 /* SignInRequest.swift */,
 				2F68DC5928BF77B200DB5C2A /* TransactionExpenses.swift */,
 				2F68DC5C28BF77D100DB5C2A /* TransactionSettlement.swift */,
+				2FC8FA3228C361E9005B90A9 /* SignInResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +373,8 @@
 		2FA628BF28AF616E00F83B92 /* Atom */ = {
 			isa = PBXGroup;
 			children = (
+				2FC8FA4728C57453005B90A9 /* Link */,
+				2FC8FA3C28C3E177005B90A9 /* Loading */,
 				2FD6224E28BB17D70012BA86 /* Divider */,
 				2FD6222928BAFE320012BA86 /* Image */,
 				2FD6224628BB0F320012BA86 /* Card */,
@@ -391,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA628CC28AF673E00F83B92 /* TextField.swift */,
+				2FC8FA2E28C20810005B90A9 /* NumberField.swift */,
 			);
 			path = Textfield;
 			sourceTree = "<group>";
@@ -421,6 +458,9 @@
 				2FD6223228BB03F10012BA86 /* TripView.swift */,
 				2FD6223428BB04A70012BA86 /* MemberItemView.swift */,
 				2FD6225128BB187A0012BA86 /* SplitBillView.swift */,
+				2FC8FA3828C3BA32005B90A9 /* TripListView.swift */,
+				2FC8FA3F28C56AFC005B90A9 /* TripFormView.swift */,
+				2FC8FA4128C56B0E005B90A9 /* TransactionFormView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -438,6 +478,7 @@
 			children = (
 				2FD6227128BB1AE10012BA86 /* LiveData.swift */,
 				2F1FC25928BD979000938D23 /* Binding.swift */,
+				2FC8FA3028C2D2B5005B90A9 /* Random.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +490,23 @@
 				2F68DC4D28BF2D5500DB5C2A /* NetworkRepostitory.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		2FC8FA3C28C3E177005B90A9 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				2FC8FA3D28C3E185005B90A9 /* Loading.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		2FC8FA4728C57453005B90A9 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				2FC8FA4828C57461005B90A9 /* Link.swift */,
+				2FD3ECB828C5A67500CA9A6E /* ElevatedLink.swift */,
+			);
+			path = Link;
 			sourceTree = "<group>";
 		};
 		2FD6221B28BAD02A0012BA86 /* SettlementCard */ = {
@@ -751,10 +809,13 @@
 				2FD6222028BAD05E0012BA86 /* SpendingCard.swift in Sources */,
 				2F68DC5D28BF77D100DB5C2A /* TransactionSettlement.swift in Sources */,
 				2FE7875E28B8B956002E5F9B /* Image.swift in Sources */,
+				2FC8FA4928C57461005B90A9 /* Link.swift in Sources */,
 				2FE7875B28B8B395002E5F9B /* AvatarImage.swift in Sources */,
 				2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */,
+				2FC8FA3728C375A5005B90A9 /* SignInRequest.swift in Sources */,
 				2FD6227028BB1A600012BA86 /* State.swift in Sources */,
 				2FA628CF28AF676200F83B92 /* AsyncImage.swift in Sources */,
+				2FC8FA2F28C20810005B90A9 /* NumberField.swift in Sources */,
 				2FE7876328B8C632002E5F9B /* MemberCard.swift in Sources */,
 				2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */,
 				2FD6228A28BB1F5E0012BA86 /* MemberItemViewModel.swift in Sources */,
@@ -763,8 +824,10 @@
 				2FD6228C28BB1F700012BA86 /* SplitBillViewModel.swift in Sources */,
 				2FD6222728BAFDCF0012BA86 /* MemberSpendingCard.swift in Sources */,
 				2FD6223C28BB0A260012BA86 /* Footnote.swift in Sources */,
+				2FC8FA4628C56B31005B90A9 /* TransactionFormViewModel.swift in Sources */,
 				2FE7876C28B8CE95002E5F9B /* Radio.swift in Sources */,
 				2FD6221D28BAD0420012BA86 /* SettlementCard.swift in Sources */,
+				2FC8FA3128C2D2B5005B90A9 /* Random.swift in Sources */,
 				2FD6228828BB1F360012BA86 /* TripViewModel.swift in Sources */,
 				2FD6223328BB03F10012BA86 /* TripView.swift in Sources */,
 				2FE7876628B8CC7D002E5F9B /* MemberItemCard.swift in Sources */,
@@ -778,33 +841,42 @@
 				2FD6224128BB0CF30012BA86 /* TextButton.swift in Sources */,
 				2FD6224A28BB11280012BA86 /* ImageButton.swift in Sources */,
 				2FE645E528B4E4EA00ADF984 /* User.swift in Sources */,
+				2FC8FA4428C56B23005B90A9 /* TripFormViewModel.swift in Sources */,
 				2FD6228628BB1F220012BA86 /* SettlementListViewModel.swift in Sources */,
 				2FD6223828BB081A0012BA86 /* Header.swift in Sources */,
+				2FC8FA3E28C3E185005B90A9 /* Loading.swift in Sources */,
 				2FD6228228BB1EFC0012BA86 /* MemberListViewModel.swift in Sources */,
 				2FD6222D28BB03420012BA86 /* TransactionListView.swift in Sources */,
+				2FC8FA3328C361E9005B90A9 /* SignInResponse.swift in Sources */,
+				2FC8FA3528C372CD005B90A9 /* AuthViewModel.swift in Sources */,
 				2FD6227228BB1AE10012BA86 /* LiveData.swift in Sources */,
 				2F68DC5828BF779E00DB5C2A /* TripMember.swift in Sources */,
 				2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */,
 				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
 				2FD6223F28BB0B370012BA86 /* MemberSelectCard.swift in Sources */,
 				2FD6222F28BB03570012BA86 /* SettlementListView.swift in Sources */,
+				2FC8FA3928C3BA32005B90A9 /* TripListView.swift in Sources */,
 				2FD6228E28BB1F880012BA86 /* MemberSpendingViewModel.swift in Sources */,
 				2FA628CD28AF673E00F83B92 /* TextField.swift in Sources */,
 				2FD6222B28BB03200012BA86 /* MemberListView.swift in Sources */,
 				2F68DC4E28BF2D5500DB5C2A /* NetworkRepostitory.swift in Sources */,
 				2FA628EB28AF8BD400F83B92 /* NetworkManager.swift in Sources */,
 				2FD6225028BB17E60012BA86 /* Divider.swift in Sources */,
+				2FC8FA4028C56AFC005B90A9 /* TripFormView.swift in Sources */,
 				2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */,
 				2FD6228028BB1E040012BA86 /* Keychain.swift in Sources */,
 				2FD6223528BB04A70012BA86 /* MemberItemView.swift in Sources */,
 				2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */,
+				2FC8FA4228C56B0E005B90A9 /* TransactionFormView.swift in Sources */,
 				2FA628CA28AF61D900F83B92 /* CircleButton.swift in Sources */,
 				2FD6225228BB187A0012BA86 /* SplitBillView.swift in Sources */,
 				2FE7875828B8AD3B002E5F9B /* CircleImage.swift in Sources */,
 				2F68DC5428BF776000DB5C2A /* Transaction.swift in Sources */,
 				2FA376FB28AE29C300B73E6F /* tribie.xcdatamodeld in Sources */,
+				2FC8FA3B28C3BF73005B90A9 /* TripListViewModel.swift in Sources */,
 				2FD6224D28BB13440012BA86 /* LinkButton.swift in Sources */,
 				2F68DC5628BF776B00DB5C2A /* TransactionItem.swift in Sources */,
+				2FD3ECB928C5A67600CA9A6E /* ElevatedLink.swift in Sources */,
 				2F1FC25828BD95F100938D23 /* Screen.swift in Sources */,
 				2F68DC5F28BF780900DB5C2A /* Trip.swift in Sources */,
 				2FA628D628AF685C00F83B92 /* AuthView.swift in Sources */,

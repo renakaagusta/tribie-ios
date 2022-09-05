@@ -1,71 +1,112 @@
 //
-//  SettlementListViewController.swift
+//  SettlementListViewModel.swift
 //  tribie
 //
 //  Created by renaka agusta on 28/08/22.
 //
 
 import Foundation
+import RxSwift
 
 class SettlementListViewModel: ObservableObject {
     
     @Published var state: AppState = AppState.Initial
     
-    @Published var tripMemberList: [TripMember] = []
-    @Published var transactionSettlementList: [TransactionSettlement] = []
-    @Published var transactionItemList: [TransactionItem] = []
+    @Published var tripMemberList: [TripMember]?
+    @Published var transactionSettlementList: [TransactionSettlement]?
+    @Published var itemList: [TransactionItem]?
     
+    private var repository: NetworkRepository = NetworkRepository()
+    private let disposeBag: DisposeBag =  DisposeBag()
     
-    public func fetchTransactionSettlementList() {
-        do {
-            self.transactionSettlementList = [
-               
-            ]
-        } catch let error {
-            print(error.localizedDescription)
-            state = AppState.Error
-        }
+    public func fetchTransactionSettlementList(transactionId : String = AppConstant.DUMMY_DATA_TRANSACTION_ID) {
+        repository.getTransactionSettlementList(transactionId: transactionId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                self.transactionSettlementList = response ?? []
+                if (self.transactionSettlementList!.count != 0) {
+                    self.state = AppState.Exist
+                } else {
+                    self.state = AppState.Empty
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
     }
     
-    public func fetchTransactionItemList(){
-        do {
-             self.transactionItemList = [
-                TransactionItem(id: "0",title: "Nasi Putih", price: 10000, quantity: 3),
-                TransactionItem(id: "1",title: "Ayam bakar", price: 13000, quantity: 1),
-                TransactionItem(id: "2",title: "Susu Putih", price: 11000, quantity: 2)
-            ]
-            
-            if (transactionItemList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
-        } catch let error {
-            print(error.localizedDescription)
-            state = AppState.Error
-        }
+    public func fetchTransactionItemList(transactionId : String = AppConstant.DUMMY_DATA_TRANSACTION_ID) {
+        repository.getTransactionItemList(transactionId: transactionId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                self.itemList = response ?? []
+                if (self.itemList!.count != 0) {
+                    self.state = AppState.Exist
+                } else {
+                    self.state = AppState.Empty
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
     }
     
-    public func fetchTripMemberList(){
-        do {
-            self.tripMemberList = [
-                
-            ]
-            if (transactionItemList.count != 0) {
-                self.state = AppState.Exist
-            } else {
-                self.state = AppState.Empty
-            }
-        } catch  let error {
-            print(error.localizedDescription)
-            state = AppState.Error
-        }
+    public func fetchTripTransactionSettlementList(tripId : String = AppConstant.DUMMY_DATA_TRIP_ID) {
+           repository.getTripTransactionSettlementList(tripId: tripId)
+               .observe(on: MainScheduler.instance)
+               .subscribe(onNext: { response in
+                   self.transactionSettlementList = response ?? []
+                   if (self.transactionSettlementList!.count != 0) {
+                       self.state = AppState.Exist
+                   } else {
+                       self.state = AppState.Empty
+                   }
+               }, onError: {error in
+                   self.state = AppState.Error
+               }).disposed(by: disposeBag)
+       }
+       
+       public func fetchTripTransactionItemList(tripId : String = AppConstant.DUMMY_DATA_TRIP_ID) {
+           repository.getTripTransactionItemList(tripId: tripId)
+               .observe(on: MainScheduler.instance)
+               .subscribe(onNext: { response in
+                   self.itemList = response ?? []
+                   if (self.itemList!.count != 0) {
+                       self.state = AppState.Exist
+                   } else {
+                       self.state = AppState.Empty
+                   }
+               }, onError: {error in
+                   self.state = AppState.Error
+               }).disposed(by: disposeBag)
+       }
+    
+    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
+        repository.getTripMemberList(tripId: tripId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                self.tripMemberList = response ?? []
+                if (self.tripMemberList!.count != 0) {
+                    self.state = AppState.Exist
+                } else {
+                    self.state = AppState.Empty
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
     }
     
-    public func fetchData() {
+    func getUserName(tripMemberId: String) -> String {
+        return tripMemberList!.first(where: {$0.id == tripMemberId})!.name ?? "-"
+    }
+    
+    public func fetchData(tripId: String, transactionId: String?) {
         self.state = AppState.Loading
-        fetchTripMemberList()
-        fetchTransactionSettlementList()
+        fetchTripMemberList(tripId: tripId)
+        if(transactionId != nil) {
+            fetchTransactionSettlementList(transactionId: transactionId!)
+            fetchTransactionItemList(transactionId: transactionId!)
+        } else {
+            fetchTripTransactionSettlementList(tripId: tripId)
+            fetchTripTransactionItemList(tripId: tripId)
+        }
     }
-    
 }

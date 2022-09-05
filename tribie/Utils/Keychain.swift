@@ -11,15 +11,34 @@ class AppKeychain {
     private lazy var keyChain = Keychain()
     
     func appToken() -> String {
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE5Mjg2NjUsImlkIjoiMTAwIiwibmFtZSI6ImRlbW8ifQ.ezPc7N42AkeXJ5B0PduhVvp60mk_eNAbkaZ4QxUxpzc"
-        //return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_TOKEN)!)
+        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_TOKEN) ?? "")
     }
     
     func setAppToken(token: String) {
         self.keyChain.save(token, forKey: AppConstant.KEYCHAIN_TOKEN)
     }
     
-    func isTokenEmpty() -> Bool {
-        return appToken().isEmpty
+    func onBoardingStatus() -> Bool {
+        return keyChain.value(forKey: AppConstant.KEYCHAIN_ON_BOARDING_STATUS) != nil ? true : false
+    }
+    
+    func setOnBoardingStatus(onBoardingStatus: Bool) {
+        self.keyChain.save(onBoardingStatus, forKey: AppConstant.KEYCHAIN_ON_BOARDING_STATUS)
+    }
+    
+    func userId() -> String {
+        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_USER_ID) ?? "")
+    }
+    
+    func setUserId(userId: String) {
+        self.keyChain.save(userId, forKey: AppConstant.KEYCHAIN_USER_ID)
+    }
+    
+    func tripId() -> String {
+        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_USER_ID) ?? "")
+    }
+    
+    func setTripId(tripId: String) {
+        self.keyChain.save(tripId, forKey: AppConstant.KEYCHAIN_TRIP_ID)
     }
 }

@@ -17,13 +17,9 @@ struct tribieApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplitBillView().onAppear {
+             ContentView().onAppear {
                 Logger.addDestination(Console)
-                Logger.verbose("not so important")  // prio 1, VERBOSE in silver
-                Logger.debug("something to debug")  // prio 2, DEBUG in green
-                Logger.info("a nice information")   // prio 3, INFO in blue
-                Logger.warning("oh no, that won’t be good")  // prio 4, WARNING in yellow
-                Logger.error("ouch, an error did occur!")  // prio 5, ERROR in red
+                Logger.debug("TRIBIE APP - DEBUG MDOE")
             }
         }
     }

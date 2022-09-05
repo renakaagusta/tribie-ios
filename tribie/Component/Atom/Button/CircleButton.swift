@@ -18,7 +18,8 @@ struct AppCircleButton: View {
     @State var icon: Image?
     @State var image: Image?
     @State var text: String?
-    @State var color: Color? = Color.primaryColor
+    @State var color: Color? = Color.white
+    @State var backgroundColor: Color? = Color.primaryColor
     @State var source: AppCircleButtonContentSource = AppCircleButtonContentSource.Image
     
     var onClick: () -> Void = {}
@@ -27,10 +28,10 @@ struct AppCircleButton: View {
         Button(action: {
             self.onClick()
         }, label: {
-            if(source == AppCircleButtonContentSource.Icon) { icon }
+            if(source == AppCircleButtonContentSource.Icon) { icon.foregroundColor(color) }
             if(source == AppCircleButtonContentSource.Image) { image }
-            if(source == AppCircleButtonContentSource.Text) { Text(text!).foregroundColor(Color.white) }
-        }).frame(width: size, height: size).padding().background(color).cornerRadius(40)
+            if(source == AppCircleButtonContentSource.Text) { Text(text!).foregroundColor(color) }
+        }).frame(width: size, height: size).padding().background(backgroundColor).cornerRadius(40)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
 }

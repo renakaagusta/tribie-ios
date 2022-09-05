@@ -11,20 +11,41 @@ import AuthenticationServices
 
 struct AuthView: View {
     
-    func handleSignUp(firstname: String, lastname: String, email: String, appleUserId: String) {
-        
-    }
-    
-    func handleAuth(appleUserId: String) {
-        
-    }
+    @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        VStack{
-            
-        }.background(
-            
-        )
+        NavigationView {
+            VStack{
+                AppElevatedButton(
+                    label: "Login By Apple",
+                    onClick: {
+                        Task {
+                            await authViewModel.handleSignInWithApple()
+                        }
+                    }
+                )
+                AppOutlinedButton(
+                    label: "Login By Device",
+                    onClick: {
+                        Task {
+                            await authViewModel.handleSignInWithDevice()
+                        }
+                    }
+                )
+                NavigationLink(destination: TripListView(), isActive:  $authViewModel.moveToDashboard) {
+                    AppOutlinedButton(
+                        label: "Login By Email",
+                        onClick: {
+                            Task {
+                                await authViewModel.handleSignIn()
+                            }
+                        }
+                    )
+                }
+            }.background(
+                Color.tertiaryColor
+            ).padding()
+        }
     }
 
 }

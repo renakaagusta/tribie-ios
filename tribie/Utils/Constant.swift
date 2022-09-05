@@ -9,6 +9,9 @@ import Foundation
 
 class AppConstant {
     static let KEYCHAIN_TOKEN = "token"
+    static let KEYCHAIN_ON_BOARDING_STATUS = "on_boarding_status"
+    static let KEYCHAIN_USER_ID = "user_id"
+    static let KEYCHAIN_TRIP_ID = "trip_id"
     
     /* For network related*/
     static let APPLICATION_JSON  = "application/json"
@@ -43,6 +46,12 @@ class AppConstant {
     static let DEFAULT_DATE_FORMAT = "yyyy-MM-dd"
     
     /* ID FOR DUMMY DATA*/
-    static let DUMMY_DATA_TRIP_ID = "9c25dafa-e299-409e-a84d-1c69f49df028"
-    static let DUMMY_DATA_TRANSACTION_ID = "7fec302b-a335-412b-99c7-271011c81cc2"
+    static let DUMMY_DATA_TRIP_ID = "9b321fcb-164c-46c1-86ae-ccabb4eb46ad"
+    static let DUMMY_DATA_TRANSACTION_ID = "08828e41-ea94-46d7-be2a-aa5a6a4f1088"
+    
+    /* DUMMY USER */
+    static let DUMMY_DATA_USER_EMAIL = "tribie@gmail.com"
+    static let DUMMY_DATA_USER_PASSWORD = "tribie-pass"
+    static let DUMMY_DATA_USER_APPLE_ID = "TRIBIE_APPLE_ID"
+    static let DUMMY_DATA_USER_DEVICE_ID = "TRIBIE_DEVICE_ID"
 }

@@ -7,46 +7,42 @@
 
 import SwiftUI
 
-
-
 struct TransactionListView: View {
 
+    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 AppTitle1(text: "Transactions")
-
-                //Loading State Condition
-                if (transactionViewModel.state == AppState.Loading){
-                    AppBody1(text: "Loading...")
+                if (transactionViewModel.state == AppState.Loading) {
+                    AppLoading()
                 }
-                
-                //Empty State Condition
-                if (transactionViewModel.state == AppState.Empty){
+                if (transactionViewModel.state == AppState.Empty) {
                     AppBody1(text: "Empty")
                 }
-                //Error State Condition
-                if (transactionViewModel.state == AppState.Error){
+                if (transactionViewModel.state == AppState.Error) {
                     AppBody1(text: "Error bang")
                 }
-                //Exist State Condition
-                if (transactionViewModel.state == AppState.Exist){
-
+                if (transactionViewModel.state == AppState.Exist) {
                     ScrollView {
-                        ForEach(transactionViewModel.transactionList) { transaction in
-                            
+                        if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
+                            ForEach(transactionViewModel.transactionList!) { transaction in
+                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!)) {
+                                    RecentTransactionCard(memberPaid: transactionViewModel.getTripMemberTransaction(tripId: transaction.tripId ?? ""), title: transaction.title ?? "", date: "s", month: "sa", time: "saa", total: transactionViewModel.getTotalTransactionExpenses(transactionId: transaction.transactionId ?? ""))
+                                }
+                            }
+                        }
+                        if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
+                            AppLoading()
                         }
                     }
                 }
-                
                 Spacer()
-                
             }
             .onAppear {
-                transactionViewModel.fetchData()
+                transactionViewModel.fetchData(tripId: tripId)
             }
             .navigationTitle("Recent Transaction")
             .navigationBarTitleDisplayMode(.inline)

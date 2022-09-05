@@ -13,61 +13,44 @@ struct member: Identifiable {
     var spent: Int
 }
 
-
 struct MemberListView: View {
     
     @ObservedObject var memberViewModel: MemberListViewModel = MemberListViewModel()
     
     var body: some View {
-        
         NavigationView {
             VStack {
-                
                 AppHeader(text: "Members")
-                
-                //Loading State Condition
                 if (memberViewModel.state == AppState.Loading){
-                    AppBody1(text: "Loading...")
+                    AppLoading()
                 }
-                
-                //Empty State Condition
                 if (memberViewModel.state == AppState.Empty){
                     AppBody1(text: "Empty")
                 }
-                //Error State Condition
                 if (memberViewModel.state == AppState.Error){
                     AppBody1(text: "Error bang")
                 }
-                //Exist State Condition
                 if (memberViewModel.state == AppState.Exist){
-                    
-                    if(memberViewModel.transactionItemList.count > 0 && memberViewModel.transactionExpensesList.count > 0 && memberViewModel.tripMemberList.count > 0) {
-                        
+                    if(memberViewModel.transactionExpensesList != nil && memberViewModel.tripMemberList != nil) {
                         List {
-                            ForEach(memberViewModel.tripMemberList) { tripMember in
+                            ForEach(memberViewModel.tripMemberList!) { tripMember in
                                 MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount: memberViewModel.getMemberExpenses(memberId: String(tripMember.id ?? "")) )
 
-                            } //ForEach
+                            }
                         }
-                        
                     }
-
-
                 }
-                
                 Spacer()
             }
             .onAppear {
                 memberViewModel.fetchData()
-            } //VStack
+            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                 AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up.circle", source: AppImageSource.SystemName, color: Color.primary, component: {}))
             )
-        } //NavigationView
-        
+        }
     }
-    
 }
 
 struct MemberListView_Previews: PreviewProvider {
