@@ -76,6 +76,10 @@
 
 //Split Bill Page (per item) - Error State
 
+"No Items Added" = "No Items Added";
+"You haven’t add any item yet. Please add at least 1 item to continue tracking." = "You haven’t add any item yet. Please add at least 1 item to continue tracking.";
+"Subtotal Exceeds Grand Total" = "Subtotal Exceeds Grand Total";
+"Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total." = "Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total.";
 "There’s item that have not been assigned" ="There’s item that have not been assigned";
 "Please assign the remaining item to the member." = "Please assign the remaining item to the member.";
 "Ok" = "Ok";
