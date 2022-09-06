@@ -22,23 +22,26 @@ struct SettlementCard: View {
             HStack{
                 VStack (alignment:.leading){
                     ZStack{
-                        RoundedRectangle(cornerRadius: 22)
-                            .frame(width:CGFloat(userFrom.count * 11), height: 26)
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width:CGFloat(userFrom.count * 10), height: 20)
                             .foregroundColor(Color.primaryColor)
                         Text(userFrom)
-                            .font(.system(size: 17))
+                            .font(.system(size: 13))
                             .fontWeight(.semibold)
                             .foregroundColor(Color.white)
                     }
                 }
                 Image(systemName: "arrow.right")
+                    .foregroundColor(Color.secondaryColor)
                 Text(userTo)
                     .font(.system(size: 13))
-                    .fontWeight(.regular)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.secondaryColor)
                 Spacer()
                 VStack (alignment:.trailing) {
-                    Text("Rp. \(amount)")
+                    Text("Rp.\(amount)")
                         .frame(alignment:.trailing)
+                        .foregroundColor(Color.secondaryColor)
                 }
             }
             .padding()

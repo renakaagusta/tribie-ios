@@ -22,14 +22,26 @@ struct TripView: View {
                     if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil){
                             ScrollView {
                                 VStack {
+                                    
+                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                        AppTitle1(text: "Total Spending")
+                                        
+                                        AppTitle1(text: "Rp.200000", color: Color.primaryColor, fontWeight: .bold)
+                                            .padding(1)
+
+                                        AppBody1(text: "on this trip")
+                                    }).padding()
+                                    
                                     HStack{
                                         VStack(alignment: .leading) {
                                             Text("Recent Transactions")
                                         }
-                                        AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                        AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                         Spacer()
                                         NavigationLink(destination: TransactionFormView()) {
-                                            AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {})
+                                            AppImage(height: 22, width: 22
+                                                     , url: "plus.circle.fill",
+                                                     source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                         }
                                     }
                                     .padding(.horizontal)
@@ -56,7 +68,7 @@ struct TripView: View {
                                         VStack(alignment: .leading) {
                                             Text("Settlements")
                                         }
-                                        AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                        AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                         Spacer()
                                     }
                                     .padding(.horizontal)
@@ -90,7 +102,7 @@ struct TripView: View {
                                 }
                                 AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                 Spacer()
-                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
                             }
                             .padding(.horizontal)
                             AppFootnote(text: "No transactions. Go add a new transaction to this group.")
