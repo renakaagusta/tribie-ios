@@ -30,10 +30,10 @@ struct SplitBillView: View {
                             Spacer().frame(height: 10)
                             AppHeader(text: "Rp \(String(splitBillViewModel.getGrandTotal()))").frame(width: UIScreen.width, alignment: .center)
                             Spacer().frame(height: 10)
-                            AppFootnote(text: "Who Paid", textAlign: TextAlignment.leading).padding()
+                            AppFootnote(text: "Who Paid".localized, textAlign: TextAlignment.leading).padding()
                             MemberCard(image: AppCircleImage(size: 40.0, component: {}), userName: splitBillViewModel.getUserPaid().name ?? "-", backgroundColor: Color.white).padding().frame(width: UIScreen.width)
                             Spacer().frame(height: 10)
-                            AppFootnote(text: "Split Method", textAlign: TextAlignment.leading).padding()
+                            AppFootnote(text: "Split Method".localized, textAlign: TextAlignment.leading).padding()
                         }.padding()
                             if(splitBillViewModel.transactionItemList != nil) {
                                 ForEach(Array(splitBillViewModel.transactionItemList!.enumerated()
@@ -75,19 +75,19 @@ struct SplitBillView: View {
                             }
                             Spacer().frame(height: 10)
                             HStack{
-                                AppBody1(text: "Grand total")
+                                AppBody1(text: "Grand Total".localized)
                                 Spacer()
                                 AppBody1(text: "Rp \(splitBillViewModel.getGrandTotal())")
                             }
                             Spacer().frame(height: 10)
                             HStack{
-                                AppBody1(text: "Service Charge / Tax")
+                                AppBody1(text: "Service Charge/ Tax".localized)
                                 Spacer()
                                 AppBody1(text: "Rp \(splitBillViewModel.getServiceCharge())")
                             }
                             Spacer().frame(height: 10)
                             NavigationLink(destination: MemberItemListView(tripId: tripId, transactionId: transactionId)) {
-                                AppElevatedLink(label: "Next")
+                                AppElevatedLink(label: "Next".localized)
                             }
                         }.padding()
                         Spacer()

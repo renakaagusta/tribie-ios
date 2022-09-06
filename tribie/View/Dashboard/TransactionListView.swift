@@ -44,7 +44,7 @@ struct TransactionListView: View {
             .onAppear {
                 transactionViewModel.fetchData(tripId: tripId)
             }
-            .navigationTitle("Recent Transaction")
+            .navigationTitle("Recent Transactions")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                 AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up.circle", source: AppImageSource.SystemName, color: Color.primary, component: {}))

@@ -48,7 +48,7 @@ struct TripView: View {
                                     }
                                     NavigationLink(destination: TransactionListView(tripId: tripId)){
                                         HStack {
-                                            AppLink(label: "See all").padding(.horizontal)
+                                            AppLink(label: "See all".localized).padding(.horizontal)
                                         }
                                     }
                                     Spacer()
@@ -74,7 +74,7 @@ struct TripView: View {
                                         }
                                     }
                                     NavigationLink(destination: SettlementListView(tripId: tripId)){
-                                        AppLink(label: "See all").padding(.horizontal)
+                                        AppLink(label: "See all".localized).padding(.horizontal)
                                     }
                                     Spacer()
                                 }
@@ -124,5 +124,18 @@ struct TripView: View {
         static var previews: some View {
             TripView().preferredColorScheme(scheme)
         }
+    }
+}
+
+////Extension String for Localization
+extension String {
+
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
+
+
+    func localizedWithComment(comment:String) -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: comment)
     }
 }
