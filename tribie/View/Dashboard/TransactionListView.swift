@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyBeaver
 
 struct TransactionListView: View {
 
@@ -15,7 +16,10 @@ struct TransactionListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                AppTitle1(text: "Transactions")
+                HStack {
+                    AppTitle1(text: "Recent Transactions")
+                    AppImageButton(image: AppImage(height: 30, width: 30, url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
+                }
                 if (transactionViewModel.state == AppState.Loading) {
                     AppLoading()
                 }
@@ -44,10 +48,11 @@ struct TransactionListView: View {
             .onAppear {
                 transactionViewModel.fetchData(tripId: tripId)
             }
+            .background(Color.tertiaryColor)
             .navigationTitle("Recent Transaction")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
-                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up.circle", source: AppImageSource.SystemName, color: Color.primary, component: {}))
+                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
             )
             .padding()
         }

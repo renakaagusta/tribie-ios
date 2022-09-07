@@ -22,14 +22,26 @@ struct TripView: View {
                     if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil){
                             ScrollView {
                                 VStack {
+                                    
+                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                        AppTitle1(text: "Total Spending")
+                                        
+                                        AppTitle1(text: String(tripViewModel.calculateTotalExpenses()), color: Color.primaryColor, fontWeight: .bold)
+                                            .padding(1)
+
+                                        AppHeadline1(text: "on this trip")
+                                    }).padding()
+                                    
                                     HStack{
                                         VStack(alignment: .leading) {
                                             Text("Recent Transactions")
                                         }
-                                        AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                        AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
                                         Spacer()
                                         NavigationLink(destination: TransactionFormView()) {
-                                            AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {})
+                                            AppImage(height: 22, width: 22
+                                                     , url: "plus.circle.fill",
+                                                     source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                         }
                                     }
                                     .padding(.horizontal)
@@ -46,69 +58,69 @@ struct TripView: View {
                                             AppLoading()
                                         }
                                     }
-                                    NavigationLink(destination: TransactionListView(tripId: tripId)){
-                                        HStack {
-                                            AppLink(label: "See all").padding(.horizontal)
-                                        }
-                                    }
-                                    Spacer()
-                                    HStack{
-                                        VStack(alignment: .leading) {
-                                            Text("Settlements")
-                                        }
-                                        AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
-                                        Spacer()
-                                    }
-                                    .padding(.horizontal)
-                                    VStack {
-                                        if(tripViewModel.transactionSettlementList != nil && tripViewModel.tripMemberList != nil) {
-                                            ForEach(tripViewModel.transactionSettlementList!) {
-                                                settlement in NavigationLink(destination: SplitBillView()) {
-                                                    SettlementCard(userFrom: tripViewModel.getUserName(tripMemberId: settlement.userFromId!), userTo: tripViewModel.getUserName(tripMemberId: settlement.userToId!), amount: settlement.nominal ?? 0)
-                                                        .padding(.horizontal)
-                                                }
-                                            }
-                                        }
-                                        if(tripViewModel.transactionSettlementList == nil || tripViewModel.tripMemberList == nil) {
-                                            AppLoading()
-                                        }
-                                    }
-                                    NavigationLink(destination: SettlementListView(tripId: tripId)){
-                                        AppLink(label: "See all").padding(.horizontal)
-                                    }
-                                    Spacer()
+//                                    NavigationLink(destination: TransactionListView(tripId: tripId)){
+//                                        HStack {
+//                                            AppLink(label: "See all").padding(.horizontal)
+//                                        }
+//                                    }
+//                                    Spacer()
+//                                    HStack{
+//                                        VStack(alignment: .leading) {
+//                                            Text("Settlements")
+//                                        }
+//                                        AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
+//                                        Spacer()
+//                                    }
+//                                    .padding(.horizontal)
+//                                    VStack {
+//                                        if(tripViewModel.transactionSettlementList != nil && tripViewModel.tripMemberList != nil) {
+//                                            ForEach(tripViewModel.transactionSettlementList!) {
+//                                                settlement in NavigationLink(destination: SplitBillView()) {
+//                                                    SettlementCard(userFrom: tripViewModel.getUserName(tripMemberId: settlement.userFromId!), userTo: tripViewModel.getUserName(tripMemberId: settlement.userToId!), amount: settlement.nominal ?? 0)
+//                                                        .padding(.horizontal)
+//                                                }
+//                                            }
+//                                        }
+//                                        if(tripViewModel.transactionSettlementList == nil || tripViewModel.tripMemberList == nil) {
+//                                            AppLoading()
+//                                        }
+//                                    }
+//                                    NavigationLink(destination: SettlementListView(tripId: tripId)){
+//                                        AppLink(label: "See all").padding(.horizontal)
+//                                    }
+//                                    Spacer()
                                 }
-                                .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
+                                .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})))
                             }
                         }
                 }
                 if(tripViewModel.state == AppState.Empty){
                         VStack {
+                            AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                AppTitle1(text: "Total Spending")
+                                
+                                AppTitle1(text: "0", color: Color.primaryColor, fontWeight: .bold)
+                                    .padding(1)
+
+                                AppHeadline1(text: "on this trip")
+                            }).padding()
+                            
                             HStack{
+                                
                                 VStack(alignment: .leading) {
                                     Text("Recent Transactions")
                                 }
-                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
                                 Spacer()
-                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {}))
+                                AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
                             }
                             .padding(.horizontal)
                             AppFootnote(text: "No transactions. Go add a new transaction to this group.")
                                 .padding(.horizontal)
-                            Spacer()
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text("Settlements")
-                                }
-                                AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
-                                Spacer()
-                            }
-                            .padding(.horizontal)
-                            AppFootnote(text: "No settlements. Go add a new transaction to settle with your freinds.")
-                                .padding(.horizontal)
+                    
                             Spacer()
                         }
-                        .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, component: {})))
+                        .navigationBarItems(trailing: AppImageButton(height:19, width:24, image: AppImage(url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})))
                     }
                 if(tripViewModel.state == AppState.Error){
                     AppBody1(text:"Error")

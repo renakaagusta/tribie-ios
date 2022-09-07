@@ -34,7 +34,7 @@ struct AppOutlinedCircleButton: View {
                 if(source == AppOutlinedCircleButtonContentSource.Text) { Text(text!).foregroundColor(Color.white) }
             }.frame(width: size, height: size).overlay(
                 RoundedRectangle(cornerRadius: size)
-                    .stroke(color!, lineWidth: 4))
+                    .stroke(color!, lineWidth: 2))
         })
     }
 }

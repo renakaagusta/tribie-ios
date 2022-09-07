@@ -17,22 +17,24 @@ struct MemberItemCard: View {
     var body: some View {
         HStack {
             HStack {
-                AppRadio(selected: false, size: 30, color: Color.gray)
-                Spacer().frame(width: 15.0)
+                AppRadio(selected: false, size: 20, color: Color.gray)
+                Spacer().frame(width: 10.0)
                 VStack(alignment: .leading) {
-                    Text(name).font(.title)
+                    AppBody1(text: "\(name)")
                     Spacer().frame(height: 2)
                     HStack {
-                        Text("Remaining").fontWeight(.bold).foregroundColor(.gray)
-                        Text(String(quantity)).fontWeight(.bold).foregroundColor(Color.primaryColor)
+                        AppCaption1(text: "Remaining")
+                        AppCaption1(text: "\(String(quantity))", color: Color.primaryColor, fontWeight: .bold)
                     }
                 }
             }
             Spacer()
             HStack{
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
-                Text(String(quantity)).font(.title2).frame(width: 40)
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
+                AppOutlinedCircleButton(size: 20.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
+                
+                AppBody1(text: "\(String(quantity))", color: Color.primaryColor, fontWeight: .bold).padding(.horizontal)
+                
+                AppOutlinedCircleButton(size: 20.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
             }
         }.padding().cornerRadius(10)
     }
