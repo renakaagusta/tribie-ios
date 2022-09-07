@@ -31,6 +31,7 @@ struct RecentTransactionCard: View {
                         
                         Text(memberPaid)
                             .font(.system(size: 13))
+                            .foregroundColor(Color.white)
                     }
                     
                     Spacer().frame(height: 7)
@@ -38,28 +39,29 @@ struct RecentTransactionCard: View {
                     Text(title)
                         .font(.system(size: 17))
                         .fontWeight(.regular)
+                        .foregroundColor(Color.secondaryColor)
                     
-                    Spacer().frame(height: 7)
-                    
-                    Text("\(month), \(date)")
-                        .font(.system(size: 13))
-                        .foregroundColor(Color.gray)
-                    
-                    Spacer().frame(height: 10)
                 }
                 Spacer()
                 VStack(alignment: .trailing){
-                    Spacer().frame(height:31)
-                    Text("Rp. \(total)")
+                    Spacer().frame(height:10)
+                    
+                    HStack {
+                        Text("\(month), \(date)")
+                            .font(.system(size: 13))
+                            .foregroundColor(Color.gray)
+                        
+                        Text(time)
+                            .font(.system(size: 13))
+                            .foregroundColor(Color.gray)
+                    }
+                    
+                    Spacer().frame(height:5)
+                    
+                    Text("Rp.\(total)")
                         .font(.system(size: 17))
                         .fontWeight(.bold)
                         .foregroundColor(Color.primaryColor)
-                    
-                    Spacer().frame(height: 7)
-                    
-                    Text(time)
-                        .font(.system(size: 13))
-                        .foregroundColor(Color.gray)
                     
                     Spacer().frame(height: 10)
                 }
