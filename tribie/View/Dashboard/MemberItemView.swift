@@ -18,15 +18,12 @@ struct MemberItemListView: View {
             if(memberItemListViewModel.state == AppState.Loading) {
                 AppLoading()
             }
-            if(memberItemListViewModel.state == AppState.Exist) {
-                if(memberItemListViewModel.transactionItemList != nil && memberItemListViewModel.transactionExpensesList != nil) {
-                    
-                    AppBody1(text: "Select Member", textAlign: .leading)
-                        ScrollView(.horizontal) {
+            if(memberItemListViewModel.transactionItemList != nil && memberItemListViewModel.transactionExpensesList != nil && memberItemListViewModel.tripMemberList != nil) {
+                    ScrollView(.horizontal) {
                             HStack {
                                 ForEach(memberItemListViewModel.tripMemberList!){
                                     tripMember in VStack {
-                                        MemberAvatarButton(image: AppCircleImage(size: 50.0, component: {}), selected: memberItemListViewModel.selectedUserId == tripMember.id, onClick: {
+                                        MemberAvatarButton(image: AppCircleImage(size: 40.0, component: {}), selected: Binding(get: {memberItemListViewModel.selectedUserId == tripMember.id}, set: { _ in true}), onClick: {
                                             memberItemListViewModel.selectUser(tripMemberId: tripMember.id!)
                                         })
                                         AppBody1(text: tripMember.name ?? "-")
@@ -34,26 +31,23 @@ struct MemberItemListView: View {
                                 }
                             }
                         }.padding()
-                    
-                    AppBody1(text: "Item", textAlign: .leading)
-                    
-                        AppFootnote(text: "Assign each members with their items. Tap each item to asign it to a member.")
-                    
+                        AppFootnote(text: "What & how many items did member 1 order?")
                         ForEach(memberItemListViewModel.transactionItemList!){
                             transactionItem in HStack {
-                                MemberItemCard(name: transactionItem.title ?? "-", quantity: memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!), onIncrement: {
+                                MemberItemCard(name: transactionItem.title ?? "-", quantity: Binding(get: {memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)}, set: {_ in true}), onIncrement: {
                                     memberItemListViewModel.handleIncrementQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)
                                 }, onDecrement: {
-                                    memberItemListViewModel.handleIncrementQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)
+                                    memberItemListViewModel.handleDecrementQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)
                                 })
                             }
                         }
                         Spacer()
-                        
-                        //Button Done
-                        AppElevatedLink(label: "Done")
-                            .padding()
-                }
+                    NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transactionId, formState: SplitbillState.Calculate), isActive: Binding(get: {memberItemListViewModel.moveToSplitBillView == true}, set: { _ in true}) ) {
+                    AppElevatedButton(label: "Next", onClick: {
+                        memberItemListViewModel.submitTransactionExpenses()
+                        memberItemListViewModel.updateTransaction()
+                    })
+                    }
                 if(memberItemListViewModel.transactionItemList == nil || memberItemListViewModel.transactionExpensesList == nil) {
                     
                 }

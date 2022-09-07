@@ -121,7 +121,13 @@ class TripViewModel: ObservableObject {
         }
     }
     
-    func getUserName(tripMemberId: String) -> String {
+    func getUserName(tripMemberId: String?) -> String {
+        Logger.debug("------TRIP MEMBER ID-----")
+        Logger.debug(tripMemberId)
+        for tripMember in tripMemberList! {
+            Logger.debug(tripMember.id)
+            Logger.debug(tripMember.name)
+        }
         return tripMemberList!.first(where: {$0.id == tripMemberId})!.name ?? "-"
     }
     

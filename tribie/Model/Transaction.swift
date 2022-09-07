@@ -12,6 +12,10 @@ struct Transaction: Hashable, Codable, Identifiable {
     var tripId: String?
     var transactionId: String?
     var userPaidId: String?
+    var grandTotal: Int?
+    var subTotal: Int?
+    var serviceCharge: Int?
+    var status: String?
     var title: String?
     var description: String?
     var createdAt: String?
