@@ -20,24 +20,20 @@ struct SettlementCard: View {
                 .frame(height: 48)
                 .foregroundColor(Color.white)
             HStack{
-                VStack (alignment:.leading){
+                VStack(alignment:.leading){
                     ZStack{
-                        RoundedRectangle(cornerRadius: 22)
-                            .frame(width:CGFloat(userFrom.count * 11), height: 26)
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width:CGFloat(userFrom.count * 10), height: 20)
                             .foregroundColor(Color.primaryColor)
-                        Text(userFrom)
-                            .font(.system(size: 17))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
+                        AppBody1(text: userFrom, color: Color.white, fontWeight: .semibold)
                     }
                 }
                 Image(systemName: "arrow.right")
-                Text(userTo)
-                    .font(.system(size: 13))
-                    .fontWeight(.regular)
+                    .foregroundColor(Color.secondaryColor)
+                AppBody1(text: userTo,color: Color.secondaryColor)
                 Spacer()
                 VStack (alignment:.trailing) {
-                    Text("Rp. \(amount)")
+                    AppBody1(text: "Rp\(amount)", color: Color.secondaryColor, fontWeight: .bold)
                         .frame(alignment:.trailing)
                 }
             }

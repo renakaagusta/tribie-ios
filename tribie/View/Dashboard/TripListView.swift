@@ -54,9 +54,6 @@ struct TripListView: View {
             }
             .navigationTitle("Recent Trip")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up.circle", source: AppImageSource.SystemName, color: Color.primary, component: {}))
-            )
             .padding()
         }
     }

@@ -26,8 +26,11 @@ struct SettlementListView: View {
                     Text("Error")
                 }
                 if(settlementListViewModel.state == AppState.Exist) {
-                    AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
-                    AppTitle1(text: "Settlement")
+                    HStack {
+                        AppTitle1(text: "Settlements")
+                        AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
+                    }
+                    
                     if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
                         ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
                             SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
@@ -43,7 +46,7 @@ struct SettlementListView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
-                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up.circle", source: AppImageSource.SystemName, color: Color.primary, component: {}))
+                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
             )
             .background(Color.tertiaryColor)
             .padding()
