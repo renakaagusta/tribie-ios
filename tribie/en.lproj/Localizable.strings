@@ -1,0 +1,92 @@
+/* 
+  Localizable.strings
+  tribie
+
+  Created by Arnold Sidiprasetija on 05/09/22.
+  
+*/
+
+
+//Phrase that use on
+//Bill Page (TripView)
+//See All Transactions Page (TransactionListView)
+//See All Settlements List (SettlementListView)
+
+"Total Spending" = "Total Spending";
+"on this trip" = "on this trip";
+"Recent Transactions" = "Recent Transactions";
+"Settlements" = "Settlements";
+
+//Bill Page (TripView)
+
+"See all" = "See all";
+
+//Bill Page (TripView) - Empty State
+
+"No transactions. Go add a new transaction to this group" = "No transactions. Go add a new transaction to this group";
+"No settlements. Go add a new transaction to settle with your freinds." = "No settlements. Go add a new transaction to settle with your freinds.";
+
+//Members Page (MemberListView)
+"Members" = "Members";
+
+//New Transaction Page (Manual)
+
+"New Transaction" = "New Transaction";
+"Save Draft" = "Save Draft";
+
+//New Transaction Page (Manual) - Error State
+
+"Transaction Name Hasn’t Filled" = "Transaction Name Hasn’t Filled";
+"You haven’t input your transaction name. Please input your transaction name to continue tracking" = "You haven’t input your transaction name. Please input your transaction name to continue tracking";
+"Grand Total Hasn’t Filled" = "Grand Total Hasn’t Filled";
+"You haven’t input the grand total. Please input the grand total of your bill to continue tracking" = "You haven’t input the grand total. Please input the grand total of your bill to continue tracking";
+
+//Split Bill Page (SplitBillView)
+
+"Split Bill" = "Split Bill";
+"Who Paid" = "Who Paid";
+"Split Method" = "Split Method";
+"Equally" = "Equally";
+"Per Item" = "Per Item";
+"Manually" = "Manually";
+"Service Charge/ Tax" = "Service Charge/ Tax";
+"Grand Total" = "Grand Total";
+"Next" = "Next";
+
+//Split Bill Page (equally)
+"Grand total amount will be split equally among the selected members." = "Grand total amount will be split equally among the selected members.";
+
+//Split Bill Page (equally) - Error State
+"Grand Total can not be Zero" = "Grand Total can not be Zero";
+"Grand Total can not be zero. Please input the amount to continue tracking." = "Grand Total can not be zero. Please input the amount to continue tracking.";
+"Input Transaction Name" = "Input Transaction Name";
+"Transaction Name must be filled." = "Transaction Name must be filled.";
+"No Member Selected" = "No Member Selected";
+"You haven’t select any member to the transaction yet. Please select at least 1 member to continue tracking." = "You haven’t select any member to the transaction yet. Please select at least 1 member to continue tracking.";
+
+
+//Split Bill Page (per item)
+
+"Select Member" = "Select Member";
+"Item" = "Barang";
+"Each members will pay according to what they buy." = "Each members will pay according to what they buy.";
+"Assign each members with their items. Choose each item to asign it to a member." = "Assign each members with their items. Choose each item to asign it to a member.";
+"Remaining" = "Remaining";
+"Done" = "Done";
+
+//Split Bill Page (per item) - Error State
+
+"No Items Added" = "No Items Added";
+"You haven’t add any item yet. Please add at least 1 item to continue tracking." = "You haven’t add any item yet. Please add at least 1 item to continue tracking.";
+"Subtotal Exceeds Grand Total" = "Subtotal Exceeds Grand Total";
+"Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total." = "Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total.";
+"There’s item that have not been assigned" ="There’s item that have not been assigned";
+"Please assign the remaining item to the member." = "Please assign the remaining item to the member.";
+"Ok" = "Ok";
+
+//Split Bill Page (manually)
+
+"Sorry this split method is currently under maintainance and will be working soon. Please try the other split method for your current transaction.";
+
+//Who Paid Page
+"Spent" = "Spent";
