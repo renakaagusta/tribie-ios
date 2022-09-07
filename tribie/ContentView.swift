@@ -17,7 +17,7 @@ struct ContentView: View {
             if(AppKeychain().appToken().isEmpty == false) {
                 TripListView()
             }
-        }
+        }.environment(\.locale, .init(identifier: "id"))
     }
 }
 
