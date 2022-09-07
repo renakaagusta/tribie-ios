@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MemberItemCard: View {
     @State var name: String
-    @State var quantity: Int
+    @Binding var quantity: Int
     
     var onIncrement: () -> Void = {}
     var onDecrement: () -> Void = {}
@@ -30,16 +30,14 @@ struct MemberItemCard: View {
             }
             Spacer()
             HStack{
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
+                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
+                    onDecrement()
+                })
                 Text(String(quantity)).font(.title2).frame(width: 40)
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon)
+                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
+                    onIncrement()
+                })
             }
         }.padding().cornerRadius(10)
-    }
-}
-
-struct MemberMemberItemCard_Previews: PreviewProvider {
-    static var previews: some View {
-        MemberItemCard(name: "Item 1", quantity: 0, onIncrement: {}, onDecrement: {})
     }
 }

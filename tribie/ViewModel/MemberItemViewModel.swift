@@ -10,10 +10,13 @@ import RxSwift
 
 class MemberItemListViewModel: ObservableObject {
     @Published var state: AppState = AppState.Initial
+    @Published var transaction: Transaction?
     @Published var transactionItemList: [TransactionItem]?
     @Published var tripMemberList : [TripMember]?
     @Published var transactionExpensesList : [TransactionExpenses]?
     @Published var selectedUserId: String?
+    @Published var successSendCounter = 0
+    @Published var moveToSplitBillView = false
     
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
@@ -49,11 +52,25 @@ class MemberItemListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
+    public func fetchTransaction(transactionId: String = AppConstant.DUMMY_DATA_TRANSACTION_ID) {
+        repository.getTransactionData(transactionId: transactionId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                self.transaction = response ?? Transaction()
+                self.state = AppState.Exist
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
     public func fetchTransactionExpenseList(transactionId: String = AppConstant.DUMMY_DATA_TRANSACTION_ID){
         repository.getTransactionExpensesList(transactionId: transactionId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                self.transactionExpensesList = response!
+                self.transactionExpensesList = response ?? []
+                for (index, _) in self.transactionExpensesList!.enumerated() {
+                    self.transactionExpensesList![index].saved = true
+                }
                 if (self.transactionExpensesList!.count != 0) {
                     self.state = AppState.Exist
                 } else {
@@ -71,28 +88,33 @@ class MemberItemListViewModel: ObservableObject {
         
         if(index == nil) {
             newTransactionExpensesList?.append(TransactionExpenses(
-                itemId: itemId,
-                tripMemberId: tripMemberId,
-                quantity: 0
+                itemId: itemId, tripMemberId: tripMemberId, tripId: transaction!.tripId!,
+                transactionId: transaction!.id!,
+                saved: false,
+                quantity: 1
             ))
         } else {
             newTransactionExpensesList![index!].quantity! += 1
         }
         
         transactionExpensesList = newTransactionExpensesList
+        
+        Logger.debug(transactionExpensesList)
     }
     
-    public func handleDecrementQuantity(index: Int) {
-        var newTransactionItemList = transactionItemList
-        if(newTransactionItemList!.count > 0) {
-            if(newTransactionItemList![index].quantity == nil || newTransactionItemList![index].quantity == 0) {
-                newTransactionItemList![index].quantity = 0
-            } else {
-                newTransactionItemList![index].quantity! -= 1
-            }
-        }
+    public func handleDecrementQuantity(itemId: String, tripMemberId: String) {
         
-        transactionItemList = newTransactionItemList
+            var newTransactionExpensesList = transactionExpensesList
+            
+            let index: Int? = transactionExpensesList!.firstIndex(where: {$0.itemId == itemId && $0.tripMemberId == tripMemberId})
+            
+            if(index != nil) {
+                newTransactionExpensesList![index!].quantity! -= 1
+            }
+            
+            transactionExpensesList = newTransactionExpensesList
+            
+            Logger.debug(transactionExpensesList)
     }
     
     public func getItemExpensesQuantity(itemId: String, tripMemberId: String) -> Int {
@@ -105,12 +127,68 @@ class MemberItemListViewModel: ObservableObject {
         }
     }
     
+    func updateTransaction() {
+        if(transaction?.status == "Items") {
+            transaction?.status = "Expenses"
+        }
+        repository.updateTransaction(id: transaction!.id!, transaction: transaction!)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                if(response != nil) {
+                    self.transaction = response
+                } else {
+                    self.state = AppState.Error
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    func submitTransactionExpenses() {
+        for transactionExpenses in transactionExpensesList! {
+            print(transactionExpenses)
+            if(transactionExpenses.saved == false) {
+                repository.addTransactionExpenses(transactionExpenses: transactionExpenses)
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { response in
+                        if(response != nil) {
+                            self.successSendCounter += 1
+                            if(self.successSendCounter == self.transactionExpensesList!.count) {
+                                self.moveToSplitBillView = true
+                            }
+                        } else {
+                            self.state = AppState.Error
+                        }
+                    }, onError: {error in
+                        self.state = AppState.Error
+                    }).disposed(by: disposeBag)
+            } else {
+                repository.updateTransactionExpenses(id: transactionExpenses.id!, transactionExpenses: transactionExpenses)
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { response in
+                        if(response != nil) {
+                            self.successSendCounter += 1
+                            if(self.successSendCounter == self.transactionItemList!.count) {
+                                self.moveToSplitBillView = true
+                            }
+                        } else {
+                            self.state = AppState.Error
+                        }
+                    }, onError: {error in
+                        self.state = AppState.Error
+                    }).disposed(by: disposeBag)
+            }
+        }
+    }
+    
     public func selectUser(tripMemberId: String) {
         selectedUserId = tripMemberId
     }
     
     public func fetchData(tripId: String, transactionId: String) {
         self.state = AppState.Loading
+        fetchTransaction(transactionId: transactionId)
         fetchTripMemberList(tripId: tripId)
         fetchTransactionItemList(transactionId: transactionId)
         fetchTransactionExpenseList(transactionId: transactionId)

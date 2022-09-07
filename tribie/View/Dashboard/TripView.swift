@@ -19,7 +19,7 @@ struct TripView: View {
                     AppLoading()
                 }
                 if(tripViewModel.state == AppState.Exist){
-                    if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil){
+                    if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil && tripViewModel.transactionSettlementList != nil){
                             ScrollView {
                                 VStack {
                                     HStack{
@@ -28,7 +28,7 @@ struct TripView: View {
                                         }
                                         AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, component: {}))
                                         Spacer()
-                                        NavigationLink(destination: TransactionFormView()) {
+                                        NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
                                             AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {})
                                         }
                                     }
@@ -36,7 +36,7 @@ struct TripView: View {
                                     VStack {
                                         if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
                                             ForEach(tripViewModel.transactionList!) {
-                                                transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!)) {
+                                                transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
                                                     RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: tripViewModel.calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
                                                         .padding(.horizontal)
                                                 }
