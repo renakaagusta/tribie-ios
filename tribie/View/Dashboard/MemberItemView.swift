@@ -20,7 +20,8 @@ struct MemberItemListView: View {
             }
             if(memberItemListViewModel.state == AppState.Exist) {
                 if(memberItemListViewModel.transactionItemList != nil && memberItemListViewModel.transactionExpensesList != nil) {
-                    AppBody1(text: "Select Member")
+                    
+                    AppBody1(text: "Select Member", textAlign: .leading)
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(memberItemListViewModel.tripMemberList!){
@@ -34,7 +35,8 @@ struct MemberItemListView: View {
                             }
                         }.padding()
                     
-                        AppBody1(text: "Item")
+                    AppBody1(text: "Item", textAlign: .leading)
+                    
                         AppFootnote(text: "Assign each members with their items. Tap each item to asign it to a member.")
                     
                         ForEach(memberItemListViewModel.transactionItemList!){
@@ -47,6 +49,10 @@ struct MemberItemListView: View {
                             }
                         }
                         Spacer()
+                        
+                        //Button Done
+                        AppElevatedLink(label: "Done")
+                            .padding()
                 }
                 if(memberItemListViewModel.transactionItemList == nil || memberItemListViewModel.transactionExpensesList == nil) {
                     

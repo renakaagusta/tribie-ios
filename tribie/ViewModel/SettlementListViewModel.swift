@@ -109,4 +109,11 @@ class SettlementListViewModel: ObservableObject {
             fetchTripTransactionItemList(tripId: tripId)
         }
     }
+    
+//    public func limitStringName(name: String) -> String {
+//        let limit : Int = 9
+//        var newName: String = ""
+//        
+//        
+//    }
 }
