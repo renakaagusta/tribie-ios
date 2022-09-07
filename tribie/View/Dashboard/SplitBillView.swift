@@ -26,6 +26,9 @@ struct SplitBillView: View {
                             VStack(alignment: .leading) {
                                 Spacer().frame(height: 40)
                                 AppBody1(text: "Grand Total").frame(width: UIScreen.width, alignment: .center)
+                                
+                                //AppDivider(height: 10, width: 150, color: Color.secondaryColor)
+                                
                                 Spacer().frame(height: 10)
                                 AppHeader(text: "Rp\(String(splitBillViewModel.getGrandTotal()))", color: Color.primaryColor).frame(width: UIScreen.width, alignment: .center)
                                 Spacer().frame(height: 10)

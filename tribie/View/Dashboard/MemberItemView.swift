@@ -20,12 +20,13 @@ struct MemberItemListView: View {
             }
             if(memberItemListViewModel.state == AppState.Exist) {
                 if(memberItemListViewModel.transactionItemList != nil && memberItemListViewModel.transactionExpensesList != nil) {
-                        AppBody1(text: "Select Member")
+                    
+                    AppBody1(text: "Select Member", textAlign: .leading)
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(memberItemListViewModel.tripMemberList!){
                                     tripMember in VStack {
-                                        MemberAvatarButton(image: AppCircleImage(size: 40.0, component: {}), selected: memberItemListViewModel.selectedUserId == tripMember.id, onClick: {
+                                        MemberAvatarButton(image: AppCircleImage(size: 50.0, component: {}), selected: memberItemListViewModel.selectedUserId == tripMember.id, onClick: {
                                             memberItemListViewModel.selectUser(tripMemberId: tripMember.id!)
                                         })
                                         AppBody1(text: tripMember.name ?? "-")
@@ -33,7 +34,11 @@ struct MemberItemListView: View {
                                 }
                             }
                         }.padding()
-                        AppFootnote(text: "What & how many items did member 1 order?")
+                    
+                    AppBody1(text: "Item", textAlign: .leading)
+                    
+                        AppFootnote(text: "Assign each members with their items. Tap each item to asign it to a member.")
+                    
                         ForEach(memberItemListViewModel.transactionItemList!){
                             transactionItem in HStack {
                                 MemberItemCard(name: transactionItem.title ?? "-", quantity: memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!), onIncrement: {
@@ -44,6 +49,10 @@ struct MemberItemListView: View {
                             }
                         }
                         Spacer()
+                        
+                        //Button Done
+                        AppElevatedLink(label: "Done")
+                            .padding()
                 }
                 if(memberItemListViewModel.transactionItemList == nil || memberItemListViewModel.transactionExpensesList == nil) {
                     
