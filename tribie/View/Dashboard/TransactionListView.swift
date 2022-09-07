@@ -48,6 +48,7 @@ struct TransactionListView: View {
             .onAppear {
                 transactionViewModel.fetchData(tripId: tripId)
             }
+            .background(Color.tertiaryColor)
             .navigationTitle("Recent Transaction")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
