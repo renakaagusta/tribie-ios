@@ -23,7 +23,6 @@ struct TripView: View {
                             ScrollView {
                                 VStack {
                                     
-                                    
                                     AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
                                         AppTitle1(text: "Total Spending")
                                         
@@ -97,7 +96,17 @@ struct TripView: View {
                 }
                 if(tripViewModel.state == AppState.Empty){
                         VStack {
+                            AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                AppTitle1(text: "Total Spending")
+                                
+                                AppTitle1(text: "0", color: Color.primaryColor, fontWeight: .bold)
+                                    .padding(1)
+
+                                AppHeadline1(text: "on this trip")
+                            }).padding()
+                            
                             HStack{
+                                
                                 VStack(alignment: .leading) {
                                     Text("Recent Transactions")
                                 }
