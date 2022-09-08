@@ -128,7 +128,7 @@ class NetworkRepository : ApiServices {
     }
     
     func addTransaction(transaction: Transaction) -> Observable<Transaction?> {
-        return service.requestPost(urlString: baseUrl + "/transactions", parameters: transaction, encoding: URLEncoding.default)
+        return service.requestPost(urlString: baseUrl + "/transactions", parameters: transaction, encoding: URLEncoding.queryString)
     }
 
     func addTransactionItem(transactionItem: TransactionItem) -> Observable<TransactionItem?> {

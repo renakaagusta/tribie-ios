@@ -110,10 +110,12 @@ class SettlementListViewModel: ObservableObject {
         }
     }
     
-//    public func limitStringName(name: String) -> String {
-//        let limit : Int = 9
-//        var newName: String = ""
-//        
-//        
-//    }
+    //Text limit
+    public func textLimit(existingText: String?, limit: Int) -> String {
+        let text = existingText ?? ""
+        
+        let isAtLimit = existingText!.count <= limit
+        
+        return String(isAtLimit)
+    }
 }

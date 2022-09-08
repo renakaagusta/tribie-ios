@@ -58,6 +58,7 @@ class TripListViewModel: ObservableObject {
     }
     
     public func filterTripList() {
+        self.filteredTripList = []
         for trip in self.tripList! {
             if (tripMemberList!.first(where: {$0.userId == self.userId}) != nil) {
                 if(self.filteredTripList == nil) {

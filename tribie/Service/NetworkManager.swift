@@ -42,18 +42,18 @@ class NetworkManager {
                         do {
                             let result = try decoder.decode(T.self, from: json)
         
-                            Logger.info("======SEND GET REQUEST=======")
-                            Logger.info(urlString)
-                            Logger.info("===========RESPONSE===========")
-                            Logger.info(result)
+//                            Logger.info("======SEND GET REQUEST=======")
+//                            Logger.info(urlString)
+//                            Logger.info("===========RESPONSE===========")
+//                            Logger.info(result)
                             
                             observer.onNext(result)
                             observer.onCompleted()
                         } catch let error {
-                            Logger.error("======SEND POST REQUEST=======")
-                            Logger.error(urlString)
-                            Logger.error("============ERROR=============")
-                            Logger.error(error)
+//                            Logger.error("======SEND POST REQUEST=======")
+//                            Logger.error(urlString)
+//                            Logger.error("============ERROR=============")
+//                            Logger.error(error)
                                 
                             observer.onError(error)
                         }
@@ -118,7 +118,7 @@ class NetworkManager {
         return Observable<T?>.create { observer in
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
-            let data = try! encoder.encode(parameters)
+            let data = try! encoder.encode(parameters!)
             
             var urlRequest = URLRequest(url: URL(string: urlString)!)
             urlRequest.httpMethod = "POST"
@@ -137,6 +137,8 @@ class NetworkManager {
         
                             Logger.info("======SEND POST REQUEST=======")
                             Logger.info(urlString)
+                            Logger.info("=======PARAMETERS========")
+                            Logger.info(parameters)
                             Logger.info("===========RESPONSE===========")
                             Logger.info(response)
                             
@@ -146,6 +148,8 @@ class NetworkManager {
                             
                             Logger.error("======SEND POST REQUEST=======")
                             Logger.error(urlString)
+                            Logger.error("=======PARAMETERS========")
+                            Logger.error(parameters)
                             Logger.error("============ERROR=============")
                             Logger.error(error)
                             
@@ -155,6 +159,8 @@ class NetworkManager {
                         
                         Logger.error("======SEND POST REQUEST=======")
                         Logger.error(urlString)
+                        Logger.warning("=======PARAMETERS========")
+                        Logger.warning(parameters)
                         Logger.error("==========ERROR NIL============")
                         
                         observer.onError(ApiError.responseNil)
