@@ -28,7 +28,7 @@ struct TripListView: View {
                 if (tripListViewModel.state == AppState.Exist) {
                         if(tripListViewModel.tripList != nil && tripListViewModel.tripMemberList != nil) {
                                     ForEach(tripListViewModel.tripList!) { trip in
-                                        NavigationLink(destination: TripView(tripId: trip.id!)){
+                                        NavigationLink(destination: MainView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
                                                 AppBody1(text: trip.title!)
                                             })
