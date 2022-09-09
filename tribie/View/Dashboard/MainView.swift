@@ -13,6 +13,7 @@ import SystemConfiguration
 struct MainView: View {
     
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var transactionId: String?
     @ObservedObject var tripViewModel = TripViewModel()
     @ObservedObject var settlementListViewModel : SettlementListViewModel = SettlementListViewModel()
 
@@ -23,6 +24,11 @@ struct MainView: View {
             TripView()
                 .tabItem {
                     Label("Transaction", systemImage: "scroll.fill")
+                }
+            
+            TransactionListView()
+                .tabItem {
+                    Label("Drafts", systemImage: "clock.fill")
                 }
             
             SettlementListView()
