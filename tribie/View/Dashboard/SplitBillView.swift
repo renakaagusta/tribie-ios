@@ -216,11 +216,6 @@ struct SplitBillView: View {
         }
         .frame(height: UIScreen.height)
         .background(Color.tertiaryColor).onAppear {
-            Logger.debug("transaction id:")
-            Logger.debug(transactionId)
-            Logger.debug("transaction id:")
-            Logger.debug(tripId)
-            Logger.debug(formState)
             splitBillViewModel.fetchData(tripId: tripId, transactionId: transactionId, formState: formState)
         }
     }
