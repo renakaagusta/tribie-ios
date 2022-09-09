@@ -15,6 +15,8 @@ struct TripMember: Hashable, Codable, Identifiable {
     var net: Int? = 0
     var income: Int? = 0
     var expenses: Int? = 0
+    var saved: Bool? = false
+    var status: String?
     var createdAt: String?
     var updatedAt: String?
 }

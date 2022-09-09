@@ -26,18 +26,14 @@ struct TripListView: View {
                 }
                 if (tripListViewModel.state == AppState.Exist) {
                         if(tripListViewModel.tripList != nil && tripListViewModel.tripMemberList != nil) {
-                            VStack {
-                                if(tripListViewModel.filteredTripList != nil) {
-                                    ForEach(tripListViewModel.filteredTripList!) { trip in
+                                    ForEach(tripListViewModel.tripList!) { trip in
                                         NavigationLink(destination: TripView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
                                                 AppBody1(text: trip.title!)
                                             })
                                         }
-                                    }
-                                }
                             }.padding().onAppear {
-                                tripListViewModel.filterTripList()
+//                                tripListViewModel.filterTripList()
                             }
                         }
                         if(tripListViewModel.tripList == nil) {
