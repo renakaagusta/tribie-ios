@@ -39,18 +39,32 @@ struct TripView: View {
                                         AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
                                         Spacer()
                                         NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                            AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {})
+                                            AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                         }
                                     }
                                     .padding(.horizontal)
                                     VStack {
                                         if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
-                                            ForEach(tripViewModel.transactionList!) {
-                                                transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
-                                                    RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: tripViewModel.calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
-                                                        .padding(.horizontal)
+                                            //List {
+                                                ForEach(tripViewModel.transactionList!) {
+                                                    transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
+                                                        RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: tripViewModel.calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
+                                                            .padding(.horizontal)
+                                                            
+                                                        //for delete
+    //                                                    Button(action: {
+    //                                                        transaction.remove(at: transaction)
+    //                                                        transaction.remove(at: transaction)
+    //                                                    }) {
+    //                                                        Image(systemName: "xmark")
+    //                                                    }
+                                                    }
                                                 }
-                                            }
+                                                //.onDelete(perform: deleteTransactions)
+//                                                .onDelete { IndexSet in
+//                                                    tripViewModel.transactionList!.remove(atOffsets: IndexSet)
+//                                                }
+                                        //} //list end
                                         }
                                         if(tripViewModel.transactionList == nil || tripViewModel.tripMemberList == nil) {
                                             AppLoading()
@@ -129,6 +143,11 @@ struct TripView: View {
             tripViewModel.fetchData(tripId: tripId)
         }
     }
+    
+    //delete transaction
+//    func deleteTransactions(at offsets: IndexSet) {
+//        tripViewModel.transactionList?.remove(atOffsets: offsets)
+//    }
     
     struct TripView_Previews: PreviewProvider {
         static var previews: some View {

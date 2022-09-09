@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TripListView: View {
 
+    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
@@ -29,7 +30,7 @@ struct TripListView: View {
                             VStack {
                                 if(tripListViewModel.filteredTripList != nil) {
                                     ForEach(tripListViewModel.filteredTripList!) { trip in
-                                        NavigationLink(destination: TripView(tripId: trip.id!)){
+                                        NavigationLink(destination: MainView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
                                                 AppBody1(text: trip.title!)
                                             })
