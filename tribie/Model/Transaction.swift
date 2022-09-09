@@ -16,6 +16,7 @@ struct Transaction: Hashable, Codable, Identifiable {
     var subTotal: Int?
     var serviceCharge: Int?
     var status: String?
+    var method: String?
     var title: String?
     var description: String?
     var createdAt: String?

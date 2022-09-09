@@ -15,6 +15,17 @@ struct TripView: View {
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripViewModel = TripViewModel()
     
+    func getSplitBillState(status: String) -> SplitbillState {
+        if(status == "Item") {
+            return SplitbillState.InputTransactionItem
+        } else if(status == "Expenses") {
+            return SplitbillState.Done
+        } else if(status == "Calculated") {
+            return SplitbillState.Calculate
+        }
+        return SplitbillState.InputTransactionItem
+    }
+    
     var body: some View {
         VStack{
             if(tripViewModel.state == AppState.Loading){

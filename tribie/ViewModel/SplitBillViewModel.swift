@@ -13,6 +13,7 @@ enum SplitbillState {
     case InputTransaction
     case InputTransactionItem
     case Calculate
+    case Done
 }
 
 class SplitBillListViewModel: ObservableObject {
@@ -30,6 +31,7 @@ class SplitBillListViewModel: ObservableObject {
     @Published var selectedUserId: String?
     @Published var formState: SplitbillState = SplitbillState.InputTransaction
     @Published var successSendCounter = 0
+    @Published var successRemoveCounter = 0
     @Published var moveToMemberItemView = false
     @Published var moveToSettlementListView = false
     
@@ -134,11 +136,14 @@ class SplitBillListViewModel: ObservableObject {
     
     func submitTransaction() {
         transaction?.userPaidId = selectedUserId
+        transaction?.status = "Created"
+        transaction?.method = "Item"
         repository.addTransaction(transaction: transaction!)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 if(response != nil) {
                     self.transaction = response
+                    
                     self.formState = SplitbillState.InputTransactionItem
                 } else {
                     self.state = AppState.Error
@@ -148,19 +153,71 @@ class SplitBillListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    func updateTransaction() {
+    func removeAllTransactionSettlement() {
+        for transactionSettlement in transactionSettlementList! {
+            if(transactionSettlement.id != nil) {
+                repository.deleteTransactionSettlement(id: transactionSettlement.id!)
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { response in
+                        self.successRemoveCounter += 1
+                        if(self.successRemoveCounter == self.transactionSettlementList!.count) {
+                            self.transactionSettlementList = []
+                            self.calculateSplitBill()
+                        }
+                    }, onError: {error in
+                        self.state = AppState.Error
+                    }).disposed(by: disposeBag)
+            } else {
+                self.successRemoveCounter += 1
+                if(self.successRemoveCounter == self.transactionSettlementList!.count) {
+                    self.calculateSplitBill()
+                }
+            }
+        }
+    }
+    
+    func handleMoveToMemberItem() {
+        if(self.transactionSettlementList != nil) {
+          if(self.successRemoveCounter == self.transactionSettlementList!.count) {
+                    calculateSplitBill()
+                }
+
+            if(self.successSendCounter == self.transactionItemList!.count) {
+                self.moveToMemberItemView = true
+                self.resetMoveState()
+            }
+        } else {
+            if(self.successSendCounter == self.transactionItemList!.count) {
+                self.moveToMemberItemView = true
+                self.resetMoveState()
+            }
+        }
+        
+    }
+    
+    func setSplitBillMethod(method: String) {
+        self.transaction!.method = method
+    }
+    
+    func updateTransaction(revised: Bool = false) {
         transaction?.grandTotal = getGrandTotal()
         transaction?.subTotal = getSubTotal()
         transaction?.serviceCharge = getServiceCharge()
         if(transaction?.status == "Created") {
             transaction?.status = "Items"
+        } else if(transaction?.status == "Item") {
+            transaction?.status = "Calculated"
+        } else if(transaction?.status == "Calculated") {
+            transaction?.status = "Item"
         }
         repository.updateTransaction(id: transaction!.id!, transaction: transaction!)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 if(response != nil) {
                     self.transaction = response
-                    self.formState = SplitbillState.InputTransactionItem
+                    if(self.transaction?.status == "Calculated") {
+                        self.formState = SplitbillState.Calculate
+                    }
                 } else {
                     self.state = AppState.Error
                 }
@@ -177,10 +234,7 @@ class SplitBillListViewModel: ObservableObject {
                     .subscribe(onNext: { response in
                         if(response != nil) {
                             self.successSendCounter += 1
-                            if(self.successSendCounter == self.transactionItemList!.count) {
-                                self.moveToMemberItemView = true
-                                self.resetMoveState()
-                            }
+                            self.handleMoveToMemberItem()
                         } else {
                             self.state = AppState.Error
                         }
@@ -193,10 +247,7 @@ class SplitBillListViewModel: ObservableObject {
                     .subscribe(onNext: { response in
                         if(response != nil) {
                             self.successSendCounter += 1
-                            if(self.successSendCounter == self.transactionItemList!.count) {
-                                self.moveToMemberItemView = true
-                                self.resetMoveState()
-                            }
+                            self.handleMoveToMemberItem()
                         } else {
                             self.state = AppState.Error
                         }
@@ -207,19 +258,10 @@ class SplitBillListViewModel: ObservableObject {
         }
     }
     
-    func resetMoveState() {
-        Task {
-            sleep(1)
-            self.moveToMemberItemView = false
-            self.moveToSettlementListView = false
-        }
-    }
-    
-    func submitTransactionSettlement() {
-        Logger.info("===============CALCULATION LIST===========")
+    func submitTransactionSettlement() {        Logger.info("===============CALCULATION LIST===========")
         for transactionSettlement in transactionSettlementList! {
+            Logger.debug(transactionSettlement)
             if(transactionSettlement.saved == false) {
-                Logger.debug(transactionSettlement)
                 repository.addTransactionSettlement(transactionSettlement: transactionSettlement)
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
@@ -255,8 +297,55 @@ class SplitBillListViewModel: ObservableObject {
             }
         }
     
+    func removeTransactionSettlement() {
+        if(transaction?.status != "Items") {
+            return
+        }
+        
+        for transactionSettlement in transactionSettlementList! {
+            if(transactionSettlement.saved == false) {
+                repository.addTransactionSettlement(transactionSettlement: transactionSettlement)
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { response in
+                        if(response != nil) {
+                            self.successSendCounter += 1
+                            if(self.successSendCounter == self.transactionSettlementList!.count) {
+                                self.moveToSettlementListView = true
+                                self.resetMoveState()
+                            }
+                        } else {
+                            self.state = AppState.Error
+                        }
+                    }, onError: {error in
+                        self.state = AppState.Error
+                    }).disposed(by: disposeBag)
+            }
+        }
+    }
+    
     func calculateSplitBill() {
         Logger.error("=====CALCULATE NETTO======")
+        switch transaction!.method! {
+            case "Item":
+            calculateSplitBillByItems()
+            case "Equally":
+            calculateSplitBillEqually()
+            case "Manual":
+            calculateSplitBillManually()
+            default:
+            calculateSplitBillByItems()
+        }
+    }
+    
+    func calculateSplitBillEqually() {
+        
+    }
+    
+    func calculateSplitBillManually() {
+        
+    }
+    
+    func calculateSplitBillByItems() {
         for (index, tripMember) in tripMemberList!.enumerated() {
             tripMemberList![index].expenses = 0
             for (indexTransactionExpenses, transactionExpenses) in transactionExpensesList!.filter({$0.tripMemberId == tripMember.id!}).enumerated() {
@@ -264,8 +353,9 @@ class SplitBillListViewModel: ObservableObject {
                 tripMemberList![index].expenses! += calculateExpenses
             }
             if(tripMember.id == transaction!.userPaidId!) {
+                Logger.info("=======WHO PAID==========")
+                Logger.info(tripMember.name)
                 tripMemberList![index].income = transaction!.grandTotal!
-                tripMemberList![index].income = 330
             } else {
                 tripMemberList![index].income = 0
             }
@@ -282,6 +372,7 @@ class SplitBillListViewModel: ObservableObject {
         Logger.error("============")
 
         Logger.error("======CALCULATE NETO======")
+        
         for tripMember in tripMemberList! {
             Logger.error(tripMember.name)
             Logger.error(tripMember.net)
@@ -291,6 +382,7 @@ class SplitBillListViewModel: ObservableObject {
         Logger.error("============")
         
         Logger.debug("========LOOPING========")
+        
         while true {
             let minTripMember = findMinimumTripMemberNetto()
             let minTripMemberIndex = tripMemberList!.firstIndex(where: {$0.id == minTripMember.id})!
@@ -299,7 +391,8 @@ class SplitBillListViewModel: ObservableObject {
             
             tripMemberList![maxTripMemberIndex].net!+=tripMemberList![minTripMemberIndex].net!
                     
-            transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1, saved: false))
+            transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1,
+                                                                    saved: false, status: "Created"))
             
             Logger.debug(minTripMember.name)
             Logger.debug(maxTripMember.name)
@@ -324,10 +417,18 @@ class SplitBillListViewModel: ObservableObject {
             }
             counter+=1
         }
+        
         Logger.debug("================")
         
-        Logger.info(transactionSettlementList)
         submitTransactionSettlement()
+    }
+    
+    func resetMoveState() {
+        Task {
+            sleep(1)
+            self.moveToMemberItemView = false
+            self.moveToSettlementListView = false
+        }
     }
     
     public func getUserPaid() -> TripMember {
@@ -339,33 +440,21 @@ class SplitBillListViewModel: ObservableObject {
     }
     
     public func getGrandTotal() -> Int {
-        var grandTotal = 0
-        
-        for transactionItem in self.transactionItemList! {
-            grandTotal = grandTotal + (Int((transactionItem.quantity ?? 0.0) * transactionItem.price!))
-        }
-        
-        return grandTotal
+        return transaction?.grandTotal ?? 0
     }
     
     public func getSubTotal() -> Int {
         var subTotal = 0
         
         for transactionItem in self.transactionItemList! {
-          subTotal = grandTotal + (Int((transactionItem.quantity ?? 0.0) * transactionItem.price!))
+          subTotal = subTotal + (Int((transactionItem.quantity ?? 0.0) * transactionItem.price!))
         }
         
         return subTotal
     }
     
     public func getServiceCharge() -> Int {
-        var serviceCharge = 0
-        
-        for transactionItem in self.transactionItemList! {
-          serviceCharge = grandTotal + (Int((transactionItem.quantity ?? 0.0) * transactionItem.price!))
-        }
-        
-        return serviceCharge
+        return getGrandTotal() - getSubTotal()
     }
     
     public func selectUserPay(index: Int) {
@@ -379,6 +468,13 @@ class SplitBillListViewModel: ObservableObject {
     }
 
     public func handleIncrementQuantity(index: Int) {
+        Logger.debug("---")
+        if(getGrandTotal() < getSubTotal()) {
+            return
+        }
+        
+        Logger.debug("oops")
+        
         var newTransactionItemList = transactionItemList
         if(newTransactionItemList!.count > 0) {
             if(newTransactionItemList![index].quantity == nil) {
@@ -397,13 +493,12 @@ class SplitBillListViewModel: ObservableObject {
         var newTransactionItemList = transactionItemList
         if(newTransactionItemList!.count > 0) {
             if(newTransactionItemList![index].quantity == nil || newTransactionItemList![index].quantity == 0) {
-                newTransactionItemList![index].quantity = 0
+//                newTransactionItemList!.remove(at: index)
             } else {
                 newTransactionItemList![index].quantity! -= 1
+                newTransactionItemList![index].changed = true
             }
         }
-        
-        newTransactionItemList![index].changed = true
         
         transactionItemList = newTransactionItemList
     }
@@ -411,6 +506,28 @@ class SplitBillListViewModel: ObservableObject {
     public func addItem() {
         transactionItemList!.append(
             TransactionItem(id: Random.randomString(length: 10), tripId: transaction!.tripId!, transactionId: transaction!.id!,  title: "", price: 0, quantity: 0, saved: false))
+    }
+    
+    public func handleSelectItemExpenses(tripMemberId: String) {
+        if(self.transactionExpensesList!.first(where: {$0.tripMemberId == tripMemberId}) == nil) {
+            transactionExpensesList!.append(TransactionExpenses(
+                tripMemberId: tripMemberId, tripId: transaction!.tripId,
+                transactionId: transaction!.id,
+                saved: false, nominal: 0
+            ))
+            
+            splitEqually()
+        } else {
+            self.transactionExpensesList = self.transactionExpensesList!.filter({$0.tripMemberId != tripMemberId})
+            
+            splitEqually()
+        }
+    }
+    
+    public func splitEqually() {
+        for (index, _) in transactionExpensesList!.enumerated() {
+            transactionExpensesList![index].nominal = transaction!.grandTotal! / transactionExpensesList!.count
+        }
     }
     
     public func fetchData(tripId: String, transactionId: String?, formState: SplitbillState) {

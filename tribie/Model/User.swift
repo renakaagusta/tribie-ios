@@ -11,6 +11,7 @@ struct User: Hashable, Codable, Identifiable {
     var id: String?
     var name: String?
     var appleId: String?
+    var deviceId: String?
     var email: String?
     var createdAt: String?
     var updatedAt: String?

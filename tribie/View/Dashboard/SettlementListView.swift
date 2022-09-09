@@ -34,8 +34,7 @@ struct SettlementListView: View {
                     if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
                         ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
                             SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
-                                           userTo: settlementListViewModel.getUserName(tripMemberId: settlementListViewModel.textLimit(existingText: transactionSettlement.userFromId!, limit: 6)),
-                                           
+                                           userTo: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userToId!),
                                            amount: transactionSettlement.nominal ?? 0)
                         }
                     }

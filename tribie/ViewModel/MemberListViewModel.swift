@@ -12,10 +12,14 @@ class MemberListViewModel: ObservableObject {
     
     @Published var state: AppState = AppState.Initial
     
+    @Published var trip: Trip?
     @Published var transactionItemList: [TransactionItem]?
     @Published var tripMemberList: [TripMember]?
     @Published var transactionExpensesList: [TransactionExpenses]?
     @Published var transactionList: [Transaction]?
+    
+    @Published var successSendCounter: Int = 0
+    @Published var moveToTripView: Bool = false
     
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
@@ -63,6 +67,46 @@ class MemberListViewModel: ObservableObject {
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
+    }
+    
+    public func submitTripMember() {
+        for tripMember in tripMemberList! {
+            if(tripMember.saved == false) {
+                repository.addTripMember(tripMember: tripMember)
+                        .observe(on: MainScheduler.instance)
+                        .subscribe(onNext: { response in
+                            if(response != nil) {
+                                self.successSendCounter += 1
+                                if(self.successSendCounter == self.tripMemberList!.count) {
+                                    self.moveToTripView = true
+                                }
+                            } else {
+                                self.state = AppState.Error
+                            }
+                    }, onError: {error in
+                        self.state = AppState.Error
+                    }).disposed(by: disposeBag)
+            } else {
+                repository.updateTripMember(id: tripMember.tripId!, tripMember: tripMember)
+                        .observe(on: MainScheduler.instance)
+                        .subscribe(onNext: { response in
+                            if(response != nil) {
+                                self.successSendCounter += 1
+                                if(self.successSendCounter == self.tripMemberList!.count) {
+                                    self.moveToTripView = true
+                                }
+                            } else {
+                                self.state = AppState.Error
+                            }
+                        }, onError: {error in
+                            self.state = AppState.Error
+                        }).disposed(by: disposeBag)
+                }
+            }
+    }
+    
+    public func addTripMember() {
+        self.tripMemberList!.append(TripMember(id: Random.randomString(length: 10), tripId: trip!.id!, name: "", saved: false, status: "Invited"))
     }
 
     public func getMemberExpenses(memberId: String) -> Int {

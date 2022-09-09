@@ -28,8 +28,6 @@ class MemberItemListViewModel: ObservableObject {
                 self.transactionItemList = response!
                 if (self.transactionItemList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -41,6 +39,9 @@ class MemberItemListViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 self.tripMemberList = response! ?? []
+                for (index, _) in self.tripMemberList!.enumerated() {
+                    self.tripMemberList![index].saved = true
+                }
                 if (self.tripMemberList!.count != 0) {
                     self.selectedUserId = self.tripMemberList![0].id!
                     self.state = AppState.Exist
@@ -82,6 +83,10 @@ class MemberItemListViewModel: ObservableObject {
     }
     
     public func handleIncrementQuantity(itemId: String, tripMemberId: String) {
+        if(getRemainingQuantity(itemId: itemId) <= 0) {
+            return
+        }
+        
         var newTransactionExpensesList = transactionExpensesList
         
         let index: Int? = transactionExpensesList!.firstIndex(where: {$0.itemId == itemId && $0.tripMemberId == tripMemberId})
@@ -97,15 +102,16 @@ class MemberItemListViewModel: ObservableObject {
             newTransactionExpensesList![index!].quantity! += 1
         }
         
+        Logger.warning(newTransactionExpensesList)
+        
         transactionExpensesList = newTransactionExpensesList
         
         Logger.debug(transactionExpensesList)
     }
     
     public func handleDecrementQuantity(itemId: String, tripMemberId: String) {
-        
             var newTransactionExpensesList = transactionExpensesList
-            
+
             let index: Int? = transactionExpensesList!.firstIndex(where: {$0.itemId == itemId && $0.tripMemberId == tripMemberId})
             
             if(index != nil) {
@@ -130,6 +136,8 @@ class MemberItemListViewModel: ObservableObject {
     func updateTransaction() {
         if(transaction?.status == "Items") {
             transaction?.status = "Expenses"
+        } else if(transaction?.status == "Expenses") {
+            transaction?.status = "Done"
         }
         repository.updateTransaction(id: transaction!.id!, transaction: transaction!)
             .observe(on: MainScheduler.instance)
@@ -186,11 +194,35 @@ class MemberItemListViewModel: ObservableObject {
         selectedUserId = tripMemberId
     }
     
+    public func getRemainingQuantity(itemId: String) -> Int{
+        var quantity = 0
+        
+        for transactionItem in transactionItemList! {
+            if(transactionItem.id == itemId) {
+                quantity += Int(transactionItem.quantity!)
+            }
+        }
+        
+        for transactionExpenses in transactionExpensesList! {
+            if(transactionExpenses.itemId == itemId) {
+                quantity -= transactionExpenses.quantity!
+            }
+        }
+        
+        return quantity
+    }
+    
     public func fetchData(tripId: String, transactionId: String) {
         self.state = AppState.Loading
         fetchTransaction(transactionId: transactionId)
         fetchTripMemberList(tripId: tripId)
-        fetchTransactionItemList(transactionId: transactionId)
         fetchTransactionExpenseList(transactionId: transactionId)
+        fetchTransactionItemList(transactionId: transactionId)
+        
+//        if(transactionItemList == nil) {
+//            fetchTransactionItemList(transactionId: transactionId)
+//        } else {
+//           self.transactionItemList = transactionItemList!
+//        }
     }
 }
