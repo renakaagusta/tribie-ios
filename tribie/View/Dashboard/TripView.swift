@@ -101,32 +101,73 @@ struct TripView: View {
                 }
             }
             if(tripViewModel.state == AppState.Empty){
-                VStack {
-                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                        AppTitle1(text: "Total Spending")
-                        
-                        AppTitle1(text: "0", color: Color.primaryColor, fontWeight: .bold)
-                            .padding(1)
-                        
-                        AppHeadline1(text: "on this trip")
-                    }).padding()
-                    
-                    HStack{
-                        
-                        VStack(alignment: .leading) {
-                            Text("Recent Transactions")
+                ScrollView {
+                    VStack {
+                        ScrollView(.horizontal,showsIndicators: false){
+                            HStack(spacing:10){
+                                AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                    AppTitle1(text: "Total Spending", fontWeight: .regular, fontSize: 22)
+                                    
+                                    AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
+                                    
+                                    AppHeader(text: String(tripViewModel.calculateTotalExpenses()), color: Color.primaryColor, fontWeight: .bold)
+                                        .padding(1)
+                                }).padding(.vertical)
+                                
+                                AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
+                                    AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
+                                    AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
+                                    VStack(alignment: .leading){
+                                        HStack{
+                                            AppTitle1(text: "Member 1", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
+                                            Spacer()
+                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
+                                        }
+                                        
+                                        HStack{
+                                            AppTitle1(text: "Member 2", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
+                                            Spacer()
+                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
+                                        }
+                                        
+                                        HStack{
+                                            AppTitle1(text: "Member 3", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
+                                            Spacer()
+                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
+                                        }
+                                    }
+                                })
+                            }
                         }
-                        AppImageButton(height: 22, width: 22, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
-                        Spacer()
-                        AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
-                    }
-                    .padding(.horizontal)
-                    AppFootnote(text: "No transactions. Go add a new transaction to this group.")
+                        
+                        HStack{
+                            
+                            VStack(alignment: .leading) {
+                                Text("Recent Transactions")
+                            }
+                            Spacer()
+                            AppImageButton(height: 22, width: 22, image: AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
+                        }
                         .padding(.horizontal)
-                    
-                    Spacer()
+                        AppFootnote(text: "No transactions. Go add a new transaction to this group.")
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                    }
+                    .navigationBarItems(trailing: AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick: {
+                        showingOptions = true
+                    })
+                        .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
+                            
+                            Button("Members") {
+                                selection = "Green"
+                            }
+                            
+                            Button("Share Group Transactions") {
+                                selection = "Blue"
+                            }
+                        })
                 }
-                .navigationBarItems(trailing: AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})))
             }
             if(tripViewModel.state == AppState.Error){
                 AppBody1(text:"Error")
