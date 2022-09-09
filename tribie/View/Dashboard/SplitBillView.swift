@@ -10,7 +10,7 @@ import SwiftUI
 struct SplitBillView: View {
     
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
-    @State var transactionId: String? = AppConstant.DUMMY_DATA_TRANSACTION_ID
+    @State var transactionId: String? 
     @StateObject var splitBillViewModel : SplitBillListViewModel = SplitBillListViewModel()
     @State var showSelectUserPay = false
     @State var selectedUserPayIndex: Int = 0
@@ -216,6 +216,11 @@ struct SplitBillView: View {
         }
         .frame(height: UIScreen.height)
         .background(Color.tertiaryColor).onAppear {
+            Logger.debug("transaction id:")
+            Logger.debug(transactionId)
+            Logger.debug("transaction id:")
+            Logger.debug(tripId)
+            Logger.debug(formState)
             splitBillViewModel.fetchData(tripId: tripId, transactionId: transactionId, formState: formState)
         }
     }

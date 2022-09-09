@@ -71,14 +71,16 @@ struct TripView: View {
                                     })
                                 }
                             }
-                            
                             HStack{
                                 VStack(alignment: .leading) {
                                     AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                 Spacer()
                                 NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
-                                }
+                                                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
+                                                                }
+//                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: nil, formState: SplitbillState.InputTransaction)) {
+//                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
+//                                }
                             }
                             .padding(.horizontal)
                             VStack {
