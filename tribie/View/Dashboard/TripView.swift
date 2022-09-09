@@ -13,6 +13,17 @@ struct TripView: View {
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripViewModel = TripViewModel()
     
+    func getSplitBillState(status: String) -> SplitbillState {
+        if(status == "Item") {
+            return SplitbillState.InputTransactionItem
+        } else if(status == "Expenses") {
+            return SplitbillState.Done
+        } else if(status == "Calculated") {
+            return SplitbillState.Calculate
+        }
+        return SplitbillState.InputTransactionItem
+    }
+    
     var body: some View {
             VStack{
                 if(tripViewModel.state == AppState.Loading){
@@ -22,7 +33,6 @@ struct TripView: View {
                     if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil && tripViewModel.transactionSettlementList != nil){
                             ScrollView {
                                 VStack {
-                                    
                                     AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
                                         AppTitle1(text: "Total Spending")
                                         
@@ -38,16 +48,16 @@ struct TripView: View {
                                         }
                                         AppImageButton(height: 5, width: 5, image: AppImage(url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
                                         Spacer()
-                                        NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
+                                        NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: nil, formState: SplitbillState.InputTransaction), label: {
                                             AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, component: {})
-                                        }
+                                        })
                                     }
                                     .padding(.horizontal)
                                     VStack {
                                         if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
                                             ForEach(tripViewModel.transactionList!) {
-                                                transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
-                                                    RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: tripViewModel.calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
+                                                transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: getSplitBillState(status: transaction.status!))) {
+                                                    RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: transaction.grandTotal ?? 0)
                                                         .padding(.horizontal)
                                                 }
                                             }

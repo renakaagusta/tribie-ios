@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MemberItemCard: View {
     @State var name: String
+    @Binding var remainingQuantity: Int
     @Binding var quantity: Int
     
     var onIncrement: () -> Void = {}
@@ -24,7 +25,7 @@ struct MemberItemCard: View {
                     Spacer().frame(height: 2)
                     HStack {
                         AppCaption1(text: "Remaining")
-                        AppCaption1(text: "\(String(quantity))", color: Color.primaryColor, fontWeight: .bold)
+                        AppCaption1(text: "\(String(remainingQuantity))", color: Color.primaryColor, fontWeight: .bold)
                     }
                 }
             }
