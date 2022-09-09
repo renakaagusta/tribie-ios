@@ -34,7 +34,7 @@ struct TransactionListView: View {
                         if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
                             ForEach(transactionViewModel.transactionList!) { transaction in
                                 NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!)) {
-                                    RecentTransactionCard(memberPaid: transactionViewModel.getTripMemberTransaction(tripId: transaction.tripId ?? ""), title: transaction.title ?? "", date: "s", month: "sa", time: "saa", total: transactionViewModel.getTotalTransactionExpenses(transactionId: transaction.transactionId ?? ""))
+                                    RecentTransactionCard(memberPaid: transactionViewModel.getTripMemberTransaction(tripId: transaction.tripId ?? ""), title: transaction.title ?? "", date: "24", time: "saa", total: transactionViewModel.getTotalTransactionExpenses(transactionId: transaction.transactionId ?? ""))
                                 }
                             }
                         }

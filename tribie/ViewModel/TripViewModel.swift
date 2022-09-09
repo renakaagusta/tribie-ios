@@ -131,6 +131,24 @@ class TripViewModel: ObservableObject {
         return tripMemberList!.first(where: {$0.id == tripMemberId})!.name ?? "-"
     }
     
+    func dateFromString(string: String) -> String {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withFullDate] // Added format options
+        let date = dateFormatter.date(from: string) ?? Date.now
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E d MMM"
+        return formatter.string(from: date)
+    }
+    
+    func timeFromString(string: String) -> String {
+        let timeFormatter = ISO8601DateFormatter()
+        timeFormatter.formatOptions = [.withFullDate] // Added format options
+        let time = timeFormatter.date(from: string) ?? Date.now
+        let formatter = DateFormatter()
+        formatter.dateFormat = "H:mm"
+        return formatter.string(from: time)
+    }
+    
     public func fetchData(tripId: String?) {
         self.state = AppState.Loading
         fetchTripTransactionList(tripId: tripId ?? "")
