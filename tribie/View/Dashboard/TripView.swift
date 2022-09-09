@@ -192,6 +192,11 @@ struct TripView: View {
         }
     }
     
+    //delete transaction
+//    func deleteTransactions(at offsets: IndexSet) {
+//        tripViewModel.transactionList?.remove(atOffsets: offsets)
+//    }
+    
     struct TripView_Previews: PreviewProvider {
         static var previews: some View {
             TripView().preferredColorScheme(scheme)
