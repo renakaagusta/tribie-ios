@@ -12,6 +12,7 @@
 		2F08B32428CF027500D6D53D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32328CF027500D6D53D /* ProfileViewModel.swift */; };
 		2F08B32628CF028700D6D53D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32528CF028700D6D53D /* ProfileView.swift */; };
 		2F08B32828CF093C00D6D53D /* RecentTripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32728CF093C00D6D53D /* RecentTripCard.swift */; };
+		2F08B32B28CF142500D6D53D /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32A28CF142500D6D53D /* ProfileCard.swift */; };
 		2F1FC25828BD95F100938D23 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25728BD95F100938D23 /* Screen.swift */; };
 		2F1FC25A28BD979000938D23 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25928BD979000938D23 /* Binding.swift */; };
 		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
@@ -133,6 +134,7 @@
 		2F08B32328CF027500D6D53D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2F08B32528CF028700D6D53D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2F08B32728CF093C00D6D53D /* RecentTripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTripCard.swift; sourceTree = "<group>"; };
+		2F08B32A28CF142500D6D53D /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		2F1FC25728BD95F100938D23 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		2F1FC25928BD979000938D23 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -269,6 +271,14 @@
 				2F08B32728CF093C00D6D53D /* RecentTripCard.swift */,
 			);
 			path = RecentTripCard;
+			sourceTree = "<group>";
+		};
+		2F08B32928CF141800D6D53D /* ProfileCard */ = {
+			isa = PBXGroup;
+			children = (
+				2F08B32A28CF142500D6D53D /* ProfileCard.swift */,
+			);
+			path = ProfileCard;
 			sourceTree = "<group>";
 		};
 		2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */ = {
@@ -423,6 +433,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				2F08B32928CF141800D6D53D /* ProfileCard */,
 				2F08B31C28CEFD6100D6D53D /* RecentTripCard */,
 				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
 				2FD6223D28BB0B290012BA86 /* MemberSelectCard */,
@@ -851,6 +862,7 @@
 				2FD6222028BAD05E0012BA86 /* SpendingCard.swift in Sources */,
 				2F68DC5D28BF77D100DB5C2A /* TransactionSettlement.swift in Sources */,
 				2FE7875E28B8B956002E5F9B /* Image.swift in Sources */,
+				2F08B32B28CF142500D6D53D /* ProfileCard.swift in Sources */,
 				2FC8FA4928C57461005B90A9 /* Link.swift in Sources */,
 				2FE7875B28B8B395002E5F9B /* AvatarImage.swift in Sources */,
 				2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */,
@@ -1035,7 +1047,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1092,7 +1104,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

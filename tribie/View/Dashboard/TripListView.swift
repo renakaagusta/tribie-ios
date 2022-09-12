@@ -13,6 +13,7 @@ struct TripListView: View {
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
+        NavigationView{
             VStack {
                 if (tripListViewModel.state == AppState.Loading) {
                     AppLoading()
@@ -59,5 +60,6 @@ struct TripListView: View {
                         }
                     }
                 }
+        }
     }
 }

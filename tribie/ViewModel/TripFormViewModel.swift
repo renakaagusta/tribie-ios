@@ -16,6 +16,8 @@ class TripFormViewModel: ObservableObject {
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
     
+    @Published var selectedTripMemberList: [TripMember] = []
+    
     public func fetchTrip(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) async {
         repository.getTripData(tripId: tripId)
             .observe(on: MainScheduler.instance)

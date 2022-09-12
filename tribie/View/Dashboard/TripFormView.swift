@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct TripFormView: View {
+    
+    @ObservedObject var tripFormViewModel = TripFormViewModel()
+    
+    @State var tripName: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+        VStack {
+            AppTextField(field: $tripName)
+            if(tripFormViewModel.selectedTripMemberList.count > 0) {
 
-struct TripFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        TripFormView()
+            }
+            AppElevatedButton(label: "Next")
+        }
     }
 }
