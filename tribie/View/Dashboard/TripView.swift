@@ -10,6 +10,10 @@ import SwiftUI
 
 struct TripView: View {
     
+    //variable for modal view
+    @State var showGroupTripModalView: Bool = false
+    
+    //variable
     @State private var showingOptions = false
     @State private var selection = "None"
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
@@ -71,6 +75,16 @@ struct TripView: View {
                                     })
                                 }
                             }
+                            
+                            Button(action: {
+                                showGroupTripModalView = true
+                            }, label: {
+                                Text("Modal View")
+                            })
+                            .sheet(isPresented: $showGroupTripModalView) {
+                                GroupTripView()
+                            }
+                            
                             HStack{
                                 VStack(alignment: .leading) {
                                     AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
