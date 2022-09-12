@@ -9,6 +9,8 @@ import Foundation
 
 class AppConstant {
     static let KEYCHAIN_TOKEN = "token"
+    static let USER_NAME = "user_name"
+    static let USER_MAIL = "user_mail"
     static let KEYCHAIN_ON_BOARDING_STATUS = "on_boarding_status"
     static let KEYCHAIN_USER_ID = "user_id"
     static let KEYCHAIN_TRIP_ID = "trip_id"
