@@ -14,7 +14,7 @@ struct TripListView: View {
     
     var body: some View {
             VStack {
-                AppTitle1(text: "Trips")
+                AppTitle1(text: "Trip")
                 if (tripListViewModel.state == AppState.Loading) {
                     AppLoading()
                 }

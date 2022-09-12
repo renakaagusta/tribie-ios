@@ -109,6 +109,7 @@
 		41FDD40728C5DDA300A8770A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41FDD40928C5DDA300A8770A /* Localizable.strings */; };
 		B88CFD2628C9D08900A5EB60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CFD2528C9D08900A5EB60 /* MainView.swift */; };
 		B89C579828CF0FA7004190FE /* GroupTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C579728CF0FA7004190FE /* GroupTripView.swift */; };
+		B89C579B28CF1C91004190FE /* TripListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C579A28CF1C91004190FE /* TripListCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +233,7 @@
 		41FDD40A28C5DE5F00A8770A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B88CFD2528C9D08900A5EB60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B89C579728CF0FA7004190FE /* GroupTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTripView.swift; sourceTree = "<group>"; };
+		B89C579A28CF1C91004190FE /* TripListCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +427,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				B89C579928CF1C6E004190FE /* TripListCard */,
 				2F08B31C28CEFD6100D6D53D /* RecentTripCard */,
 				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
 				2FD6223D28BB0B290012BA86 /* MemberSelectCard */,
@@ -701,6 +704,14 @@
 			path = ItemCard;
 			sourceTree = "<group>";
 		};
+		B89C579928CF1C6E004190FE /* TripListCard */ = {
+			isa = PBXGroup;
+			children = (
+				B89C579A28CF1C91004190FE /* TripListCard.swift */,
+			);
+			path = TripListCard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -920,6 +931,7 @@
 				2FD6228028BB1E040012BA86 /* Keychain.swift in Sources */,
 				2FD6223528BB04A70012BA86 /* MemberItemView.swift in Sources */,
 				2FA628E628AF6A6800F83B92 /* Scheme.swift in Sources */,
+				B89C579B28CF1C91004190FE /* TripListCard.swift in Sources */,
 				2FC8FA4228C56B0E005B90A9 /* TransactionFormView.swift in Sources */,
 				2FA628CA28AF61D900F83B92 /* CircleButton.swift in Sources */,
 				2FD6225228BB187A0012BA86 /* SplitBillView.swift in Sources */,
