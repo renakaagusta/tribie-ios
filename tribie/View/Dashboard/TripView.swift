@@ -88,7 +88,7 @@ struct TripView: View {
                                 if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
                                     ForEach(tripViewModel.transactionList!) {
                                         transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState:getSplitBillState(status: transaction.status!))) {
-                                            RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: transaction.grandTotal ?? 0)
+                                            RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                                                 .padding(.horizontal)
                                         }
                                     }
@@ -178,8 +178,7 @@ struct TripView: View {
                                 if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
                                     ForEach(tripViewModel.transactionList!) {
                                         transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
-                                            RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: tripViewModel.calculateTotalExpensesPerTransaction(transactionId: transaction.id!))
-                                                .padding(.horizontal)
+                                            RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0).padding(.horizontal)
                                         }
                                     }
                                 }

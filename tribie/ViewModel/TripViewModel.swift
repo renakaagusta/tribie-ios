@@ -161,6 +161,16 @@ class TripViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
+    func timeFromString(string: String) -> String {
+        let timeFormatter = ISO8601DateFormatter()
+        timeFormatter.formatOptions = [.withFullDate] // Added format options
+        let time = timeFormatter.date(from: string) ?? Date.now
+        let formatter = DateFormatter()
+        formatter.dateFormat = "H:mm"
+        return formatter.string(from: time)
+    }
+    
+    
     func getSplitBillState(status: String) -> SplitbillState {
         if(status == "Item") {
             return SplitbillState.InputTransactionItem
