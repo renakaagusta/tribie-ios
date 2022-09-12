@@ -17,8 +17,6 @@ struct DebtsRankCard: View {
     @State var debtsRank2 : String
     @State var debtsRank3 : String
     
-    
-    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 18).fill(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
