@@ -24,6 +24,7 @@ protocol ApiServices {
     func getTripTransactionExpensesList(tripId: String) -> Observable<[TransactionExpenses]?>
     func getTripTransactionSettlementList(tripId: String) -> Observable<[TransactionSettlement]?>
     func getTransactionData(transactionId: String) -> Observable<Transaction?>
+    func getTransactionList() -> Observable<[Transaction]?>
     func getTransactionItemList(transactionId: String) -> Observable<[TransactionItem]?>
     func getTransactionExpensesList(transactionId: String) -> Observable<[TransactionExpenses]?>
     func getTransactionSettlementList(transactionId: String) -> Observable<[TransactionSettlement]?>
@@ -39,10 +40,15 @@ protocol ApiServices {
     func updateTransactionItem(id: String, transactionItem: TransactionItem) -> Observable<TransactionItem?>
     func updateTransactionExpenses(id: String, transactionExpenses: TransactionExpenses) -> Observable<TransactionExpenses?>
     func updateTransactionSettlement(id: String, transactionSettlement: TransactionSettlement) -> Observable<TransactionSettlement?>
+    func deleteTrip(id: String) -> Observable<Trip?>
+    func deleteTripMember(id: String) -> Observable<TripMember?>
+    func deleteTransaction(id: String) -> Observable<Transaction?>
+    func deleteTransactionItem(id: String) -> Observable<TransactionItem?>
+    func deleteTransactionExpenses(id: String) -> Observable<TransactionExpenses?>
+    func deleteTransactionSettlement(id: String) -> Observable<TransactionSettlement?>
 }
 
 class NetworkRepository : ApiServices {
-    
     private let service: NetworkManager
     private let baseUrl: String
     
@@ -107,6 +113,10 @@ class NetworkRepository : ApiServices {
         return service.requestGet(urlString: baseUrl + "/transactions/\(transactionId)")
     }
     
+    func getTransactionList() -> Observable<[Transaction]?> {
+        return service.requestGet(urlString: baseUrl + "/transactions")
+    }
+    
     func getTransactionItemList(transactionId: String) -> Observable<[TransactionItem]?> {
         return service.requestGet(urlString: baseUrl + "/transactions/\(transactionId)/transaction-items")
     }
@@ -165,6 +175,30 @@ class NetworkRepository : ApiServices {
 
     func updateTransactionSettlement(id: String, transactionSettlement: TransactionSettlement) -> Observable<TransactionSettlement?> {
         return service.requestPut(urlString: baseUrl + "/transaction-payments/\(id)", parameters: transactionSettlement, encoding: URLEncoding.default)
+    }
+    
+    func deleteTrip(id: String) -> Observable<Trip?> {
+        return service.requestDelete(urlString: baseUrl + "/trips/\(id)", encoding: URLEncoding.default)
+    }
+        
+    func deleteTripMember(id: String) -> Observable<TripMember?> {
+        return service.requestDelete(urlString: baseUrl + "/trip-members/\(id)", encoding: URLEncoding.default)
+    }
+        
+    func deleteTransaction(id: String) -> Observable<Transaction?> {
+        return service.requestDelete(urlString: baseUrl + "/transactions/\(id)", encoding: URLEncoding.default)
+    }
+
+    func deleteTransactionItem(id: String) -> Observable<TransactionItem?> {
+        return service.requestDelete(urlString: baseUrl + "/transaction-items/\(id)", encoding: URLEncoding.default)
+    }
+
+    func deleteTransactionExpenses(id: String) -> Observable<TransactionExpenses?> {
+        return service.requestDelete(urlString: baseUrl + "/transaction-expenses/\(id)", encoding: URLEncoding.default)
+    }
+
+    func deleteTransactionSettlement(id: String) -> Observable<TransactionSettlement?> {
+        return service.requestDelete(urlString: baseUrl + "/transaction-payments/\(id)", encoding: URLEncoding.default)
     }
 }
 

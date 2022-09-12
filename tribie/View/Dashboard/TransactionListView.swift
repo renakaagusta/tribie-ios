@@ -14,12 +14,7 @@ struct TransactionListView: View {
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
-                HStack {
-                    AppTitle1(text: "Recent Transactions")
-                    AppImageButton(image: AppImage(height: 30, width: 30, url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
-                }
                 if (transactionViewModel.state == AppState.Loading) {
                     AppLoading()
                 }
@@ -31,17 +26,22 @@ struct TransactionListView: View {
                 }
                 if (transactionViewModel.state == AppState.Exist) {
                     ScrollView {
+                        HStack {
+                            AppTitle1(text: "Recent Transactions")
+                            AppImageButton(image: AppImage(height: 30, width: 30, url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
+                        }
                         if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
                             ForEach(transactionViewModel.transactionList!) { transaction in
-                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!)) {
-                                    RecentTransactionCard(memberPaid: transactionViewModel.getTripMemberTransaction(tripId: transaction.tripId ?? ""), title: transaction.title ?? "", date: "24", time: "saa", total: transactionViewModel.getTotalTransactionExpenses(transactionId: transaction.transactionId ?? ""))
+                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
+                                    RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: transaction.grandTotal ?? 0)
+                                       .padding(.horizontal)
                                 }
                             }
                         }
                         if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
                             AppLoading()
                         }
-                    }
+                    }.padding()
                 }
                 Spacer()
             }
@@ -49,14 +49,10 @@ struct TransactionListView: View {
                 transactionViewModel.fetchData(tripId: tripId)
             }
             .background(Color.tertiaryColor)
-            .navigationTitle("Recent Transaction")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                 AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
             )
-            .padding()
-        }
-        
     }
 }
 

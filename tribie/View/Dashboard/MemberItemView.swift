@@ -34,10 +34,10 @@ struct MemberItemListView: View {
                         AppFootnote(text: "What & how many items did member 1 order?")
                         ForEach(memberItemListViewModel.transactionItemList!){
                             transactionItem in HStack {
-                                MemberItemCard(name: transactionItem.title ?? "-", quantity: Binding(get: {memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)}, set: {_ in true}), onIncrement: {
+                                MemberItemCard(name: transactionItem.title ?? "-", remainingQuantity: Binding(get: {memberItemListViewModel.getRemainingQuantity(itemId: transactionItem.id!)}, set: { _ in true }), quantity: Binding(get: {memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)}, set: {_ in true}), onIncrement: {
                                     memberItemListViewModel.handleIncrementQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)
                                 }, onDecrement: {
-                                    memberItemListViewModel.handleDecrementQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)
+                                    memberItemListViewModel.handleDecrementQuantity(itemId: transactionItem.id!, tripMemberId:  memberItemListViewModel.selectedUserId!)
                                 })
                             }
                         }

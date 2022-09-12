@@ -15,6 +15,7 @@ struct TransactionExpenses: Hashable, Codable, Identifiable {
     var transactionId: String?
     var saved: Bool? = false
     var quantity: Int? = 0
+    var nominal: Int? = 0
     var createdAt: String?
     var updatedAt: String?
 }

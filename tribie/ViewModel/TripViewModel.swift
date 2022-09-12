@@ -16,6 +16,9 @@ class TripViewModel: ObservableObject {
     @Published var transactionExpensesList: [TransactionExpenses]?
     @Published var transactionSettlementList: [TransactionSettlement]?
     
+    @Published var showSuccessAlert: Bool = false
+    @Published var showErrorAlert: Bool = false
+    
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
     
@@ -26,8 +29,6 @@ class TripViewModel: ObservableObject {
                 self.transactionList = response ?? []
                 if (self.transactionList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -41,8 +42,6 @@ class TripViewModel: ObservableObject {
                 self.transactionItemList = response ?? []
                 if (self.transactionItemList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -55,9 +54,9 @@ class TripViewModel: ObservableObject {
                 self.tripMemberList = response ?? []
                 if (self.tripMemberList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
+                
+                self.calculateDebtListRank()
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
@@ -69,8 +68,6 @@ class TripViewModel: ObservableObject {
                 self.transactionExpensesList = response ?? []
                 if (self.transactionExpensesList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -83,51 +80,75 @@ class TripViewModel: ObservableObject {
                 self.transactionSettlementList = response ?? []
                 if (self.transactionSettlementList!.count != 0) {
                     self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
                 }
+                
+                self.calculateDebtListRank()
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
     }
     
+    public func removeTransaction(transactionId: String = AppConstant.DUMMY_DATA_TRANSACTION_ID) {
+        repository.deleteTransaction(id: transactionId)
+            .subscribe(onNext: { response in
+                if (response != nil) {
+                    self.showSuccessAlert = true
+                } else {
+                    self.showErrorAlert = true
+                }
+                self.resetAlertState()
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    func resetAlertState() {
+        Task {
+            sleep(1)
+            self.showSuccessAlert = false
+            self.showErrorAlert = false
+        }
+    }
+    
     func calculateTotalExpenses() -> Int {
         var totalExpenses: Int = 0
         
-        for transactionExpenses in transactionExpensesList! {
-            totalExpenses += transactionExpenses.quantity! * Int(transactionItemList!.first(where: { $0.id == transactionExpenses.itemId})!.price!)
+        for transaction in transactionList! {
+            totalExpenses += transaction.grandTotal!
         }
+        
         return totalExpenses
     }
     
-    func calculateTotalExpensesPerTransaction(transactionId: String) -> Int {
-        var totalExpensesPerTransaction: Int = 0
-        
-        for transactionExpenses in transactionExpensesList! {
-            if(transactionExpenses.transactionId == transactionId){
-                totalExpensesPerTransaction += transactionExpenses.quantity! * Int(transactionItemList!.first(where: { $0.id == transactionExpenses.itemId})!.price!)
-            }
-            return totalExpensesPerTransaction
+    func calculateDebtListRank() {
+        if(tripMemberList == nil || transactionSettlementList == nil) {
+            return
         }
         
-        return totalExpensesPerTransaction
+        for (index, _) in tripMemberList!.enumerated() {
+            if(tripMemberList![index].expenses == nil) {
+                tripMemberList![index].expenses = 0
+            }
+        }
+        
+        for (index, transactionSettlement) in transactionSettlementList!.enumerated() {
+            let tripMemberIndex = tripMemberList!.firstIndex(where: {$0.id == transactionSettlement.userFromId})!
+            
+            tripMemberList![tripMemberIndex].expenses! += transactionSettlement.nominal!
+        }
+        
+        tripMemberList = tripMemberList!.sorted(by: {$0.expenses! > $1.expenses!})
     }
     
     func getUserPaid(userPaidId: String) -> TripMember {
         if(tripMemberList!.count > 0){
-            return tripMemberList![0]
+            return tripMemberList!.first(where: {$0.id == userPaidId})!
         } else {
             return TripMember(name:"-")
         }
     }
     
     func getUserName(tripMemberId: String?) -> String {
-        Logger.debug("------TRIP MEMBER ID-----")
-        Logger.debug(tripMemberId)
-        for tripMember in tripMemberList! {
-            Logger.debug(tripMember.id)
-            Logger.debug(tripMember.name)
-        }
         return tripMemberList!.first(where: {$0.id == tripMemberId})!.name ?? "-"
     }
     
@@ -140,13 +161,15 @@ class TripViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    func timeFromString(string: String) -> String {
-        let timeFormatter = ISO8601DateFormatter()
-        timeFormatter.formatOptions = [.withFullDate] // Added format options
-        let time = timeFormatter.date(from: string) ?? Date.now
-        let formatter = DateFormatter()
-        formatter.dateFormat = "H:mm"
-        return formatter.string(from: time)
+    func getSplitBillState(status: String) -> SplitbillState {
+        if(status == "Item") {
+            return SplitbillState.InputTransactionItem
+        } else if(status == "Expenses") {
+            return SplitbillState.Done
+        } else if(status == "Calculated") {
+            return SplitbillState.Calculate
+        }
+        return SplitbillState.InputTransactionItem
     }
     
     public func fetchData(tripId: String?) {

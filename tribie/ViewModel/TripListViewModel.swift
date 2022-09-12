@@ -14,6 +14,8 @@ class TripListViewModel: ObservableObject {
     
     @Published var userId: String = AppKeychain().userId()
     
+    @Published var transactionList: [Transaction]?
+
     @Published var tripList: [Trip]?
     @Published var filteredTripList: [Trip]?
     @Published var tripMemberList: [TripMember]?
@@ -69,9 +71,37 @@ class TripListViewModel: ObservableObject {
         }
     }
     
+    public func fetchTransactionList() {
+        repository.getTransactionList()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                if(self.transactionList == nil) {
+                    self.transactionList =  []
+                    if (response != nil) {
+                        self.transactionList = response!
+                    }
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    public func calculateTotalTripSpending(tripId: String) -> Int {
+        var totalTripSpending: Int = 0
+        
+        for transaction in transactionList! {
+            if(transaction.tripId == tripId) {
+                totalTripSpending += transaction.grandTotal ?? 0
+            }
+        }
+        
+        return totalTripSpending
+    }
+    
     public func fetchData() {
         self.state = AppState.Loading
         fetchTripList()
+        fetchTransactionList()
         fetchTripMemberList()
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MemberItemCard: View {
     @State var name: String
+    @Binding var remainingQuantity: Int
     @Binding var quantity: Int
     
     var onIncrement: () -> Void = {}
@@ -17,24 +18,24 @@ struct MemberItemCard: View {
     var body: some View {
         HStack {
             HStack {
-                AppRadio(selected: false, size: 20, color: Color.gray)
+                AppRadio(selected: false, size: 17.5, color: Color.gray)
                 Spacer().frame(width: 10.0)
                 VStack(alignment: .leading) {
                     AppBody1(text: "\(name)")
                     Spacer().frame(height: 2)
                     HStack {
                         AppCaption1(text: "Remaining")
-                        AppCaption1(text: "\(String(quantity))", color: Color.primaryColor, fontWeight: .bold)
+                        AppCaption1(text: "\(String(remainingQuantity))", color: Color.primaryColor, fontWeight: .bold)
                     }
                 }
             }
             Spacer()
             HStack{
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
+                AppOutlinedCircleButton(size: 20.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
                     onDecrement()
                 })
                 Text(String(quantity)).font(.title2).frame(width: 40)
-                AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
+                AppOutlinedCircleButton(size: 20.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
                     onIncrement()
                 })
             }

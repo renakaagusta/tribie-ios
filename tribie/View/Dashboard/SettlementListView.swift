@@ -14,7 +14,6 @@ struct SettlementListView: View {
     @ObservedObject var settlementListViewModel : SettlementListViewModel = SettlementListViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
                 if(settlementListViewModel.state == AppState.Loading) {
                     AppLoading()
@@ -30,12 +29,10 @@ struct SettlementListView: View {
                         AppTitle1(text: "Settlements")
                         AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
                     }
-                    
                     if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
                         ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
                             SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
-                                           userTo: settlementListViewModel.getUserName(tripMemberId: settlementListViewModel.textLimit(existingText: transactionSettlement.userFromId!, limit: 6)),
-                                           
+                                           userTo: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userToId!),
                                            amount: transactionSettlement.nominal ?? 0)
                         }
                     }
@@ -45,16 +42,11 @@ struct SettlementListView: View {
                     Spacer()
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
-            )
-            .background(Color.tertiaryColor)
             .padding()
+            .background(Color.tertiaryColor)
             .onAppear {
                 settlementListViewModel.fetchData(tripId: tripId, transactionId: transactionId)
             }
-        }
     }
 }
 

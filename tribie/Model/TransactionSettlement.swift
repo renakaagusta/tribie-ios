@@ -17,6 +17,7 @@ struct TransactionSettlement: Hashable, Codable, Identifiable {
     var tripMemberId: String?
     var nominal: Int?
     var saved: Bool?
+    var status: String?
     var createdAt: String?
     var updatedAt: String?
 }

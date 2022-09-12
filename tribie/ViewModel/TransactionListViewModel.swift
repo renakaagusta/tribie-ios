@@ -9,13 +9,14 @@ import Foundation
 import RxSwift
 
 class TransactionListViewModel: ObservableObject {
-    
     @Published var state: AppState = AppState.Initial
-    
     @Published var transactionItemList: [TransactionItem]?
     @Published var tripMemberList: [TripMember]?
     @Published var transactionExpensesList: [TransactionExpenses]?
     @Published var transactionList: [Transaction]?
+    
+    @Published var showSuccessAlert: Bool = false
+    @Published var showErrorAlert: Bool = false
     
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
@@ -44,6 +45,19 @@ class TransactionListViewModel: ObservableObject {
                     self.state = AppState.Exist
                 } else {
                     self.state = AppState.Empty
+                }
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    public func removeTransaction(transactionId: String = AppConstant.DUMMY_DATA_TRANSACTION_ID) {
+        repository.deleteTransaction(id: transactionId)
+            .subscribe(onNext: { response in
+                if (response != nil) {
+                    self.showSuccessAlert = true
+                } else {
+                    self.showErrorAlert = true
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -80,12 +94,28 @@ class TransactionListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
+    func getUserPaid(userPaidId: String) -> TripMember {
+        if(tripMemberList!.count > 0){
+            return tripMemberList!.first(where: {$0.id == userPaidId})!
+        } else {
+            return TripMember(name:"-")
+        }
+    }
+    
     public func fetchData(tripId: String) {
         self.state = AppState.Loading
         fetchTripMemberList(tripId: tripId)
         fetchTripTransactionItemList(tripId: tripId)
         fetchTransactionExpensesList(tripId: tripId)
         fetchTransactionList(tripId: tripId)
+    }
+    
+    func resetAlertState() {
+        Task {
+            sleep(1)
+            self.showSuccessAlert = false
+            self.showErrorAlert = false
+        }
     }
     
     public func getTotalTransactionExpenses(transactionId: String) -> Int {

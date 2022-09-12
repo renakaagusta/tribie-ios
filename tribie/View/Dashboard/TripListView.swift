@@ -9,12 +9,11 @@ import SwiftUI
 
 struct TripListView: View {
 
+    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
-                AppTitle1(text: "Trips")
                 if (tripListViewModel.state == AppState.Loading) {
                     AppLoading()
                 }
@@ -26,18 +25,13 @@ struct TripListView: View {
                 }
                 if (tripListViewModel.state == AppState.Exist) {
                         if(tripListViewModel.tripList != nil && tripListViewModel.tripMemberList != nil) {
-                            VStack {
-                                if(tripListViewModel.filteredTripList != nil) {
-                                    ForEach(tripListViewModel.filteredTripList!) { trip in
-                                        NavigationLink(destination: TripView(tripId: trip.id!)){
+                            Spacer().frame(height: 10)
+                                    ForEach(tripListViewModel.tripList!) { trip in
+                                        NavigationLink(destination: MainView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
                                                 AppBody1(text: trip.title!)
                                             })
                                         }
-                                    }
-                                }
-                            }.padding().onAppear {
-                                tripListViewModel.filterTripList()
                             }
                         }
                         if(tripListViewModel.tripList == nil) {
@@ -51,10 +45,19 @@ struct TripListView: View {
                 if(tripListViewModel.tripList == nil) {
                     tripListViewModel.fetchData()
                 }
-            }
-            .navigationTitle("Recent Trip")
+            }.navigationTitle("Trips")
             .navigationBarTitleDisplayMode(.inline)
-            .padding()
-        }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: ProfileView()){
+                            AppImage(url: "person.crop.circle",source:AppImageSource.SystemName,component: {})
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: TripFormView()){
+                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
+                        }
+                    }
+                }
     }
 }
