@@ -33,7 +33,6 @@ class AuthViewModel: ObservableObject {
                     AppKeychain().setAppToken(token: response!.token!)
                     AppKeychain().setUserId(userId: response!.user.id!)
                     self.signInResponse = response
-                    self.moveToDashboard = true
                 } else {
                     self.state = AppState.Error
                 }
@@ -50,11 +49,13 @@ class AuthViewModel: ObservableObject {
         repository.signInWithApple(request: signInRequest)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                Logger.debug(response)
                 if(response != nil) {
                     AppKeychain().setAppToken(token: response!.token!)
                     AppKeychain().setUserId(userId: response!.user.id!)
-                    self.signInResponse = response
+                    AppKeychain().setUserName(name: response!.user.username!)
+                    AppKeychain().setUserMail(mail: response!.user.email!)
+                    GlobalVariables.global.authenticated = true
+                    self.moveToDashboard = true
                 } else {
                     self.state = AppState.Error
                 }
@@ -86,7 +87,7 @@ class AuthViewModel: ObservableObject {
     
     public func handleSignUp(email: String?, name: String?, appleId: String?, deviceId: String?) {
         let signUpRequest = User(
-            name: name, appleId: appleId, deviceId: UIDevice.current.identifierForVendor!.uuidString, email: email
+            name: name, username: name, appleId: appleId, deviceId: UIDevice.current.identifierForVendor!.uuidString, email: email
         )
         
         repository.signUp(request: signUpRequest)
@@ -95,9 +96,9 @@ class AuthViewModel: ObservableObject {
                 Logger.debug(response)
                 if(response != nil) {
                     if(appleId != nil) {
-                        self.handleSignInWithApple(appleId: appleId!)
+                       self.handleSignInWithApple(appleId: appleId!)
                     } else if(deviceId != nil) {
-                        
+
                     }
                 } else {
                     self.state = AppState.Error

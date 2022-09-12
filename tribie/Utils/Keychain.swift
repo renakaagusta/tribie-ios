@@ -14,16 +14,36 @@ class AppKeychain {
         return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_TOKEN) ?? "")
     }
     
-    func userMail() -> String {
-        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_TOKEN) ?? "")
-    }
-    
     func setAppToken(token: String) {
         self.keyChain.save(token, forKey: AppConstant.KEYCHAIN_TOKEN)
     }
     
+    func removeAppToken() {
+        self.keyChain.remove(forKey: AppConstant.KEYCHAIN_TOKEN)
+    }
+    
+    func userMail() -> String {
+        return String(describing: keyChain.value(forKey: AppConstant.USER_MAIL) ?? "")
+    }
+    
     func setUserMail(mail: String) {
         self.keyChain.save(mail, forKey: AppConstant.USER_MAIL)
+    }
+    
+    func removeUserMail() {
+        self.keyChain.remove(forKey: AppConstant.USER_MAIL)
+    }
+    
+    func setUserName(name: String) {
+        self.keyChain.save(name, forKey: AppConstant.USER_NAME)
+    }
+    
+    func removeUserName() {
+        self.keyChain.remove(forKey: AppConstant.USER_NAME)
+    }
+    
+    func userName() -> String {
+        return String(describing: keyChain.value(forKey: AppConstant.USER_NAME) ?? "")
     }
     
     func onBoardingStatus() -> Bool {

@@ -10,13 +10,22 @@ import SwiftUI
 import AuthenticationServices
 import UIKit
 
+final class GlobalVariables: ObservableObject{
+    
+    static let global = GlobalVariables()
+    
+    @Published var authenticated = false
+}
+
 struct AuthView: View {
     
     @ObservedObject var authViewModel = AuthViewModel()
+    @ObservedObject var global = GlobalVariables.global
     
     var body: some View {
+        if(global.authenticated == false) {
             VStack{
-                NavigationLink(destination: TripListView(), isActive:  $authViewModel.moveToDashboard) {SignInWithAppleButton(.continue){ request in
+                    SignInWithAppleButton(.continue){ request in
                     request .requestedScopes = [.email, .fullName]
                 } onCompletion: { result in
                     switch result {
@@ -28,12 +37,10 @@ struct AuthView: View {
                             let firstname = credential.fullName!.givenName
                             let lastname = credential.fullName!.familyName
                             
-                            Logger.debug(credential)
-                            
                             if(email != nil) {
                                 authViewModel.handleSignUp(email: email, name: firstname! + lastname!, appleId: userId, deviceId: UIDevice.current.identifierForVendor!.uuidString)
                             } else {
-                                authViewModel.handleSignIn()
+                                authViewModel.handleSignInWithApple(appleId: userId)
                             }
                         default:
                             break
@@ -42,10 +49,13 @@ struct AuthView: View {
                         print("Error")
                         print(error)
                     }
-                }.frame(width: 320, height: 40)}
+                }.frame(width: 320, height: 40)
             }.background(
                 Color.tertiaryColor
             ).padding()
+        } else {
+            TripListView()
+        }
         }
 }
 
