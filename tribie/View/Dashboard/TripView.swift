@@ -55,21 +55,21 @@ struct TripView: View {
                                         AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
                                         VStack(alignment: .leading){
                                             HStack{
-                                                AppTitle1(text: "Member 1", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
+                                                AppTitle1(text: tripViewModel.tripMemberList![0].name ?? "-", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
                                                 Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
+                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![0].expenses ?? 0)", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
                                             }
                                             
                                             HStack{
-                                                AppTitle1(text: "Member 2", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
+                                                AppTitle1(text: tripViewModel.tripMemberList![1].name ?? "-", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
                                                 Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
+                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![1].expenses ?? 0)", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
                                             }
                                             
                                             HStack{
-                                                AppTitle1(text: "Member 3", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
+                                                AppTitle1(text: tripViewModel.tripMemberList![2].name ?? "-", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
                                                 Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
+                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![2].expenses ?? 0)", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
                                             }
                                         }
                                     })
@@ -92,15 +92,12 @@ struct TripView: View {
                                 NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
                                                                     AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                                                 }
-//                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: nil, formState: SplitbillState.InputTransaction)) {
-//                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
-//                                }
                             }
                             .padding(.horizontal)
                             VStack {
                                 if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
                                     ForEach(tripViewModel.transactionList!) {
-                                        transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
+                                        transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState:getSplitBillState(status: transaction.status!))) {
                                             RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24", month: "August", time: "9.24", total: transaction.grandTotal ?? 0)
                                                 .padding(.horizontal)
                                         }
@@ -205,11 +202,6 @@ struct TripView: View {
             tripViewModel.fetchData(tripId: tripId)
         }
     }
-    
-    //delete transaction
-//    func deleteTransactions(at offsets: IndexSet) {
-//        tripViewModel.transactionList?.remove(atOffsets: offsets)
-//    }
     
     struct TripView_Previews: PreviewProvider {
         static var previews: some View {

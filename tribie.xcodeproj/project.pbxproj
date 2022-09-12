@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F08B32028CF021A00D6D53D /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B31F28CF021A00D6D53D /* AddMemberView.swift */; };
+		2F08B32228CF023700D6D53D /* AddMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */; };
+		2F08B32428CF027500D6D53D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32328CF027500D6D53D /* ProfileViewModel.swift */; };
+		2F08B32628CF028700D6D53D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32528CF028700D6D53D /* ProfileView.swift */; };
+		2F08B32828CF093C00D6D53D /* RecentTripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32728CF093C00D6D53D /* RecentTripCard.swift */; };
 		2F1FC25828BD95F100938D23 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25728BD95F100938D23 /* Screen.swift */; };
 		2F1FC25A28BD979000938D23 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25928BD979000938D23 /* Binding.swift */; };
 		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
@@ -103,8 +108,6 @@
 		2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7877128B8F451002E5F9B /* ItemCard.swift */; };
 		41FDD40728C5DDA300A8770A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41FDD40928C5DDA300A8770A /* Localizable.strings */; };
 		B88CFD2628C9D08900A5EB60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CFD2528C9D08900A5EB60 /* MainView.swift */; };
-		B89C579428CB4041004190FE /* GroupTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C579328CB4041004190FE /* GroupTripView.swift */; };
-		B89C579628CF0A28004190FE /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C579528CF0A28004190FE /* AddMemberView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F08B31F28CF021A00D6D53D /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
+		2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewModel.swift; sourceTree = "<group>"; };
+		2F08B32328CF027500D6D53D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2F08B32528CF028700D6D53D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2F08B32728CF093C00D6D53D /* RecentTripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTripCard.swift; sourceTree = "<group>"; };
 		2F1FC25728BD95F100938D23 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		2F1FC25928BD979000938D23 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,8 +230,6 @@
 		41FDD40828C5DDA300A8770A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41FDD40A28C5DE5F00A8770A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B88CFD2528C9D08900A5EB60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B89C579328CB4041004190FE /* GroupTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTripView.swift; sourceTree = "<group>"; };
-		B89C579528CF0A28004190FE /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +263,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F08B31C28CEFD6100D6D53D /* RecentTripCard */ = {
+			isa = PBXGroup;
+			children = (
+				2F08B32728CF093C00D6D53D /* RecentTripCard.swift */,
+			);
+			path = RecentTripCard;
+			sourceTree = "<group>";
+		};
 		2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +372,8 @@
 				2FC8FA3A28C3BF73005B90A9 /* TripListViewModel.swift */,
 				2FC8FA4328C56B23005B90A9 /* TripFormViewModel.swift */,
 				2FC8FA4528C56B31005B90A9 /* TransactionFormViewModel.swift */,
+				2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */,
+				2F08B32328CF027500D6D53D /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,6 +423,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				2F08B31C28CEFD6100D6D53D /* RecentTripCard */,
 				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
 				2FD6223D28BB0B290012BA86 /* MemberSelectCard */,
 				2FD6222528BAFDB90012BA86 /* MemberSpendingCard */,
@@ -469,7 +486,6 @@
 		2FA628D128AF677F00F83B92 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				B89C579228CB3FFF004190FE /* Add Member View */,
 				2FD6222A28BB03200012BA86 /* MemberListView.swift */,
 				2FD6222C28BB03420012BA86 /* TransactionListView.swift */,
 				2FD6222E28BB03570012BA86 /* SettlementListView.swift */,
@@ -483,6 +499,8 @@
 				2FD3ECBC28C5C10C00CA9A6E /* TransactionRecordView.swift */,
 				2FD3ECBE28C5C11A00CA9A6E /* TransactionScanView.swift */,
 				B88CFD2528C9D08900A5EB60 /* MainView.swift */,
+				2F08B31F28CF021A00D6D53D /* AddMemberView.swift */,
+				2F08B32528CF028700D6D53D /* ProfileView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -680,15 +698,6 @@
 			path = ItemCard;
 			sourceTree = "<group>";
 		};
-		B89C579228CB3FFF004190FE /* Add Member View */ = {
-			isa = PBXGroup;
-			children = (
-				B89C579328CB4041004190FE /* GroupTripView.swift */,
-				B89C579528CF0A28004190FE /* AddMemberView.swift */,
-			);
-			path = "Add Member View";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -847,6 +856,7 @@
 				2FD6222328BAD0780012BA86 /* RecentTransactionCard.swift in Sources */,
 				2FC8FA3728C375A5005B90A9 /* SignInRequest.swift in Sources */,
 				2FD6227028BB1A600012BA86 /* State.swift in Sources */,
+				2F08B32828CF093C00D6D53D /* RecentTripCard.swift in Sources */,
 				2FA628CF28AF676200F83B92 /* AsyncImage.swift in Sources */,
 				2FC8FA2F28C20810005B90A9 /* NumberField.swift in Sources */,
 				2FE7876328B8C632002E5F9B /* MemberCard.swift in Sources */,
@@ -859,6 +869,7 @@
 				2FD6223C28BB0A260012BA86 /* Footnote.swift in Sources */,
 				2FD3ECBF28C5C11A00CA9A6E /* TransactionScanView.swift in Sources */,
 				2FC8FA4628C56B31005B90A9 /* TransactionFormViewModel.swift in Sources */,
+				2F08B32628CF028700D6D53D /* ProfileView.swift in Sources */,
 				2FE7876C28B8CE95002E5F9B /* Radio.swift in Sources */,
 				2FD6221D28BAD0420012BA86 /* SettlementCard.swift in Sources */,
 				2FC8FA3128C2D2B5005B90A9 /* Random.swift in Sources */,
@@ -871,8 +882,9 @@
 				2F7355B528C0AE570080610B /* Headline1.swift in Sources */,
 				2FD6223128BB037E0012BA86 /* MemberSpendingView.swift in Sources */,
 				2FD6224528BB0EA60012BA86 /* Caption1.swift in Sources */,
-				B89C579628CF0A28004190FE /* AddMemberView.swift in Sources */,
+				2F08B32028CF021A00D6D53D /* AddMemberView.swift in Sources */,
 				2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */,
+				2F08B32228CF023700D6D53D /* AddMemberViewModel.swift in Sources */,
 				2FD6224128BB0CF30012BA86 /* TextButton.swift in Sources */,
 				2FD6224A28BB11280012BA86 /* ImageButton.swift in Sources */,
 				2FE645E528B4E4EA00ADF984 /* User.swift in Sources */,
@@ -889,7 +901,6 @@
 				2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */,
 				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
 				2FD6223F28BB0B370012BA86 /* MemberSelectCard.swift in Sources */,
-				B89C579428CB4041004190FE /* GroupTripView.swift in Sources */,
 				2FD6222F28BB03570012BA86 /* SettlementListView.swift in Sources */,
 				2FC8FA3928C3BA32005B90A9 /* TripListView.swift in Sources */,
 				2FD6228E28BB1F880012BA86 /* MemberSpendingViewModel.swift in Sources */,
@@ -898,6 +909,7 @@
 				2F68DC4E28BF2D5500DB5C2A /* NetworkRepostitory.swift in Sources */,
 				2FA628EB28AF8BD400F83B92 /* NetworkManager.swift in Sources */,
 				2FD6225028BB17E60012BA86 /* Divider.swift in Sources */,
+				2F08B32428CF027500D6D53D /* ProfileViewModel.swift in Sources */,
 				2FD3ECBD28C5C10C00CA9A6E /* TransactionRecordView.swift in Sources */,
 				2FC8FA4028C56AFC005B90A9 /* TripFormView.swift in Sources */,
 				2FA376F128AE29C100B73E6F /* ContentView.swift in Sources */,
@@ -1023,7 +1035,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1080,7 +1092,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
