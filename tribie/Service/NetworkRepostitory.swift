@@ -24,6 +24,7 @@ protocol ApiServices {
     func getTripTransactionExpensesList(tripId: String) -> Observable<[TransactionExpenses]?>
     func getTripTransactionSettlementList(tripId: String) -> Observable<[TransactionSettlement]?>
     func getTransactionData(transactionId: String) -> Observable<Transaction?>
+    func getTransactionList() -> Observable<[Transaction]?>
     func getTransactionItemList(transactionId: String) -> Observable<[TransactionItem]?>
     func getTransactionExpensesList(transactionId: String) -> Observable<[TransactionExpenses]?>
     func getTransactionSettlementList(transactionId: String) -> Observable<[TransactionSettlement]?>
@@ -110,6 +111,10 @@ class NetworkRepository : ApiServices {
     
     func getTransactionData(transactionId: String) -> Observable<Transaction?> {
         return service.requestGet(urlString: baseUrl + "/transactions/\(transactionId)")
+    }
+    
+    func getTransactionList() -> Observable<[Transaction]?> {
+        return service.requestGet(urlString: baseUrl + "/transactions")
     }
     
     func getTransactionItemList(transactionId: String) -> Observable<[TransactionItem]?> {

@@ -94,6 +94,14 @@ class TransactionListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
+    func getUserPaid(userPaidId: String) -> TripMember {
+        if(tripMemberList!.count > 0){
+            return tripMemberList!.first(where: {$0.id == userPaidId})!
+        } else {
+            return TripMember(name:"-")
+        }
+    }
+    
     public func fetchData(tripId: String) {
         self.state = AppState.Loading
         fetchTripMemberList(tripId: tripId)

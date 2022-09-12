@@ -55,6 +55,8 @@ class TripViewModel: ObservableObject {
                 if (self.tripMemberList!.count != 0) {
                     self.state = AppState.Exist
                 }
+                
+                self.calculateDebtListRank()
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
@@ -79,6 +81,8 @@ class TripViewModel: ObservableObject {
                 if (self.transactionSettlementList!.count != 0) {
                     self.state = AppState.Exist
                 }
+                
+                self.calculateDebtListRank()
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
@@ -116,9 +120,29 @@ class TripViewModel: ObservableObject {
         return totalExpenses
     }
     
+    func calculateDebtListRank() {
+        if(tripMemberList == nil || transactionSettlementList == nil) {
+            return
+        }
+        
+        for (index, _) in tripMemberList!.enumerated() {
+            if(tripMemberList![index].expenses == nil) {
+                tripMemberList![index].expenses = 0
+            }
+        }
+        
+        for (index, transactionSettlement) in transactionSettlementList!.enumerated() {
+            let tripMemberIndex = tripMemberList!.firstIndex(where: {$0.id == transactionSettlement.userFromId})!
+            
+            tripMemberList![tripMemberIndex].expenses! += transactionSettlement.nominal!
+        }
+        
+        tripMemberList = tripMemberList!.sorted(by: {$0.expenses! > $1.expenses!})
+    }
+    
     func getUserPaid(userPaidId: String) -> TripMember {
         if(tripMemberList!.count > 0){
-            return tripMemberList![0]
+            return tripMemberList!.first(where: {$0.id == userPaidId})!
         } else {
             return TripMember(name:"-")
         }
@@ -126,6 +150,18 @@ class TripViewModel: ObservableObject {
     
     func getUserName(tripMemberId: String?) -> String {
         return tripMemberList!.first(where: {$0.id == tripMemberId})!.name ?? "-"
+    }
+    
+    
+    func getSplitBillState(status: String) -> SplitbillState {
+        if(status == "Item") {
+            return SplitbillState.InputTransactionItem
+        } else if(status == "Expenses") {
+            return SplitbillState.Done
+        } else if(status == "Calculated") {
+            return SplitbillState.Calculate
+        }
+        return SplitbillState.InputTransactionItem
     }
     
     public func fetchData(tripId: String?) {

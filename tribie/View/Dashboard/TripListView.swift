@@ -13,7 +13,6 @@ struct TripListView: View {
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
                 AppTitle1(text: "Trips")
                 if (tripListViewModel.state == AppState.Loading) {
@@ -33,8 +32,6 @@ struct TripListView: View {
                                                 AppBody1(text: trip.title!)
                                             })
                                         }
-                            }.padding().onAppear {
-//                                tripListViewModel.filterTripList()
                             }
                         }
                         if(tripListViewModel.tripList == nil) {
@@ -49,9 +46,5 @@ struct TripListView: View {
                     tripListViewModel.fetchData()
                 }
             }
-            .navigationTitle("Recent Trip")
-            .navigationBarTitleDisplayMode(.inline)
-            .padding()
-        }
     }
 }
