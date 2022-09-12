@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpendingCard: View {
     
-    @State var totalSpending: Int
+    @State var totalSpending: String
     @State var startColor: Color = Color.red
     @State var endColor: Color = Color.blue
     
@@ -24,7 +24,7 @@ struct SpendingCard: View {
                     
                     AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
                     
-                    AppHeader(text: String(totalSpending), color: Color.primaryColor, fontWeight: .bold)
+                    AppHeader(text: "Rp\(totalSpending)", color: Color.primaryColor, fontWeight: .bold)
                         .padding(1)
                 }
             }
@@ -34,6 +34,6 @@ struct SpendingCard: View {
 
 struct SpendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        SpendingCard(totalSpending: 60000)
+        SpendingCard(totalSpending: "60000")
     }
 }

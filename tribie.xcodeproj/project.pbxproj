@@ -106,6 +106,7 @@
 		2FE7876C28B8CE95002E5F9B /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7876B28B8CE95002E5F9B /* Radio.swift */; };
 		2FE7876E28B8D369002E5F9B /* OutlinedCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7876D28B8D369002E5F9B /* OutlinedCircleButton.swift */; };
 		2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7877128B8F451002E5F9B /* ItemCard.swift */; };
+		412FB2C028CF1D7F00C46B06 /* DebtsRankCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FB2BF28CF1D7F00C46B06 /* DebtsRankCard.swift */; };
 		41FDD40728C5DDA300A8770A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41FDD40928C5DDA300A8770A /* Localizable.strings */; };
 		B88CFD2628C9D08900A5EB60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CFD2528C9D08900A5EB60 /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -227,6 +228,7 @@
 		2FE7876B28B8CE95002E5F9B /* Radio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
 		2FE7876D28B8D369002E5F9B /* OutlinedCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedCircleButton.swift; sourceTree = "<group>"; };
 		2FE7877128B8F451002E5F9B /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		412FB2BF28CF1D7F00C46B06 /* DebtsRankCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsRankCard.swift; sourceTree = "<group>"; };
 		41FDD40828C5DDA300A8770A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41FDD40A28C5DE5F00A8770A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B88CFD2528C9D08900A5EB60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				41398E0628CF1BC900E88051 /* DebtsRankCard */,
 				2F08B31C28CEFD6100D6D53D /* RecentTripCard */,
 				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
 				2FD6223D28BB0B290012BA86 /* MemberSelectCard */,
@@ -698,6 +701,14 @@
 			path = ItemCard;
 			sourceTree = "<group>";
 		};
+		41398E0628CF1BC900E88051 /* DebtsRankCard */ = {
+			isa = PBXGroup;
+			children = (
+				412FB2BF28CF1D7F00C46B06 /* DebtsRankCard.swift */,
+			);
+			path = DebtsRankCard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -862,6 +873,7 @@
 				2FE7876328B8C632002E5F9B /* MemberCard.swift in Sources */,
 				2FA376F828AE29C300B73E6F /* Persistence.swift in Sources */,
 				2FD6228A28BB1F5E0012BA86 /* MemberItemViewModel.swift in Sources */,
+				412FB2C028CF1D7F00C46B06 /* DebtsRankCard.swift in Sources */,
 				2FE7876E28B8D369002E5F9B /* OutlinedCircleButton.swift in Sources */,
 				2FD6228428BB1F120012BA86 /* TransactionListViewModel.swift in Sources */,
 				2FD6228C28BB1F700012BA86 /* SplitBillViewModel.swift in Sources */,

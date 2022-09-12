@@ -48,31 +48,9 @@ struct TripView: View {
                             }
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack(spacing:10){
-                                    SpendingCard(totalSpending: tripViewModel.calculateTotalExpenses(), startColor: Color.startColor, endColor: Color.endColor)
+                                    SpendingCard(totalSpending: "\(tripViewModel.calculateTotalExpenses())", startColor: Color.startColor, endColor: Color.endColor)
                                     
-                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                        AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
-                                        AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
-                                        VStack(alignment: .leading){
-                                            HStack{
-                                                AppTitle1(text: tripViewModel.tripMemberList![0].name ?? "-", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![0].expenses ?? 0)", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
-                                            }
-                                            
-                                            HStack{
-                                                AppTitle1(text: tripViewModel.tripMemberList![1].name ?? "-", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![1].expenses ?? 0)", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
-                                            }
-                                            
-                                            HStack{
-                                                AppTitle1(text: tripViewModel.tripMemberList![2].name ?? "-", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp\(tripViewModel.tripMemberList![2].expenses ?? 0)", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
-                                            }
-                                        }
-                                    })
+                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
                                 }
                             }
                             HStack{
@@ -80,8 +58,8 @@ struct TripView: View {
                                     AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                 Spacer()
                                 NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
-                                                                }
+                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
+                                }
                             }
                             .padding(.horizontal)
                             VStack {
@@ -131,38 +109,9 @@ struct TripView: View {
                             }
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack(spacing:10){
-                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                        AppTitle1(text: "Total Spending", fontWeight: .regular, fontSize: 22)
-                                        
-                                        AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
-                                        
-                                        AppHeader(text: String(tripViewModel.calculateTotalExpenses()), color: Color.primaryColor, fontWeight: .bold)
-                                            .padding(1)
-                                    }).padding(.vertical)
-                                    
-                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                        AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
-                                        AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
-                                        VStack(alignment: .leading){
-                                            HStack{
-                                                AppTitle1(text: "Member 1", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
-                                            }
-                                            
-                                            HStack{
-                                                AppTitle1(text: "Member 2", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
-                                            }
-                                            
-                                            HStack{
-                                                AppTitle1(text: "Member 3", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
-                                                Spacer()
-                                                AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
-                                            }
-                                        }
-                                    })
+                                    //                                        SpendingCard(totalSpending: "0", startColor: Color.startColor, endColor: Color.endColor)
+                                    //
+                                    //                                        DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
                                 }
                             }
                             HStack{
@@ -185,42 +134,6 @@ struct TripView: View {
                                 if(tripViewModel.transactionList == nil || tripViewModel.tripMemberList == nil) {
                                     AppLoading()
                                 }
-                            }
-                        }
-                        ScrollView(.horizontal,showsIndicators: false){
-                            HStack(spacing:10){
-                                AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                    AppTitle1(text: "Total Spending", fontWeight: .regular, fontSize: 22)
-                                    
-                                    AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
-                                    
-                                    AppHeader(text: String(tripViewModel.calculateTotalExpenses()), color: Color.primaryColor, fontWeight: .bold)
-                                        .padding(1)
-                                }).padding(.vertical)
-                                
-                                AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                    AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
-                                    AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
-                                    VStack(alignment: .leading){
-                                        HStack{
-                                            AppTitle1(text: "Member 1", color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
-                                            Spacer()
-                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
-                                        }
-                                        
-                                        HStack{
-                                            AppTitle1(text: "Member 2", color: Color.gray, fontWeight: .regular, fontSize: 16).padding(.horizontal)
-                                            Spacer()
-                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 16).padding(.horizontal)
-                                        }
-                                        
-                                        HStack{
-                                            AppTitle1(text: "Member 3", color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
-                                            Spacer()
-                                            AppTitle1(text: "Rp0", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
-                                        }
-                                    }
-                                })
                             }
                         }
                         
