@@ -258,7 +258,8 @@ class SplitBillListViewModel: ObservableObject {
         }
     }
     
-    func submitTransactionSettlement() {        Logger.info("===============CALCULATION LIST===========")
+    func submitTransactionSettlement() {
+        Logger.info("===============CALCULATION LIST===========")
         for transactionSettlement in transactionSettlementList! {
             Logger.debug(transactionSettlement)
             if(transactionSettlement.saved == false) {

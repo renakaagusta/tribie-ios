@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     var body: some View {
+        NavigationView {
         VStack {
             if(AppKeychain().appToken().isEmpty) {
                 AuthView()
@@ -18,6 +19,7 @@ struct ContentView: View {
                 TripListView()
             }
         }.environment(\.locale, .init(identifier: "id"))
+        }
     }
 }
 
