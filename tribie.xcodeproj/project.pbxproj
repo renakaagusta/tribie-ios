@@ -108,6 +108,7 @@
 		2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7877128B8F451002E5F9B /* ItemCard.swift */; };
 		41FDD40728C5DDA300A8770A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41FDD40928C5DDA300A8770A /* Localizable.strings */; };
 		B88CFD2628C9D08900A5EB60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CFD2528C9D08900A5EB60 /* MainView.swift */; };
+		B89C579828CF0FA7004190FE /* GroupTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C579728CF0FA7004190FE /* GroupTripView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,7 @@
 		41FDD40828C5DDA300A8770A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41FDD40A28C5DE5F00A8770A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B88CFD2528C9D08900A5EB60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B89C579728CF0FA7004190FE /* GroupTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +503,7 @@
 				B88CFD2528C9D08900A5EB60 /* MainView.swift */,
 				2F08B31F28CF021A00D6D53D /* AddMemberView.swift */,
 				2F08B32528CF028700D6D53D /* ProfileView.swift */,
+				B89C579728CF0FA7004190FE /* GroupTripView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				2FD6223328BB03F10012BA86 /* TripView.swift in Sources */,
 				2FE7876628B8CC7D002E5F9B /* MemberItemCard.swift in Sources */,
 				2FD6223A28BB093C0012BA86 /* Body1.swift in Sources */,
+				B89C579828CF0FA7004190FE /* GroupTripView.swift in Sources */,
 				2FA628D428AF682500F83B92 /* OnboardingView.swift in Sources */,
 				2FA628CB28AF61D900F83B92 /* ElevatedButton.swift in Sources */,
 				2F7355B528C0AE570080610B /* Headline1.swift in Sources */,

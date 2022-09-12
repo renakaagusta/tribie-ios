@@ -11,7 +11,7 @@ import SwiftUI
 struct TripView: View {
     
     //variable for modal view
-    @State var showGroupTripModalView: Bool = false
+    @State private var showGroupTripModalView: Bool = false
     
     //variable
     @State private var showingOptions = false
@@ -77,7 +77,8 @@ struct TripView: View {
                             }
                             
                             Button(action: {
-                                showGroupTripModalView = true
+                                self.showGroupTripModalView.toggle()
+                                //self.showGroupTripModalView = true
                             }, label: {
                                 Text("Modal View")
                             })
