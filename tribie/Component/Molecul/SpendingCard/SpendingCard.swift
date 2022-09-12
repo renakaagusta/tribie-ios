@@ -10,26 +10,22 @@ import SwiftUI
 struct SpendingCard: View {
     
     @State var totalSpending: Int
+    @State var startColor: Color = Color.red
+    @State var endColor: Color = Color.blue
     
     var body: some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 18)
+            RoundedRectangle(cornerRadius: 18).fill(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 .frame(width: 362, height: 152)
-                .foregroundColor(Color.white)
             
             HStack{
                 VStack{
-                    Text("Total Spending")
-                        .font(.system(size: 28))
-                    Spacer().frame(height: 19)
-                    Text("Rp. \(totalSpending)")
-                        .font(.system(size: 34))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.primaryColor)
-                    Spacer().frame(height: 15)
-                    Text("on this trip")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
+                    AppTitle1(text: "Total Spending", fontWeight: .semibold, fontSize: 22)
+                    
+                    AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
+                    
+                    AppHeader(text: String(totalSpending), color: Color.primaryColor, fontWeight: .bold)
+                        .padding(1)
                 }
             }
         }

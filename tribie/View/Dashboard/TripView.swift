@@ -38,14 +38,7 @@ struct TripView: View {
                             }
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack(spacing:10){
-                                    AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
-                                        AppTitle1(text: "Total Spending", fontWeight: .regular, fontSize: 22)
-                                        
-                                        AppFootnote(text: "on this trip", color: Color.primaryColor, fontWeight: .regular)
-                                        
-                                        AppHeader(text: String(tripViewModel.calculateTotalExpenses()), color: Color.primaryColor, fontWeight: .bold)
-                                            .padding(1)
-                                    }).padding(.vertical)
+                                    SpendingCard(totalSpending: tripViewModel.calculateTotalExpenses(), startColor: Color.startColor, endColor: Color.endColor)
                                     
                                     AppCard(width: 350, height: 150, cornerRadius: 20, backgroundColor: Color.white, component: {
                                         AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
