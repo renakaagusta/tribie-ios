@@ -14,6 +14,7 @@ struct SignInResponse: Hashable, Codable {
     struct User: Hashable, Codable, Identifiable {
         var id: String?
         var name: String?
+        var username: String?
         var appleId: String?
         var email: String?
         var createdAt: String?
