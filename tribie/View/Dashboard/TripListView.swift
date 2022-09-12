@@ -14,7 +14,6 @@ struct TripListView: View {
     
     var body: some View {
             VStack {
-                AppTitle1(text: "Trips")
                 if (tripListViewModel.state == AppState.Loading) {
                     AppLoading()
                 }
@@ -26,6 +25,7 @@ struct TripListView: View {
                 }
                 if (tripListViewModel.state == AppState.Exist) {
                         if(tripListViewModel.tripList != nil && tripListViewModel.tripMemberList != nil) {
+                            Spacer().frame(height: 10)
                                     ForEach(tripListViewModel.tripList!) { trip in
                                         NavigationLink(destination: MainView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
@@ -45,6 +45,19 @@ struct TripListView: View {
                 if(tripListViewModel.tripList == nil) {
                     tripListViewModel.fetchData()
                 }
-            }
+            }.navigationTitle("Trips")
+            .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: ProfileView()){
+                            AppImage(url: "person.crop.circle",source:AppImageSource.SystemName,component: {})
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: TripFormView()){
+                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
+                        }
+                    }
+                }
     }
 }

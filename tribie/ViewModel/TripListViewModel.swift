@@ -75,15 +75,10 @@ class TripListViewModel: ObservableObject {
         repository.getTransactionList()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                if(self.tripList == nil) {
-                    self.tripList =  []
+                if(self.transactionList == nil) {
+                    self.transactionList =  []
                     if (response != nil) {
                         self.transactionList = response!
-                    }
-                    if (self.tripList!.count != 0) {
-                        self.state = AppState.Exist
-                    } else {
-                        self.state = AppState.Empty
                     }
                 }
             }, onError: {error in
