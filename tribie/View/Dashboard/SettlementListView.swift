@@ -25,21 +25,23 @@ struct SettlementListView: View {
                     Text("Error")
                 }
                 if(settlementListViewModel.state == AppState.Exist) {
-                    HStack {
-                        AppTitle1(text: "Settlements")
-                        AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
-                    }
-                    if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
-                        ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
-                            SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
-                                           userTo: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userToId!),
-                                           amount: transactionSettlement.nominal ?? 0)
+                    ScrollView {
+                        HStack {
+                            AppTitle1(text: "Settlements")
+                            AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
                         }
-                    }
-                    if(settlementListViewModel.transactionSettlementList == nil || settlementListViewModel.transactionSettlementList == nil) {
-                        AppLoading()
-                    }
-                    Spacer()
+                        if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
+                            ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
+                                SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
+                                               userTo: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userToId!),
+                                               amount: transactionSettlement.nominal ?? 0)
+                            }
+                        }
+                        if(settlementListViewModel.transactionSettlementList == nil || settlementListViewModel.transactionSettlementList == nil) {
+                            AppLoading()
+                        }
+                        Spacer()
+                    } //Scrollview
                 }
             }
             .padding()

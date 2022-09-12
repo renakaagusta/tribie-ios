@@ -27,9 +27,11 @@ struct TransactionListView: View {
                 if (transactionViewModel.state == AppState.Exist) {
                     ScrollView {
                         HStack {
-                            AppTitle1(text: "Recent Transactions")
+                            AppTitle1(text: "Drafts")
                             AppImageButton(image: AppImage(height: 30, width: 30, url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
                         }
+                        AppCaption1(text: "List of transaction you haven’t manage yet")
+                        AppBody1(text: "Unsplitted Bill", fontWeight: .bold, textAlign: .leading).padding()
                         if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
                             ForEach(transactionViewModel.transactionList!) { transaction in
                                 NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
@@ -37,7 +39,10 @@ struct TransactionListView: View {
                                        .padding(.horizontal)
                                 }
                             }
+                        } else {
+                            AppCaption1(text: "You’re done. No unsplitted bill.")
                         }
+                        
                         if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
                             AppLoading()
                         }
