@@ -55,9 +55,9 @@ struct TripListView: View {
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: TripFormView()){
+//                        NavigationLink(destination: TripFormView()){
                             AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
-                        }
+//                        }
                     }
                 }
         }
