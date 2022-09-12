@@ -25,11 +25,11 @@ struct SettlementListView: View {
                     Text("Error")
                 }
                 if(settlementListViewModel.state == AppState.Exist) {
+                    HStack {
+                        AppTitle1(text: "Settlements")
+                        AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
+                    }
                     ScrollView {
-                        HStack {
-                            AppTitle1(text: "Settlements")
-                            AppImageButton(image: AppImage(url:"exclamationmark.circle",  source: AppImageSource.SystemName, component: {}))
-                        }
                         if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
                             ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
                                 SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
