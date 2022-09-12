@@ -12,7 +12,6 @@ struct RecentTransactionCard: View {
     @State var memberPaid: String
     @State var title: String
     @State var date: String
-    @State var month: String
     @State var time: String
     @State var total: Int
     
@@ -47,7 +46,7 @@ struct RecentTransactionCard: View {
                     Spacer().frame(height:10)
                     
                     HStack {
-                        Text("\(month), \(date)")
+                        Text("\(date)")
                             .font(.system(size: 13))
                             .foregroundColor(Color.gray)
                         
@@ -58,7 +57,7 @@ struct RecentTransactionCard: View {
                     
                     Spacer().frame(height:5)
                     
-                    Text("Rp.\(total)")
+                    Text("Rp\(total)")
                         .font(.system(size: 17))
                         .fontWeight(.bold)
                         .foregroundColor(Color.primaryColor)
@@ -77,7 +76,6 @@ struct RecentTransactionCard_Previews: PreviewProvider {
         RecentTransactionCard(memberPaid: "Kaka",
                               title: "Cak Har",
                               date: "24",
-                              month: "August",
                               time: "9:41",
                               total: 7300000)
     }
