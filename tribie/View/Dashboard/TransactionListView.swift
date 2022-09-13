@@ -26,10 +26,23 @@ struct TransactionListView: View {
                 }
                 if (transactionViewModel.state == AppState.Exist) {
                     ScrollView {
+                        VStack(alignment: .leading){
+                            HStack{
+                                AppFootnote(text: "Active Trip", fontWeight: .regular, textAlign: .leading)
+                                    .padding(.horizontal)
+                                Spacer()
+                            }
+                            AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold, fontSize: 20).padding(.horizontal)
+                            Spacer()
+                            AppHeader(text: "Drafts", textAlign: .leading)
+                            AppCaption1(text: "List of transaction you haven’t manage yet")
+                        } //VStack
                         HStack {
-                            AppTitle1(text: "Recent Transactions")
-                            AppImageButton(image: AppImage(height: 30, width: 30, url: "exclamationmark.circle", source: AppImageSource.SystemName, color: Color.gray, component: {}))
+                            AppTitle1(text: "Unsplitted Bill", fontWeight: .bold, textAlign: .leading)
+                                .padding(.vertical)
+                            Spacer()
                         }
+                        
                         if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
                             ForEach(transactionViewModel.transactionList!) { transaction in
                                 NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
@@ -37,7 +50,10 @@ struct TransactionListView: View {
                                        .padding(.horizontal)
                                 }
                             }
+                        } else {
+                            AppCaption1(text: "You’re done. No unsplitted bill.")
                         }
+                        
                         if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
                             AppLoading()
                         }

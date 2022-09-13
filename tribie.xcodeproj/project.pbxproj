@@ -433,6 +433,7 @@
 		2FA628C028AF617400F83B92 /* Molecul */ = {
 			isa = PBXGroup;
 			children = (
+				B89C57A528D05F4C004190FE /* TripListCard */,
 				2F08B32928CF141800D6D53D /* ProfileCard */,
 				2F08B31C28CEFD6100D6D53D /* RecentTripCard */,
 				2F48DFCC28BCBC5B0075DEA0 /* MemberAvatarButton */,
@@ -707,6 +708,13 @@
 				2FE7877128B8F451002E5F9B /* ItemCard.swift */,
 			);
 			path = ItemCard;
+			sourceTree = "<group>";
+		};
+		B89C57A528D05F4C004190FE /* TripListCard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TripListCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
