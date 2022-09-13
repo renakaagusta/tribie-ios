@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct TripListCard<Content: View>: View {
+struct TripListCard: View {
     @State var title: String
     @State var members: String
     @State var amount: Int

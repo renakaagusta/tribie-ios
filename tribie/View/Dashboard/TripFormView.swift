@@ -1,5 +1,5 @@
 //
-//  FormTripView.swift
+//  TripFormView.swift
 //  tribie
 //
 //  Created by I Gede Bagus Wirawan on 09/09/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FormTripView: View {
+struct TripFormView: View {
     
     //for Modal Environment
     @Environment(\.presentationMode) var presentationMode
@@ -84,8 +84,8 @@ struct FormTripView: View {
     
 }
 
-struct FormTripView_Previews: PreviewProvider {
+struct TripFormView_Previews: PreviewProvider {
     static var previews: some View {
-        FormTripView()
+        TripFormView()
     }
 }
