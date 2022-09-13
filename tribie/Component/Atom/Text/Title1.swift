@@ -12,9 +12,10 @@ struct AppTitle1: View {
     var color: Color = Color.black
     var fontWeight: Font.Weight = Font.Weight.medium
     var fontSize: CGFloat = 28
+    var textAlign: TextAlignment = TextAlignment.center
     
     var body: some View {
-        Text(text).font(.system(size: fontSize, weight: fontWeight)).foregroundColor(color)
+        Text(text).font(.system(size: fontSize, weight: fontWeight)).multilineTextAlignment(textAlign).foregroundColor(color)
     }
 }
 

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TripListView: View {
+    
+    //variable for modal
+    @State var showGroupMember: Bool = false
 
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
@@ -56,8 +59,14 @@ struct TripListView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
 //                        NavigationLink(destination: TripFormView()){
-                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
 //                        }
+                        Button(action: {
+                            showGroupMember = true
+                        }, label: {
+                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
+                        }).sheet(isPresented: $showGroupMember) {
+                            TripFormView()
+                        }
                     }
                 }
         }
