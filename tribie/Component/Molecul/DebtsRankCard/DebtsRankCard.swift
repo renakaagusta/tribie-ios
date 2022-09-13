@@ -24,25 +24,25 @@ struct DebtsRankCard: View {
             
             HStack{
                 VStack{
-                    AppTitle1(text: "Debts Rank", fontWeight: .semibold, fontSize: 22)
-                    AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.primaryColor, fontWeight: .regular, textAlign: .center)
+                    AppTitle1(text: "Debts Rank", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)
+                    AppFootnote(text: "Top 1 in debt better pay the next bill", color: Color.black, fontWeight: .regular, textAlign: .center)
                     VStack(alignment: .leading){
                         HStack{
-                            AppTitle1(text: rank1, color: Color.gray, fontWeight: .bold, fontSize: 23).padding(.horizontal)
+                            AppTitle1(text: rank1, color: Color.primaryColor, fontWeight: .bold, fontSize: 23).padding(.horizontal)
                             Spacer()
                             AppTitle1(text: "Rp\(debtsRank1)", color: Color.primaryColor, fontWeight: .bold, fontSize: 22).padding(.horizontal)
                         }
                         
                         HStack{
-                            AppTitle1(text: rank2, color: Color.gray, fontWeight: .bold, fontSize: 16).padding(.horizontal)
+                            AppTitle1(text: rank2, color: Color.primaryColor.opacity(0.7), fontWeight: .regular, fontSize: 16).padding(.horizontal)
                             Spacer()
-                            AppTitle1(text: "Rp\(debtsRank2)", color: Color.primaryColor, fontWeight: .regular, fontSize: 16).padding(.horizontal)
+                            AppTitle1(text: "Rp\(debtsRank2)", color: Color.primaryColor.opacity(0.7), fontWeight: .semibold, fontSize: 16).padding(.horizontal)
                         }
                         
                         HStack{
-                            AppTitle1(text: rank3, color: Color.gray, fontWeight: .regular, fontSize: 13).padding(.horizontal)
+                            AppTitle1(text: rank3, color: Color.primaryColor.opacity(0.5), fontWeight: .regular, fontSize: 13).padding(.horizontal)
                             Spacer()
-                            AppTitle1(text: "Rp\(debtsRank3)", color: Color.primaryColor, fontWeight: .semibold, fontSize: 13).padding(.horizontal)
+                            AppTitle1(text: "Rp\(debtsRank3)", color: Color.primaryColor.opacity(0.5), fontWeight: .semibold, fontSize: 13).padding(.horizontal)
                         }
                     }
                 }

@@ -19,14 +19,14 @@ struct RecentTransactionCard: View {
         ZStack{
             RoundedRectangle(cornerRadius: 10)
                 .frame(height: 87)
-                .foregroundColor(Color.white)
+                .foregroundColor(Color.cardColor)
             HStack{
                 VStack(alignment: .leading){
                     Spacer().frame(height: 10)
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
+                            .fill(LinearGradient(gradient: Gradient(colors: [Color.capsuleStart, Color.capsuleEnd]), startPoint: .bottomTrailing, endPoint: .topLeading))
                             .frame(width: CGFloat(memberPaid.count) * 10,height: 15)
-                            .foregroundColor(Color.primaryColor)
                         
                         Text(memberPaid)
                             .font(.system(size: 13))
@@ -38,7 +38,7 @@ struct RecentTransactionCard: View {
                     Text(title)
                         .font(.system(size: 17))
                         .fontWeight(.regular)
-                        .foregroundColor(Color.secondaryColor)
+                        .foregroundColor(Color.primaryColor)
                     
                 }
                 Spacer()
@@ -48,11 +48,11 @@ struct RecentTransactionCard: View {
                     HStack {
                         Text("\(date)")
                             .font(.system(size: 13))
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color.textColor)
                         
                         Text(time)
                             .font(.system(size: 13))
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color.footnoteColor)
                     }
                     
                     Spacer().frame(height:5)

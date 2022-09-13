@@ -25,35 +25,50 @@ struct AuthView: View {
     @ObservedObject var global = GlobalVariables.global
     
     var body: some View {
-        if(global.authenticated == true) {
-            VStack{
-                    SignInWithAppleButton(.continue){ request in
-                    request .requestedScopes = [.email, .fullName]
-                } onCompletion: { result in
-                    switch result {
-                    case .success(let auth):
-                        switch auth.credential {
-                        case let credential as ASAuthorizationAppleIDCredential:
-                            let userId = credential.user
-                            let email = credential.email
-                            let firstname = credential.fullName!.givenName
-                            let lastname = credential.fullName!.familyName
-                            
-                            if(email != nil) {
-                                authViewModel.handleSignUp(email: email, name: firstname! + lastname!, appleId: userId, deviceId: UIDevice.current.identifierForVendor!.uuidString)
-                            } else {
-                                authViewModel.handleSignInWithApple(appleId: userId)
-                            }
-                        default:
-                            break
-                        }
-                    case .failure(let error):
-                        Logger.error(error)
+        if(global.authenticated == false) {
+            ZStack{
+                Color.tertiaryColor.ignoresSafeArea(.all)
+                VStack{
+                    Spacer()
+                    Image("Logo")
+                    HStack{
+                        AppTitle1(text: "Welcome to", color: Color.primaryColor, fontWeight: .regular, fontSize: 24)
+                        AppTitle1(text: "Tribie!👋", color: Color.signifierColor, fontWeight: .bold, fontSize: 24)
                     }
-                }.frame(width: 320, height: 40)
-            }.background(
-                Color.tertiaryColor
-            ).padding()
+                    AppTitle1(text: " Your Travel Bills & Expense Manager", color: Color.primaryColor, fontWeight: .regular, fontSize: 15)
+                    Spacer()
+                    ZStack{
+                        AppCard(width: 280, height: 48, cornerRadius: 10, backgroundColor: Color.tertiaryColor, borderColor: Color.signifierColor, component: {})
+                        VStack{
+                                SignInWithAppleButton(.continue){ request in
+                                request .requestedScopes = [.email, .fullName]
+                            } onCompletion: { result in
+                                switch result {
+                                case .success(let auth):
+                                    switch auth.credential {
+                                    case let credential as ASAuthorizationAppleIDCredential:
+                                        let userId = credential.user
+                                        let email = credential.email
+                                        let firstname = credential.fullName!.givenName
+                                        let lastname = credential.fullName!.familyName
+                                        
+                                        if(email != nil) {
+                                            authViewModel.handleSignUp(email: email, name: firstname! + lastname!, appleId: userId, deviceId: UIDevice.current.identifierForVendor!.uuidString)
+                                        } else {
+                                            authViewModel.handleSignInWithApple(appleId: userId)
+                                        }
+                                    default:
+                                        break
+                                    }
+                                case .failure(let error):
+                                    Logger.error(error)
+                                }
+                            }.frame(width: 260, height: 40)
+                        }
+                        
+                    }
+                }
+            }
         } else {
             TripListView()
         }

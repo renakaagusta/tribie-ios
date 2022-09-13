@@ -14,7 +14,7 @@ struct AppFootnote: View {
     var textAlign: TextAlignment = TextAlignment.center
     
     var body: some View {
-        Text(text).multilineTextAlignment(textAlign).font(.system(size: 15, weight: fontWeight)).foregroundColor(color).frame(alignment:.leading)
+        Text(text).multilineTextAlignment(textAlign).font(.system(size: 13, weight: fontWeight)).foregroundColor(color).frame(alignment:.leading)
     }
 }
 
