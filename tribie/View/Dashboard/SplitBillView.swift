@@ -94,10 +94,10 @@ struct SplitBillView: View {
                         if(showSelectUserPay == false && splitBillViewModel.formState != SplitbillState.InputTransaction) {
                             VStack {
                                 Spacer().frame(height: 10)
-                                AppFootnote(text: "Split Method", textAlign: TextAlignment.leading).padding()
+//                                AppFootnote(text: "Split Method", textAlign: TextAlignment.leading).padding()
                                 if(splitBillViewModel.transactionItemList != nil && splitBillViewModel.transaction!.method == "Item") {
                                     ForEach(Array(splitBillViewModel.transactionItemList!.enumerated()
-                                                 ), id: \.1) { (index, transactionItem) in
+                                                 ), id: \.0) { (index, transactionItem) in
                                         VStack {
                                             HStack {
                                                 AppTextField(placeholder: "Item Name", field: Binding(get: {splitBillViewModel.transactionItemList![index].title ?? "-"}, set: {splitBillViewModel.transactionItemList![index].title = $0})).frame(width: 120)
@@ -108,7 +108,7 @@ struct SplitBillView: View {
                                                             splitBillViewModel.handleDecrementQuantity(index: index)
                                                         })
                                                     }
-                                                    AppNumberField(placeholder: "Quantity", field: Binding(get: {splitBillViewModel.transactionItemList![index].quantity ?? 0}, set: {splitBillViewModel.transactionItemList![index].quantity = $0})).frame(width: 40)
+                                                    AppNumberField(placeholder: "Quantity", field: Binding(get: {splitBillViewModel.transactionItemList![index].quantity ?? 0}, set: {splitBillViewModel.transactionItemList![index].quantity! = $0})).frame(width: 40)
                                                     if(splitBillViewModel.formState == SplitbillState.InputTransactionItem) {
                                                         AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
                                                             splitBillViewModel.handleIncrementQuantity(index: index)
@@ -116,7 +116,7 @@ struct SplitBillView: View {
                                                     }
                                                 }
                                                 Spacer()
-                                                AppNumberField(placeholder: "Price", field: Binding(get: {splitBillViewModel.transactionItemList![index].price ?? 0}, set: {splitBillViewModel.transactionItemList![index].price = $0}))
+                                                AppNumberField(placeholder: "Price", field: Binding(get: {splitBillViewModel.expensesByItemList[index] ?? 0}, set: {splitBillViewModel.expensesByItemList[index] = $0}))
                                             }.padding().cornerRadius(10)
                                         }
                                     }

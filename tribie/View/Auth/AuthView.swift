@@ -15,6 +15,8 @@ final class GlobalVariables: ObservableObject{
     static let global = GlobalVariables()
     
     @Published var authenticated = false
+    @Published var trip : Trip?
+    @Published var tripMemberList : [TripMember]?
 }
 
 struct AuthView: View {
@@ -46,8 +48,7 @@ struct AuthView: View {
                             break
                         }
                     case .failure(let error):
-                        print("Error")
-                        print(error)
+                        Logger.error(error)
                     }
                 }.frame(width: 320, height: 40)
             }.background(
@@ -56,7 +57,7 @@ struct AuthView: View {
         } else {
             TripListView()
         }
-        }
+    }
 }
 
 struct AuthView_Previews: PreviewProvider {
