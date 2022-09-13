@@ -11,6 +11,7 @@ struct TripListView: View {
     
     //variable for modal
     @State var showGroupMember: Bool = false
+    @State var showProfile: Bool = false
 
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
@@ -53,8 +54,12 @@ struct TripListView: View {
             .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: ProfileView()){
+                        Button(action: {
+                            showProfile = true
+                        }, label: {
                             AppImage(url: "person.crop.circle",source:AppImageSource.SystemName,component: {})
+                        }).sheet(isPresented: $showProfile) {
+                            ProfileView()
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {

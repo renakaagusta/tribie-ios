@@ -9,23 +9,46 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    //for Modal Environment
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var profileViewModel : ProfileViewModel = ProfileViewModel()
     
     var body: some View {
-        return VStack {
-            HStack {
-                AppCircleImage(size: 40.0, component: {})
-                Spacer().frame(width: 10.0)
-                VStack(alignment: .leading) {
-                    Text(profileViewModel.userName)
-                    Text(profileViewModel.userMail)
-                }
+        
+        NavigationView {
+            VStack {
+                HStack {
+                    AppCircleImage(size: 40.0, component: {})
+                    Spacer().frame(width: 10.0)
+                    VStack(alignment: .leading) {
+                        Text(profileViewModel.userName)
+                        Text(profileViewModel.userMail)
+                    }
+                    Spacer()
+                }.padding().background(Color.white).cornerRadius(10)
+                
+                AppElevatedButton(label: "Sign Out", onClick: profileViewModel.signOut)
+                
                 Spacer()
-            }.padding().background(Color.white).cornerRadius(10)
-            AppElevatedButton(label: "Sign Out", onClick: profileViewModel.signOut)
-        }.padding().onAppear{
-            profileViewModel.fetchData()
+            }.padding().onAppear{
+                profileViewModel.fetchData()
+            }
+            .navigationTitle("Account")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                //for leading navigation bar items
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        //action
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                    })
+                }
+            } //toolbar
         }
+        
     }
 }
 
