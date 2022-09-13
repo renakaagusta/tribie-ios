@@ -52,7 +52,7 @@ struct TripView: View {
                                 HStack(spacing:10){
                                     SpendingCard(totalSpending: (tripViewModel.calculateTotalExpenses()), startColor: Color.startColor, endColor: Color.endColor)
                                     
-                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
+//                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
                                 }
                             }
                             HStack{
