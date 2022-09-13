@@ -37,18 +37,20 @@ struct TripView: View {
                         VStack {
                             VStack(alignment: .leading){
                                 HStack{
-                                    AppFootnote(text: "Active Trip", fontWeight: .regular, textAlign: .leading)
+                                    AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                         .padding(.horizontal)
                                     Spacer()
                                 }
-                                AppTitle1(text: "Liburan Tribie", fontWeight: .semibold, fontSize: 20).padding(.horizontal)
+                                AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
                                 Spacer()
-                                AppHeader(text: "Transactions", textAlign: .leading)
+                                AppHeader(text: "Transactions", color: Color.primaryColor, textAlign: .leading)
+                                    .padding(.horizontal)
+                                AppFootnote(text: "Summary of all transactions you’ve added to this trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                     .padding(.horizontal)
                             }
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack(spacing:10){
-                                    SpendingCard(totalSpending: "\(tripViewModel.calculateTotalExpenses())", startColor: Color.startColor, endColor: Color.endColor)
+                                    SpendingCard(totalSpending: (tripViewModel.calculateTotalExpenses()), startColor: Color.startColor, endColor: Color.endColor)
                                     
 //                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
                                 }
@@ -58,7 +60,7 @@ struct TripView: View {
                                     AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                 Spacer()
                                 NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
+                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
                                 }
                             }
                             .padding(.horizontal)
@@ -98,20 +100,22 @@ struct TripView: View {
                         VStack {
                             VStack(alignment: .leading){
                                 HStack{
-                                    AppFootnote(text: "Active Trip", fontWeight: .regular, textAlign: .leading)
+                                    AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                         .padding(.horizontal)
                                     Spacer()
                                 }
-                                AppTitle1(text: "Liburan Tribie", fontWeight: .semibold, fontSize: 20).padding(.horizontal)
+                                AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold, fontSize: 20).padding(.horizontal)
                                 Spacer()
-                                AppHeader(text: "Transactions", textAlign: .leading)
+                                AppHeader(text: "Transactions", color: Color.primaryColor, textAlign: .leading)
+                                    .padding(.horizontal)
+                                AppFootnote(text: "Summary of all transactions you’ve added to this trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                     .padding(.horizontal)
                             }
                             ScrollView(.horizontal,showsIndicators: false){
                                 HStack(spacing:10){
-                                    //                                        SpendingCard(totalSpending: "0", startColor: Color.startColor, endColor: Color.endColor)
-                                    //
-                                    //                                        DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
+                                    SpendingCard(totalSpending: 0, startColor: Color.startColor, endColor: Color.endColor)
+                                    
+                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
                                 }
                             }
                             HStack{

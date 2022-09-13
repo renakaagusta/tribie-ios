@@ -13,4 +13,11 @@ extension Color {
     static let tertiaryColor = Color("Tertiary")
     static let startColor = Color("Start")
     static let endColor = Color("End")
+    static let capsuleStart = Color("CapsuleStart")
+    static let capsuleEnd = Color("CapsuleEnd")
+    static let cardColor = Color("Card")
+    static let footnoteColor = Color("Footnote")
+    static let inactiveColor = Color("Inactive")
+    static let signifierColor = Color("Signifier")
+    static let textColor = Color("Text")
 }

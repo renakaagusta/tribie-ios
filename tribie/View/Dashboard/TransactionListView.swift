@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftyBeaver
 
 struct TransactionListView: View {
-
+    
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
     
@@ -47,7 +47,6 @@ struct TransactionListView: View {
                             ForEach(transactionViewModel.transactionList!) { transaction in
                                 NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
                                     RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24",time: "9.24", total: transaction.grandTotal ?? 0)
-                                       .padding(.horizontal)
                                 }
                             }
                         } else {
@@ -61,14 +60,15 @@ struct TransactionListView: View {
                 }
                 Spacer()
             }
-            .onAppear {
-                transactionViewModel.fetchData(tripId: tripId)
-            }
-            .background(Color.tertiaryColor)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
-            )
+        }
+        .onAppear {
+            transactionViewModel.fetchData(tripId: tripId)
+        }
+        .background(Color.tertiaryColor)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing:
+                                AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
+        )
     }
 }
 
