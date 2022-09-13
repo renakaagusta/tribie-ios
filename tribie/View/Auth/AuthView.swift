@@ -25,7 +25,7 @@ struct AuthView: View {
     @ObservedObject var global = GlobalVariables.global
     
     var body: some View {
-        if(global.authenticated == false) {
+        if(global.authenticated == true) {
             VStack{
                     SignInWithAppleButton(.continue){ request in
                     request .requestedScopes = [.email, .fullName]

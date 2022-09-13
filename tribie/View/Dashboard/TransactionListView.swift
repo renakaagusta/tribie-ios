@@ -14,6 +14,7 @@ struct TransactionListView: View {
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
     
     var body: some View {
+        ScrollView {
             VStack {
                 if (transactionViewModel.state == AppState.Loading) {
                     AppLoading()
@@ -69,6 +70,7 @@ struct TransactionListView: View {
             .navigationBarItems(trailing:
                 AppImageButton(height: 30, width: 30, image: AppImage(height: 24, width: 19, url: "square.and.arrow.up", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}))
             )
+        }
     }
 }
 
