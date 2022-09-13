@@ -34,6 +34,7 @@ class SplitBillListViewModel: ObservableObject {
     @Published var successRemoveCounter = 0
     @Published var moveToMemberItemView = false
     @Published var moveToSettlementListView = false
+    @Published var expensesByItemList : [Double] = []
     
     private var minTripMember: TripMember = TripMember()
     private var maxTripMember: TripMember = TripMember()
@@ -55,13 +56,18 @@ class SplitBillListViewModel: ObservableObject {
     public func fetchTransactionItemList(transactionId : String = AppConstant.DUMMY_DATA_TRANSACTION_ID){
         repository.getTransactionItemList(transactionId: transactionId)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { response in
-                self.transactionItemList = response ?? []
-                for (index, _) in self.transactionItemList!.enumerated() {
-                    self.transactionItemList![index].saved = true
-                }
-                if (self.transactionItemList!.count != 0) {
-                    self.state = AppState.Exist
+            .subscribe(onNext: { [self] response in
+                if(response != nil) {
+                    for (index, _) in response!.enumerated() {
+                        self.expensesByItemList.append((response![index].quantity ?? 0) * (response![index].price! ?? 0))
+                    }
+                    self.transactionItemList = response ?? []
+                    for (index, _) in self.transactionItemList!.enumerated() {
+                        self.transactionItemList![index].saved = true
+                    }
+                    if (self.transactionItemList!.count != 0) {
+                        self.state = AppState.Exist
+                    }
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -227,7 +233,9 @@ class SplitBillListViewModel: ObservableObject {
     }
     
     func submitTransactionItem() {
+        var index = 0
         for transactionItem in transactionItemList! {
+            transactionItemList![index].price = expensesByItemList[index] / transactionItemList![index].quantity!
             if(transactionItem.saved == false) {
                 repository.addTransactionItem(transactionItem: transactionItem)
                     .observe(on: MainScheduler.instance)
@@ -255,6 +263,7 @@ class SplitBillListViewModel: ObservableObject {
                         self.state = AppState.Error
                     }).disposed(by: disposeBag)
             }
+            index += 1
         }
     }
     
@@ -353,6 +362,7 @@ class SplitBillListViewModel: ObservableObject {
                 let calculateExpenses: Int = transactionExpenses.quantity! * Int(transactionItemList!.first(where: {$0.id == transactionExpenses.itemId})!.price!)
                 tripMemberList![index].expenses! += calculateExpenses
             }
+            tripMemberList![index].expenses! = tripMemberList![index].expenses! * ((transaction?.grandTotal ?? 0) /  (transaction?.subTotal ?? 0))
             if(tripMember.id == transaction!.userPaidId!) {
                 Logger.info("=======WHO PAID==========")
                 Logger.info(tripMember.name)
@@ -447,9 +457,12 @@ class SplitBillListViewModel: ObservableObject {
     public func getSubTotal() -> Int {
         var subTotal = 0
         
-        for transactionItem in self.transactionItemList! {
-          subTotal = subTotal + (Int((transactionItem.quantity ?? 0.0) * transactionItem.price!))
+        for expensesByItem in self.expensesByItemList {
+            subTotal = subTotal + Int(expensesByItem)
         }
+        
+        Logger.error(self.expensesByItemList)
+        Logger.error(subTotal)
         
         return subTotal
     }
@@ -469,12 +482,9 @@ class SplitBillListViewModel: ObservableObject {
     }
 
     public func handleIncrementQuantity(index: Int) {
-        Logger.debug("---")
         if(getGrandTotal() < getSubTotal()) {
             return
         }
-        
-        Logger.debug("oops")
         
         var newTransactionItemList = transactionItemList
         if(newTransactionItemList!.count > 0) {
@@ -485,6 +495,9 @@ class SplitBillListViewModel: ObservableObject {
             }
         }
         
+//        if(newTransactionItemList![index].quantity != nil) {
+//            newTransactionItemList![index].price = expensesByItemList[index] / newTransactionItemList![index].quantity!
+//        }
         newTransactionItemList![index].changed = true
         
         transactionItemList = newTransactionItemList
@@ -497,9 +510,14 @@ class SplitBillListViewModel: ObservableObject {
 //                newTransactionItemList!.remove(at: index)
             } else {
                 newTransactionItemList![index].quantity! -= 1
-                newTransactionItemList![index].changed = true
             }
         }
+        
+//        if(newTransactionItemList![index].quantity != nil) {
+//            newTransactionItemList![index].price = expensesByItemList[index] / newTransactionItemList![index].quantity!
+//        }
+        
+        newTransactionItemList![index].changed = true
         
         transactionItemList = newTransactionItemList
     }
@@ -507,6 +525,7 @@ class SplitBillListViewModel: ObservableObject {
     public func addItem() {
         transactionItemList!.append(
             TransactionItem(id: Random.randomString(length: 10), tripId: transaction!.tripId!, transactionId: transaction!.id!,  title: "", price: 0, quantity: 0, saved: false))
+        expensesByItemList.append(0)
     }
     
     public func handleSelectItemExpenses(tripMemberId: String) {
