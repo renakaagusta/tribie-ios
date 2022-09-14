@@ -22,7 +22,7 @@ struct MemberSpendingCard<Content: View>: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text("Spent").foregroundColor(.gray)
-                Text("Rp " + String(amount)).fontWeight(.bold).foregroundColor(Color.primaryColor)
+                Text("Rp" + String(amount)).fontWeight(.bold).foregroundColor(Color.primaryColor)
             }
         }.padding().cornerRadius(10)
     }

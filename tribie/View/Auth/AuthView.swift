@@ -10,15 +10,6 @@ import SwiftUI
 import AuthenticationServices
 import UIKit
 
-final class GlobalVariables: ObservableObject{
-    
-    static let global = GlobalVariables()
-    
-    @Published var authenticated = false
-    @Published var trip : Trip?
-    @Published var tripMemberList : [TripMember]?
-}
-
 struct AuthView: View {
     
     @ObservedObject var authViewModel = AuthViewModel()

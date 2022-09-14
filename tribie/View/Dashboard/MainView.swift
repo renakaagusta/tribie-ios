@@ -8,30 +8,24 @@
 import SwiftUI
 import SystemConfiguration
 
-
-//for TabBarView
 struct MainView: View {
     
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
-    @State var transactionId: String?
-    @ObservedObject var tripViewModel = TripViewModel()
-    @ObservedObject var settlementListViewModel : SettlementListViewModel = SettlementListViewModel()
-
     
     var body: some View {
         
         TabView {
-            TripView()
+            TripView(tripId: tripId)
                 .tabItem {
                     Label("Transaction", systemImage: "scroll.fill")
                 }
             
-            TransactionListView()
+            TransactionListView(tripId: tripId)
                 .tabItem {
                     Label("Drafts", systemImage: "clock.fill")
                 }
             
-            SettlementListView()
+            SettlementListView(tripId: tripId)
                 .tabItem {
                     Label("Settlements", systemImage: "checkmark.seal.fill")
                 }

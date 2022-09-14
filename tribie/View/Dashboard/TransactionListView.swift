@@ -62,7 +62,7 @@ struct TransactionListView: View {
                         }
                         
                         if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
-                            ForEach(transactionViewModel.transactionList!) { transaction in
+                            ForEach(transactionViewModel.transactionList!.filter({$0.status != "Done"})) { transaction in
                                 NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
                                     RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""),time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                                 }

@@ -8,6 +8,16 @@
 import SwiftUI
 import CoreData
 
+final class GlobalVariables: ObservableObject{
+    
+    static let global = GlobalVariables()
+    
+    @Published var authenticated = false
+    @Published var trip : Trip?
+    @Published var tripMemberList : [TripMember] = []
+    @Published var selectedTripMember : TripMember?
+}
+
 struct ContentView: View {
     @ObservedObject var global = GlobalVariables.global
 

@@ -103,13 +103,13 @@ struct SplitBillView: View {
                                                 AppTextField(placeholder: "Item Name", field: Binding(get: {splitBillViewModel.transactionItemList![index].title ?? "-"}, set: {splitBillViewModel.transactionItemList![index].title = $0})).frame(width: 120)
                                                 Spacer()
                                                 HStack{
-                                                    if(splitBillViewModel.formState == SplitbillState.InputTransactionItem) {
+                                                    if(splitBillViewModel.transaction?.status == "Items" || splitBillViewModel.transaction?.status == "Created") {
                                                         AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "minus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
                                                             splitBillViewModel.handleDecrementQuantity(index: index)
                                                         })
                                                     }
                                                     AppNumberField(placeholder: "Quantity", field: Binding(get: {splitBillViewModel.transactionItemList![index].quantity ?? 0}, set: {splitBillViewModel.transactionItemList![index].quantity! = $0})).frame(width: 40)
-                                                    if(splitBillViewModel.formState == SplitbillState.InputTransactionItem) {
+                                                    if(splitBillViewModel.transaction?.status == "Items" || splitBillViewModel.transaction?.status == "Created") {
                                                         AppOutlinedCircleButton(size: 30.0, icon: Image(systemName: "plus"), color: Color.gray, source: AppOutlinedCircleButtonContentSource.Icon, onClick: {
                                                             splitBillViewModel.handleIncrementQuantity(index: index)
                                                         })
@@ -120,7 +120,7 @@ struct SplitBillView: View {
                                             }.padding().cornerRadius(10)
                                         }
                                     }
-                                    if(splitBillViewModel.formState == SplitbillState.InputTransactionItem) {
+                                    if(splitBillViewModel.transaction?.status == "Items" || splitBillViewModel.transaction?.status == "Created") {
                                         AppCircleButton(
                                             size: 20,
                                             icon: Image(systemName: "plus"),
@@ -157,41 +157,53 @@ struct SplitBillView: View {
                                 HStack{
                                     AppBody1(text: "Subtotal")
                                     Spacer()
-                                    AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getSubTotal()}, set: {_ in true}).wrappedValue)")
+                                    if(splitBillViewModel.transaction?.status == "Done" || splitBillViewModel.transaction?.status == "Expenses") {
+                                        AppBody1(text: "Rp \(splitBillViewModel.transaction!.subTotal!)")
+                                    } else {
+                                        AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getSubTotal()}, set: {_ in true}).wrappedValue)")
+                                    }
                                 }
                                 Spacer().frame(height: 10)
                                 HStack{
                                     AppBody1(text: "Grand total")
                                     Spacer()
-                                    AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getGrandTotal()}, set: {_ in true}).wrappedValue)")
+                                    if(splitBillViewModel.transaction?.status == "Done" || splitBillViewModel.transaction?.status == "Expenses") {
+                                        AppBody1(text: "Rp \(splitBillViewModel.transaction!.grandTotal!)")
+                                    } else {
+                                        AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getGrandTotal()}, set: {_ in true}).wrappedValue)")
+                                    }
                                 }
                                 Spacer().frame(height: 10)
                                 HStack{
                                     AppBody1(text: "Service Charge / Tax")
                                     Spacer()
-                                    AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getServiceCharge()}, set: {_ in true}).wrappedValue)")
+                                    if(splitBillViewModel.transaction?.status == "Done" || splitBillViewModel.transaction?.status == "Expenses") {
+                                        AppBody1(text: "Rp \(splitBillViewModel.transaction!.serviceCharge!)")
+                                    } else {
+                                        AppBody1(text: "Rp \(Binding(get: {splitBillViewModel.getServiceCharge()}, set: {_ in true}).wrappedValue)")
+                                    }
                                 }
                                 Spacer().frame(height: 10)
                                 if(splitBillViewModel.transaction != nil) {
-                                    if(splitBillViewModel.formState == SplitbillState.Calculate && splitBillViewModel.transaction!.status == "Expenses") {
-                                        NavigationLink(destination: SettlementListView(tripId: tripId, transactionId: transactionId!), isActive:Binding(get: {splitBillViewModel.moveToSettlementListView == true}, set: { _ in true}) ) {
+                                    NavigationLink(destination: SettlementListView(), isActive:Binding(get: {splitBillViewModel.moveToSettlementListView}, set: { _ in true})) {
+                                            if(splitBillViewModel.transaction!.status == "Expenses") {
                                             AppElevatedButton(label: "Done",
                                                               onClick: {
                                             splitBillViewModel.calculateSplitBill()
                                             splitBillViewModel.updateTransaction()
                                         })
                                         }
-                                    }
-                                    if(splitBillViewModel.formState == SplitbillState.Calculate && (splitBillViewModel.transaction!.status == "Calculated" || splitBillViewModel.transaction!.status == "Item")) {
-                                        NavigationLink(destination: MemberItemListView(tripId: tripId, transactionId: transactionId!), isActive: $splitBillViewModel.moveToMemberItemView ) {
-                                            AppElevatedButton(label: "Recalculate", onClick: {
-                                                splitBillViewModel.removeAllTransactionSettlement()
-                                                splitBillViewModel.submitTransactionItem()
-                                                splitBillViewModel.updateTransaction()
-                                            })
                                         }
-                                    }
-                                    if(splitBillViewModel.formState == SplitbillState.InputTransactionItem) {
+//                                    if(splitBillViewModel.formState == SplitbillState.Calculate && (splitBillViewModel.transaction!.status == "Calculated" || splitBillViewModel.transaction!.status == "Item")) {
+//                                        NavigationLink(destination: MemberItemListView(tripId: tripId, transactionId: transactionId!), isActive: $splitBillViewModel.moveToMemberItemView ) {
+//                                            AppElevatedButton(label: "Recalculate", onClick: {
+//                                                splitBillViewModel.removeAllTransactionSettlement()
+//                                                splitBillViewModel.submitTransactionItem()
+//                                                splitBillViewModel.updateTransaction()
+//                                            })
+//                                        }
+//                                    }
+                                    if(splitBillViewModel.transaction!.status == "Items" || splitBillViewModel.transaction!.status == "Created") {
                                         NavigationLink(destination: MemberItemListView(tripId: tripId, transactionId: splitBillViewModel.transaction!.id!), isActive: $splitBillViewModel.moveToMemberItemView ) {
                                             AppElevatedButton(label: "Next", onClick: {
                                                 splitBillViewModel.submitTransactionItem()

@@ -135,12 +135,12 @@ class NetworkManager {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             let result = try decoder.decode(T.self, from: json)
         
-//                            Logger.info("======SEND POST REQUEST=======")
-//                            Logger.info(urlString)
-//                            Logger.info("=======PARAMETERS========")
-//                            Logger.info(parameters)
-//                            Logger.info("===========RESPONSE===========")
-//                            Logger.info(response)
+                            Logger.info("======SEND POST REQUEST=======")
+                            Logger.info(urlString)
+                            Logger.info("=======PARAMETERS========")
+                            Logger.info(parameters)
+                            Logger.info("===========RESPONSE===========")
+                            Logger.info(response)
                             
                             observer.onNext(result)
                             observer.onCompleted()
@@ -157,11 +157,11 @@ class NetworkManager {
                         }
                     } else {
                         
-//                        Logger.error("======SEND POST REQUEST=======")
-//                        Logger.error(urlString)
-//                        Logger.warning("=======PARAMETERS========")
-//                        Logger.warning(parameters)
-//                        Logger.error("==========ERROR NIL============")
+                        Logger.error("======SEND POST REQUEST=======")
+                        Logger.error(urlString)
+                        Logger.warning("=======PARAMETERS========")
+                        Logger.warning(parameters)
+                        Logger.error("==========ERROR NIL============")
                         
                         observer.onError(ApiError.responseNil)
                     }

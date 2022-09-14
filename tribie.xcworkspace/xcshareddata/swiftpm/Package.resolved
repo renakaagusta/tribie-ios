@@ -1,59 +1,61 @@
 {
-  "pins" : [
-    {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
-      "state" : {
-        "branch" : "master",
-        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b"
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": "master",
+          "revision": "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+          "version": null
+        }
+      },
+      {
+        "package": "JWTDecode",
+        "repositoryURL": "https://github.com/auth0/JWTDecode.swift",
+        "state": {
+          "branch": null,
+          "revision": "d07041068fed2d4b8a38f2b321ea6d97c9152c4a",
+          "version": "3.0.0"
+        }
+      },
+      {
+        "package": "Keychain",
+        "repositoryURL": "https://github.com/GroupeMINASTE/Keychain.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "d4b6bd007fd8432a59d341faa22ec0cd738d2d9d",
+          "version": "1.0.5"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b4307ba0b6425c0ba4178e138799946c3da594f8",
+          "version": "6.5.0"
+        }
+      },
+      {
+        "package": "SwiftyBeaver",
+        "repositoryURL": "https://github.com/SwiftyBeaver/SwiftyBeaver",
+        "state": {
+          "branch": null,
+          "revision": "12b5acf96d98f91d50de447369bd18df74600f1a",
+          "version": "1.9.6"
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON",
+        "state": {
+          "branch": "master",
+          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+          "version": null
+        }
       }
-    },
-    {
-      "identity" : "jwtdecode.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/auth0/JWTDecode.swift",
-      "state" : {
-        "revision" : "d07041068fed2d4b8a38f2b321ea6d97c9152c4a",
-        "version" : "3.0.0"
-      }
-    },
-    {
-      "identity" : "keychain.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/GroupeMINASTE/Keychain.swift.git",
-      "state" : {
-        "revision" : "d4b6bd007fd8432a59d341faa22ec0cd738d2d9d",
-        "version" : "1.0.5"
-      }
-    },
-    {
-      "identity" : "rxswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReactiveX/RxSwift.git",
-      "state" : {
-        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
-        "version" : "6.5.0"
-      }
-    },
-    {
-      "identity" : "swiftybeaver",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftyBeaver/SwiftyBeaver",
-      "state" : {
-        "revision" : "12b5acf96d98f91d50de447369bd18df74600f1a",
-        "version" : "1.9.6"
-      }
-    },
-    {
-      "identity" : "swiftyjson",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftyJSON/SwiftyJSON",
-      "state" : {
-        "branch" : "master",
-        "revision" : "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
