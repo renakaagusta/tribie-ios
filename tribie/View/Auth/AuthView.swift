@@ -10,15 +10,6 @@ import SwiftUI
 import AuthenticationServices
 import UIKit
 
-final class GlobalVariables: ObservableObject{
-    
-    static let global = GlobalVariables()
-    
-    @Published var authenticated = false
-    @Published var trip : Trip?
-    @Published var tripMemberList : [TripMember]?
-}
-
 struct AuthView: View {
     
     @ObservedObject var authViewModel = AuthViewModel()
@@ -27,6 +18,9 @@ struct AuthView: View {
     var body: some View {
         if(global.authenticated == false) {
             VStack{
+                AppElevatedButton(label: "Sign in", onClick:{
+                    authViewModel.handleSignInWithApple(appleId: "002001.199e1e71462345a59a0175093ef1f754.0245")
+                })
                     SignInWithAppleButton(.continue){ request in
                     request .requestedScopes = [.email, .fullName]
                 } onCompletion: { result in

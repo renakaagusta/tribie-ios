@@ -15,6 +15,7 @@ class TripViewModel: ObservableObject {
     @Published var tripMemberList: [TripMember]?
     @Published var transactionExpensesList: [TransactionExpenses]?
     @Published var transactionSettlementList: [TransactionSettlement]?
+    @Published var successSendCounter = 0
     
     @Published var showSuccessAlert: Bool = false
     @Published var showErrorAlert: Bool = false
@@ -26,7 +27,7 @@ class TripViewModel: ObservableObject {
         repository.getTripTransactionList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                self.transactionList = response ?? []
+                self.transactionList = response != nil ? response!.filter({$0.tripId == tripId}) : []
                 if (self.transactionList!.count != 0) {
                     self.state = AppState.Exist
                 }
@@ -101,6 +102,8 @@ class TripViewModel: ObservableObject {
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
     }
+    
+    
     
     func resetAlertState() {
         Task {

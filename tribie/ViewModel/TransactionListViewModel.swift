@@ -25,7 +25,7 @@ class TransactionListViewModel: ObservableObject {
         repository.getTripTransactionList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                self.transactionList = response ?? []
+                self.transactionList = response != nil ? response!.filter({$0.tripId == tripId}) : []
                 if (self.transactionList!.count != 0) {
                     self.state = AppState.Exist
                 } else {

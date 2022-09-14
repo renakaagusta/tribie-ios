@@ -37,6 +37,7 @@ class TripListViewModel: ObservableObject {
                     } else {
                         self.state = AppState.Empty
                     }
+                    self.filterTripList()
                 }
             }, onError: {error in
                 self.state = AppState.Error
@@ -48,18 +49,17 @@ class TripListViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 self.tripMemberList = response ?? []
-                if (self.tripMemberList!.count != 0) {
-                    self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
-                }
+                self.filterTripList()
             }, onError: {error in
-                Logger.error("oops")
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
     }
     
     public func filterTripList() {
+        if(tripMemberList == nil || tripList == nil) {
+            return
+        }
+        
         self.filteredTripList = []
         for trip in self.tripList! {
             if (tripMemberList!.first(where: {$0.userId == self.userId}) != nil) {

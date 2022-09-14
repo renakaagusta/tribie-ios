@@ -28,17 +28,18 @@ struct TripListView: View {
                     AppBody1(text: "Error")
                 }
                 if (tripListViewModel.state == AppState.Exist) {
-                        if(tripListViewModel.tripList != nil && tripListViewModel.tripMemberList != nil) {
+                    if(tripListViewModel.filteredTripList != nil) {
                             Spacer().frame(height: 10)
-                                    ForEach(tripListViewModel.tripList!) { trip in
+                                    ForEach(tripListViewModel.filteredTripList!) { trip in
                                         NavigationLink(destination: MainView(tripId: trip.id!)){
                                             AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
                                                 AppBody1(text: trip.title!)
-                                            })
                                         }
+                                    )
+                                }
                             }
                         }
-                        if(tripListViewModel.tripList == nil) {
+                    if(tripListViewModel.filteredTripList == nil) {
                             AppLoading()
                         }
                     }
@@ -58,8 +59,6 @@ struct TripListView: View {
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-//                        NavigationLink(destination: TripFormView()){
-//                        }
                         Button(action: {
                             showGroupMember = true
                         }, label: {
