@@ -136,9 +136,9 @@ class MemberItemListViewModel: ObservableObject {
     func updateTransaction() {
         if(transaction?.status == "Items") {
             transaction?.status = "Expenses"
-        } else if(transaction?.status == "Expenses") {
-            transaction?.status = "Done"
         }
+        Logger.warning(transaction)
+        Logger.warning("--------transaction id member item--------")
         repository.updateTransaction(id: transaction!.id!, transaction: transaction!)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -154,8 +154,10 @@ class MemberItemListViewModel: ObservableObject {
     
     
     func submitTransactionExpenses() {
+        Logger.error("=========================SUBMIT")
         for transactionExpenses in transactionExpensesList! {
-            print(transactionExpenses)
+            Logger.error("=========================NEW")
+            Logger.error(transactionExpenses)
             if(transactionExpenses.saved == false) {
                 repository.addTransactionExpenses(transactionExpenses: transactionExpenses)
                     .observe(on: MainScheduler.instance)
@@ -166,12 +168,17 @@ class MemberItemListViewModel: ObservableObject {
                                 self.moveToSplitBillView = true
                             }
                         } else {
+                            Logger.error(1)
                             self.state = AppState.Error
                         }
                     }, onError: {error in
+                        Logger.error("==================2")
+                        Logger.error(error)
                         self.state = AppState.Error
                     }).disposed(by: disposeBag)
             } else {
+                Logger.error("=========================UPDATE")
+                Logger.error(transactionExpenses)
                 repository.updateTransactionExpenses(id: transactionExpenses.id!, transactionExpenses: transactionExpenses)
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
@@ -181,9 +188,12 @@ class MemberItemListViewModel: ObservableObject {
                                 self.moveToSplitBillView = true
                             }
                         } else {
+                            Logger.error("==================3")
                             self.state = AppState.Error
                         }
                     }, onError: {error in
+                        Logger.error("==================4")
+                        Logger.error(error)
                         self.state = AppState.Error
                     }).disposed(by: disposeBag)
             }

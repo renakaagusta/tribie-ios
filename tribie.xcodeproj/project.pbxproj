@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F08B32028CF021A00D6D53D /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B31F28CF021A00D6D53D /* AddMemberView.swift */; };
+		2F08B32028CF021A00D6D53D /* TripMemberFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B31F28CF021A00D6D53D /* TripMemberFormView.swift */; };
 		2F08B32228CF023700D6D53D /* AddMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */; };
 		2F08B32428CF027500D6D53D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32328CF027500D6D53D /* ProfileViewModel.swift */; };
 		2F08B32628CF028700D6D53D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F08B32528CF028700D6D53D /* ProfileView.swift */; };
@@ -17,6 +17,7 @@
 		2F1FC25A28BD979000938D23 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1FC25928BD979000938D23 /* Binding.swift */; };
 		2F1FC25E28BF20B500938D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FC25D28BF20B500938D23 /* Assets.xcassets */; };
 		2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */; };
+		2F5A21A728D06FE500EA334A /* TripMemberFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A21A628D06FE500EA334A /* TripMemberFormViewModel.swift */; };
 		2F68DC4E28BF2D5500DB5C2A /* NetworkRepostitory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC4D28BF2D5500DB5C2A /* NetworkRepostitory.swift */; };
 		2F68DC5428BF776000DB5C2A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5328BF776000DB5C2A /* Transaction.swift */; };
 		2F68DC5628BF776B00DB5C2A /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */; };
@@ -131,7 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F08B31F28CF021A00D6D53D /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
+		2F08B31F28CF021A00D6D53D /* TripMemberFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMemberFormView.swift; sourceTree = "<group>"; };
 		2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewModel.swift; sourceTree = "<group>"; };
 		2F08B32328CF027500D6D53D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2F08B32528CF028700D6D53D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		2F1FC25928BD979000938D23 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F1FC25D28BF20B500938D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F48DFCD28BCBC700075DEA0 /* MemberAvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAvatarButton.swift; sourceTree = "<group>"; };
+		2F5A21A628D06FE500EA334A /* TripMemberFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMemberFormViewModel.swift; sourceTree = "<group>"; };
 		2F68DC4D28BF2D5500DB5C2A /* NetworkRepostitory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepostitory.swift; sourceTree = "<group>"; };
 		2F68DC5328BF776000DB5C2A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		2F68DC5528BF776B00DB5C2A /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				2FC8FA4528C56B31005B90A9 /* TransactionFormViewModel.swift */,
 				2F08B32128CF023700D6D53D /* AddMemberViewModel.swift */,
 				2F08B32328CF027500D6D53D /* ProfileViewModel.swift */,
+				2F5A21A628D06FE500EA334A /* TripMemberFormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -516,7 +519,7 @@
 				2FD3ECBC28C5C10C00CA9A6E /* TransactionRecordView.swift */,
 				2FD3ECBE28C5C11A00CA9A6E /* TransactionScanView.swift */,
 				B88CFD2528C9D08900A5EB60 /* MainView.swift */,
-				2F08B31F28CF021A00D6D53D /* AddMemberView.swift */,
+				2F08B31F28CF021A00D6D53D /* TripMemberFormView.swift */,
 				2F08B32528CF028700D6D53D /* ProfileView.swift */,
 			);
 			path = Dashboard;
@@ -916,7 +919,7 @@
 				2F7355B528C0AE570080610B /* Headline1.swift in Sources */,
 				2FD6223128BB037E0012BA86 /* MemberSpendingView.swift in Sources */,
 				2FD6224528BB0EA60012BA86 /* Caption1.swift in Sources */,
-				2F08B32028CF021A00D6D53D /* AddMemberView.swift in Sources */,
+				2F08B32028CF021A00D6D53D /* TripMemberFormView.swift in Sources */,
 				2F48DFCE28BCBC700075DEA0 /* MemberAvatarButton.swift in Sources */,
 				2F08B32228CF023700D6D53D /* AddMemberViewModel.swift in Sources */,
 				2FD6224128BB0CF30012BA86 /* TextButton.swift in Sources */,
@@ -927,6 +930,7 @@
 				2FD6228628BB1F220012BA86 /* SettlementListViewModel.swift in Sources */,
 				2FD6223828BB081A0012BA86 /* Header.swift in Sources */,
 				2FC8FA3E28C3E185005B90A9 /* Loading.swift in Sources */,
+				2F5A21A728D06FE500EA334A /* TripMemberFormViewModel.swift in Sources */,
 				2FD6228228BB1EFC0012BA86 /* MemberListViewModel.swift in Sources */,
 				2FD6222D28BB03420012BA86 /* TransactionListView.swift in Sources */,
 				2FC8FA3328C361E9005B90A9 /* SignInResponse.swift in Sources */,
@@ -1071,7 +1075,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1128,7 +1132,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1148,7 +1152,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tribie/Preview Content\"";
-				DEVELOPMENT_TEAM = GHNZ6R7D9B;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tribie/Info.plist;
@@ -1179,7 +1183,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tribie/Preview Content\"";
-				DEVELOPMENT_TEAM = GHNZ6R7D9B;
+				DEVELOPMENT_TEAM = KZ9PN4535G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tribie/Info.plist;

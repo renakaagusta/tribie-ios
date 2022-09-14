@@ -57,8 +57,12 @@ class SplitBillListViewModel: ObservableObject {
         repository.getTransactionItemList(transactionId: transactionId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [self] response in
+                Logger.error("##############1")
                 if(response != nil) {
+                    Logger.error("##############2")
                     for (index, _) in response!.enumerated() {
+                        Logger.error(response![index].quantity)
+                        Logger.error(response![index].price!)
                         self.expensesByItemList.append((response![index].quantity ?? 0) * (response![index].price! ?? 0))
                     }
                     self.transactionItemList = response ?? []
@@ -183,6 +187,11 @@ class SplitBillListViewModel: ObservableObject {
     }
     
     func handleMoveToMemberItem() {
+        Logger.error("------------------------------------------")
+        Logger.error(transaction)
+        Logger.error("==========================================")
+        Logger.error(transactionItemList)
+        Logger.error("------------------------------------------")
         if(self.transactionSettlementList != nil) {
           if(self.successRemoveCounter == self.transactionSettlementList!.count) {
                     calculateSplitBill()
@@ -198,7 +207,6 @@ class SplitBillListViewModel: ObservableObject {
                 self.resetMoveState()
             }
         }
-        
     }
     
     func setSplitBillMethod(method: String) {
@@ -211,17 +219,17 @@ class SplitBillListViewModel: ObservableObject {
         transaction?.serviceCharge = getServiceCharge()
         if(transaction?.status == "Created") {
             transaction?.status = "Items"
-        } else if(transaction?.status == "Item") {
-            transaction?.status = "Calculated"
-        } else if(transaction?.status == "Calculated") {
-            transaction?.status = "Item"
+        }else if(transaction?.status == "Expenses") {
+            transaction?.status = "Done"
         }
+        Logger.warning(transaction)
+        Logger.warning("--------transaction id split bill view-------")
         repository.updateTransaction(id: transaction!.id!, transaction: transaction!)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 if(response != nil) {
                     self.transaction = response
-                    if(self.transaction?.status == "Calculated") {
+                    if(self.transaction?.status == "Expenses") {
                         self.formState = SplitbillState.Calculate
                     }
                 } else {
@@ -236,8 +244,8 @@ class SplitBillListViewModel: ObservableObject {
         var index = 0
         for transactionItem in transactionItemList! {
             transactionItemList![index].price = expensesByItemList[index] / transactionItemList![index].quantity!
-            if(transactionItem.saved == false) {
-                repository.addTransactionItem(transactionItem: transactionItem)
+            if(transactionItemList![index].saved == false) {
+                repository.addTransactionItem(transactionItem: transactionItemList![index])
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         if(response != nil) {
@@ -250,7 +258,7 @@ class SplitBillListViewModel: ObservableObject {
                         self.state = AppState.Error
                     }).disposed(by: disposeBag)
             } else {
-                repository.updateTransactionItem(id: transactionItem.id!, transactionItem: transactionItem)
+                repository.updateTransactionItem(id: transactionItemList![index].id!, transactionItem: transactionItemList![index])
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         if(response != nil) {
@@ -280,6 +288,7 @@ class SplitBillListViewModel: ObservableObject {
                             if(self.successSendCounter == self.transactionSettlementList!.count) {
                                 self.moveToSettlementListView = true
                                 self.resetMoveState()
+                            } else {
                             }
                         } else {
                             self.state = AppState.Error
@@ -362,7 +371,16 @@ class SplitBillListViewModel: ObservableObject {
                 let calculateExpenses: Int = transactionExpenses.quantity! * Int(transactionItemList!.first(where: {$0.id == transactionExpenses.itemId})!.price!)
                 tripMemberList![index].expenses! += calculateExpenses
             }
-            tripMemberList![index].expenses! = tripMemberList![index].expenses! * ((transaction?.grandTotal ?? 0) /  (transaction?.subTotal ?? 0))
+            
+            Logger.debug(tripMemberList![index].expenses!)
+            Logger.debug(transaction?.grandTotal)
+            Logger.debug(transaction?.subTotal)
+            
+            var totalMemberExpenses = Double(tripMemberList![index].expenses!)
+            var subtotal = Double(transaction!.subTotal!)
+            var grandTotal = Double((transaction?.grandTotal)!)
+            
+                                  tripMemberList![index].expenses! =  Int(totalMemberExpenses * grandTotal /  subtotal)
             if(tripMember.id == transaction!.userPaidId!) {
                 Logger.info("=======WHO PAID==========")
                 Logger.info(tripMember.name)
@@ -402,8 +420,7 @@ class SplitBillListViewModel: ObservableObject {
             
             tripMemberList![maxTripMemberIndex].net!+=tripMemberList![minTripMemberIndex].net!
                     
-            transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1,
-                                                                    saved: false, status: "Created"))
+            transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1, saved: false, status: "Created"))
             
             Logger.debug(minTripMember.name)
             Logger.debug(maxTripMember.name)
@@ -436,7 +453,7 @@ class SplitBillListViewModel: ObservableObject {
     
     func resetMoveState() {
         Task {
-            sleep(1)
+            sleep(2)
             self.moveToMemberItemView = false
             self.moveToSettlementListView = false
         }
@@ -494,10 +511,7 @@ class SplitBillListViewModel: ObservableObject {
                 newTransactionItemList![index].quantity! += 1
             }
         }
-        
-//        if(newTransactionItemList![index].quantity != nil) {
-//            newTransactionItemList![index].price = expensesByItemList[index] / newTransactionItemList![index].quantity!
-//        }
+
         newTransactionItemList![index].changed = true
         
         transactionItemList = newTransactionItemList
@@ -512,10 +526,6 @@ class SplitBillListViewModel: ObservableObject {
                 newTransactionItemList![index].quantity! -= 1
             }
         }
-        
-//        if(newTransactionItemList![index].quantity != nil) {
-//            newTransactionItemList![index].price = expensesByItemList[index] / newTransactionItemList![index].quantity!
-//        }
         
         newTransactionItemList![index].changed = true
         

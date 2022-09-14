@@ -39,21 +39,16 @@ class SettlementListViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 self.itemList = response ?? []
-                if (self.itemList!.count != 0) {
-                    self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
-                }
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripTransactionSettlementList(tripId : String = AppConstant.DUMMY_DATA_TRIP_ID) {
+    public func fetchTripTransactionSettlementList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
            repository.getTripTransactionSettlementList(tripId: tripId)
                .observe(on: MainScheduler.instance)
                .subscribe(onNext: { response in
-                   self.transactionSettlementList = response ?? []
+                   self.transactionSettlementList = response != nil ? response!.filter({$0.tripId == tripId}) : []
                    if (self.transactionSettlementList!.count != 0) {
                        self.state = AppState.Exist
                    } else {
@@ -110,7 +105,6 @@ class SettlementListViewModel: ObservableObject {
         }
     }
     
-    //Text limit
     public func textLimit(existingText: String?, limit: Int) -> String {
         let text = existingText ?? ""
         

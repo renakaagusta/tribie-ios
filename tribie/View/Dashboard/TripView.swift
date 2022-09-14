@@ -83,7 +83,7 @@ struct TripView: View {
                                 .padding(.horizontal)
                                 VStack {
                                     if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
-                                        ForEach(tripViewModel.transactionList!) {
+                                        ForEach(tripViewModel.transactionList!.filter({$0.status == "Done"})) {
                                             transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState:getSplitBillState(status: transaction.status!))) {
                                                 RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                                                     .padding(.horizontal)

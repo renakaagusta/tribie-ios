@@ -9,88 +9,61 @@ import SwiftUI
 
 struct TripFormView: View {
     
-    //for Modal Environment
     @Environment(\.presentationMode) var presentationMode
     
-    //variable for modal
     @State private var showAddMemberModalView: Bool = false
     
-    //Variable
-    @State var groupTripName: String = ""
+    @ObservedObject var global = GlobalVariables.global
+    @ObservedObject var tripFormViewModel : TripFormViewModel = TripFormViewModel()
+    var tripId: String?
     
     var body: some View {
-        
         NavigationView {
-            
-            ScrollView {
-                VStack {
-                    //Content
-                        Group {
-                            VStack(alignment:.leading){
-                                Spacer()
-                                HStack{
-                                    AppBody1(text: "Group Trip Member", color: Color.primaryColor, textAlign: .trailing)
-                                    Spacer()
-                                }
-                            }
-                            
-                            AppTextField( placeholder: "Input Name",field: $groupTripName)
+            VStack {
+                ScrollView {
+                    AppBody1(text: "Group Trip Member", color: Color.secondaryColor, textAlign: .trailing)
+                    AppTextField( placeholder: "Input Name",field: Binding(get: {tripFormViewModel.trip.title ?? ""}, set: {tripFormViewModel.trip.title = $0}))
+                    if(tripId == nil) {
+                        ForEach(global.tripMemberList) { tripMember in
+                            MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount:0)
+                        }.onAppear {
+                            tripFormViewModel.fetchData(tripId: tripId, tripMemberList: global.tripMemberList)
                         }
-                        .padding(.horizontal)
-                        
-                        Group {
-                            VStack(alignment:.leading){
-                                HStack{
-                                    AppBody1(text: "Members", color: Color.primaryColor, textAlign: .trailing)
-                                    Spacer()
-                                }
+                    }
+                    if(tripId != nil) {
+                        if(tripFormViewModel.tripMemberList != nil) {
+                            ForEach(tripFormViewModel.tripMemberList) { tripMember in
+                                MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount:0)
+                            }.onAppear {
+                                tripFormViewModel.fetchData(tripId: tripId, tripMemberList: global.tripMemberList)
                             }
-                            
-                            AppCaption1(text: "Go add some members! You’ll need at least 2 members to create a new group.", color: Color.footnoteColor)
                         }
-                        .padding()
-    //                Form {
-    //                    Section(header: Text("Group Trip Name")) {
-    //                        TextField("Input Name", text: $groupTripName)
-    //                    }
-    //
-    //                    Section(header: Text("Members")) {
-    //                        AppBody1(text: "check")
-    //                    }
-    //                }
-                    
-                    //End Content
-                } //VStack
-                .navigationTitle("Group Trip").foregroundColor(.primaryColor)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    //for leading navigation bar items
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            //action
-                            presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
-                        })
                     }
-                    //for trailing navigation bar items
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        
-                            AppImageButton(height: 20, width: 20, image: AppImage(height: 20, width: 20, url: "person.fill.badge.plus", source: AppImageSource.SystemName, color: Color.signifierColor, component: {}), onClick: {
-                                self.showAddMemberModalView.toggle()
-                            })
-                        .sheet(isPresented: $showAddMemberModalView) {
-                            AddMemberView()
-                        } //for new modal
-                    }
-                } //toolbar
+                }
             }
-            .background(Color.tertiaryColor)
-            
-        } //Navigation View
-        
+            .navigationTitle("Group Trip")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        tripFormViewModel.submitTrip(complete: {
+                            presentationMode.wrappedValue.dismiss()
+                        }, tripMemberList: global.tripMemberList)
+                    }, label: {
+                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    AppImageButton(height: 100, width: 100, image: AppImage(height: 100, width: 100, url: "person.fill.badge.plus", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick: {
+                        self.showAddMemberModalView.toggle()
+                    })
+                    .sheet(isPresented: $showAddMemberModalView) {
+                        TripMemberFormView()
+                    }
+                }
+            }
+        }
     }
-    
 }
 
 struct FormTripView_Previews: PreviewProvider {
