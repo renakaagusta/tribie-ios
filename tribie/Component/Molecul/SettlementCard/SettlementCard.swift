@@ -18,22 +18,22 @@ struct SettlementCard: View {
             RoundedRectangle(cornerRadius: 10)
                 .frame(maxWidth:.infinity)
                 .frame(height: 48)
-                .foregroundColor(Color.white)
+                .foregroundColor(Color.cardColor)
             HStack{
                 VStack(alignment:.leading){
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
+                            .fill(LinearGradient(gradient: Gradient(colors: [Color.capsuleStart, Color.capsuleEnd]), startPoint: .bottomTrailing, endPoint: .topLeading))
                             .frame(width:CGFloat(userFrom.count * 10), height: 20)
-                            .foregroundColor(Color.primaryColor)
-                        AppBody1(text: userFrom, color: Color.white, fontWeight: .semibold)
+                        AppBody1(text: userFrom, color: Color.signifierColor, fontWeight: .semibold)
                     }
                 }
                 Image(systemName: "arrow.right")
-                    .foregroundColor(Color.secondaryColor)
-                AppBody1(text: userTo,color: Color.secondaryColor)
+                    .foregroundColor(Color.textColor)
+                AppBody1(text: userTo,color: Color.primaryColor)
                 Spacer()
                 VStack (alignment:.trailing) {
-                    AppBody1(text: "Rp\(amount)", color: Color.secondaryColor, fontWeight: .bold)
+                    AppBody1(text: "Rp\(amount)", color: Color.primaryColor, fontWeight: .bold)
                         .frame(alignment:.trailing)
                 }
             }
