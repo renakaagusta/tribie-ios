@@ -12,6 +12,8 @@ struct SettlementListView: View {
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @State var transactionId: String?
     @ObservedObject var settlementListViewModel : SettlementListViewModel = SettlementListViewModel()
+    @State private var showingOptions = false
+    @State private var selection = "None"
     
     var body: some View {
         ScrollView {
@@ -27,7 +29,33 @@ struct SettlementListView: View {
                 }
                 if(settlementListViewModel.state == AppState.Exist) {
                     
-                    AppTitle1(text: "Settlements")
+                    VStack(alignment:.leading){
+                        HStack{
+                            VStack (alignment:.leading) {
+                                AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
+                                AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20)
+                            }
+                            Spacer()
+                            
+                            AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
+                                showingOptions = true
+                            })
+                            .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
+                                
+                                Button("Members") {
+                                    selection = "Green"
+                                }
+                                
+                                Button("Share Group Transactions") {
+                                    selection = "Blue"
+                                }
+                            }
+                        }
+                        Spacer()
+                        AppHeader(text: "Settlements", color: Color.primaryColor, textAlign: .leading)
+                        AppCaption1(text: "List of transaction you haven’t manage yet")
+                    }
+                    
                     
                     if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
                         ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in

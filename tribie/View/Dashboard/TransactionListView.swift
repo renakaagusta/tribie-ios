@@ -12,6 +12,9 @@ struct TransactionListView: View {
     
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
+    @ObservedObject var tripViewModel: TripViewModel = TripViewModel()
+    @State private var showingOptions = false
+    @State private var selection = "None"
     
     var body: some View {
         VStack {
@@ -28,17 +31,32 @@ struct TransactionListView: View {
                 ScrollView {
                     VStack(alignment: .leading){
                         HStack{
-                            AppFootnote(text: "Active Trip", fontWeight: .regular, textAlign: .leading)
-                                .padding(.horizontal)
+                            VStack (alignment:.leading) {
+                                AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
+                                AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20)
+                            }
                             Spacer()
+                            
+                            AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
+                                showingOptions = true
+                            })
+                            .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
+                                
+                                Button("Members") {
+                                    selection = "Green"
+                                }
+                                
+                                Button("Share Group Transactions") {
+                                    selection = "Blue"
+                                }
+                            }
                         }
-                        AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold, fontSize: 20).padding(.horizontal)
                         Spacer()
-                        AppHeader(text: "Drafts", textAlign: .leading)
+                        AppHeader(text: "Drafts", color: Color.primaryColor, textAlign: .leading)
                         AppCaption1(text: "List of transaction you haven’t manage yet")
                     } //VStack
                     HStack {
-                        AppTitle1(text: "Unsplitted Bill", fontWeight: .bold, textAlign: .leading)
+                        AppTitle1(text: "Unsplitted Bill",color: Color.primary, fontWeight: .bold, textAlign: .leading)
                             .padding(.vertical)
                         Spacer()
                     }
@@ -46,7 +64,7 @@ struct TransactionListView: View {
                     if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
                         ForEach(transactionViewModel.transactionList!) { transaction in
                             NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
-                                RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: "24",time: "9.24", total: transaction.grandTotal ?? 0)
+                                RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""),time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                             }
                         }
                     } else {
