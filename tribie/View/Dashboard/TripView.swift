@@ -34,13 +34,12 @@ struct TripView: View {
                 }
                 if(tripViewModel.state == AppState.Exist){
                     if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil && tripViewModel.transactionSettlementList != nil){
-                            VStack {
                                 VStack(alignment: .leading){
                                     HStack{
                                         VStack (alignment:.leading) {
                                             AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                                 .padding(.horizontal)
-                                            AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
+                                            AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
                                         }
                                         Spacer()
                                         
@@ -95,7 +94,7 @@ struct TripView: View {
                                         AppLoading()
                                     }
                                 }
-                            }
+                            
                             
                     }
                 }
@@ -173,12 +172,6 @@ struct TripView: View {
             .onAppear {
                 tripViewModel.fetchData(tripId: tripId)
             }
-//            .toolbar {
-//                //for leading navigation bar items
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//
-//                }
-//            } //toolbar
             
         }
     }

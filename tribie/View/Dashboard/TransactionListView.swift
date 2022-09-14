@@ -17,67 +17,69 @@ struct TransactionListView: View {
     @State private var selection = "None"
     
     var body: some View {
-        VStack {
-            if (transactionViewModel.state == AppState.Loading) {
-                AppLoading()
-            }
-            if (transactionViewModel.state == AppState.Empty) {
-                AppBody1(text: "Empty")
-            }
-            if (transactionViewModel.state == AppState.Error) {
-                AppBody1(text: "Error bang")
-            }
-            if (transactionViewModel.state == AppState.Exist) {
-                ScrollView {
-                    VStack(alignment: .leading){
-                        HStack{
-                            VStack (alignment:.leading) {
-                                AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
-                                AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20)
+        ScrollView {
+            VStack {
+                if (transactionViewModel.state == AppState.Loading) {
+                    AppLoading()
+                }
+                if (transactionViewModel.state == AppState.Empty) {
+                    AppBody1(text: "Empty")
+                }
+                if (transactionViewModel.state == AppState.Error) {
+                    AppBody1(text: "Error bang")
+                }
+                if (transactionViewModel.state == AppState.Exist) {
+                        VStack(alignment: .leading){
+                            HStack{
+                                VStack (alignment:.leading) {
+                                    AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
+                                    AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20)
+                                }
+                                Spacer()
+                                
+                                AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
+                                    showingOptions = true
+                                })
+                                .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
+                                    
+                                    Button("Members") {
+                                        selection = "Green"
+                                    }
+                                    
+                                    Button("Share Group Transactions") {
+                                        selection = "Blue"
+                                    }
+                                }
                             }
                             Spacer()
-                            
-                            AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
-                                showingOptions = true
-                            })
-                            .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
-                                
-                                Button("Members") {
-                                    selection = "Green"
-                                }
-                                
-                                Button("Share Group Transactions") {
-                                    selection = "Blue"
+                            AppHeader(text: "Drafts", color: Color.primaryColor, textAlign: .leading)
+                            AppCaption1(text: "List of transaction you haven’t manage yet")
+                        } //VStack
+                        HStack {
+                            AppTitle1(text: "Unsplitted Bill",color: Color.primary, fontWeight: .bold, textAlign: .leading)
+                                .padding(.vertical)
+                            Spacer()
+                        }
+                        
+                        if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
+                            ForEach(transactionViewModel.transactionList!) { transaction in
+                                NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
+                                    RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""),time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                                 }
                             }
+                        } else {
+                            AppCaption1(text: "You’re done. No unsplitted bill.")
                         }
-                        Spacer()
-                        AppHeader(text: "Drafts", color: Color.primaryColor, textAlign: .leading)
-                        AppCaption1(text: "List of transaction you haven’t manage yet")
-                    } //VStack
-                    HStack {
-                        AppTitle1(text: "Unsplitted Bill",color: Color.primary, fontWeight: .bold, textAlign: .leading)
-                            .padding(.vertical)
-                        Spacer()
-                    }
-                    
-                    if(transactionViewModel.transactionList != nil && transactionViewModel.transactionExpensesList != nil) {
-                        ForEach(transactionViewModel.transactionList!) { transaction in
-                            NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState: SplitbillState.InputTransactionItem)) {
-                                RecentTransactionCard(memberPaid: transactionViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""),time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
-                            }
+                        
+                        if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
+                            AppLoading()
                         }
-                    } else {
-                        AppCaption1(text: "You’re done. No unsplitted bill.")
-                    }
                     
-                    if(transactionViewModel.transactionList == nil || transactionViewModel.transactionExpensesList == nil) {
-                        AppLoading()
-                    }
-                }.padding()
-            }
-            Spacer()
+                }
+                Spacer()
+            }.padding()
         }
+        
         .onAppear {
             transactionViewModel.fetchData(tripId: tripId)
         }

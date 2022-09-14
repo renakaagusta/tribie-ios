@@ -35,7 +35,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Settlements", systemImage: "checkmark.seal.fill")
                 }
-        }.accentColor(Color.primaryColor)
+        }.accentColor(Color.signifierColor)
         
     }
 }
