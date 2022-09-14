@@ -27,45 +27,17 @@ struct TripView: View {
     }
     
     var body: some View {
-        VStack{
-            if(tripViewModel.state == AppState.Loading){
-                AppLoading()
-            }
-            if(tripViewModel.state == AppState.Exist){
-                if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil && tripViewModel.transactionSettlementList != nil){
-                    ScrollView {
-                        VStack {
-                            VStack(alignment: .leading){
-                                HStack{
-                                    AppFootnote(text: "Active Trip", fontWeight: .regular, textAlign: .leading)
-                                        .padding(.horizontal)
-                                    Spacer()
-                                }
-                                AppTitle1(text: "Liburan Tribie", fontWeight: .semibold, fontSize: 20).padding(.horizontal)
-                                Spacer()
-                                AppHeader(text: "Transactions", textAlign: .leading)
-                                    .padding(.horizontal)
-                            }
-                            ScrollView(.horizontal,showsIndicators: false){
-                                HStack(spacing:10){
-                                    SpendingCard(totalSpending: "\(tripViewModel.calculateTotalExpenses())", startColor: Color.startColor, endColor: Color.endColor)
-                                    DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
-                                }
-                            }
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
-                                Spacer()
-                                NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                    AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
-                                }
-                            }
-                            .padding(.horizontal)
-                            VStack {
-                                if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
-                                    ForEach(tripViewModel.transactionList!.filter({$0.status == "Done"})) {
-                                        transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState:getSplitBillState(status: transaction.status!))) {
-                                            RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
+        ScrollView {
+            VStack {
+                if(tripViewModel.state == AppState.Loading){
+                    AppLoading()
+                }
+                if(tripViewModel.state == AppState.Exist){
+                    if(tripViewModel.tripMemberList != nil && tripViewModel.transactionList != nil && tripViewModel.transactionItemList != nil && tripViewModel.transactionExpensesList != nil && tripViewModel.transactionSettlementList != nil){
+                                VStack(alignment: .leading){
+                                    HStack{
+                                        VStack (alignment:.leading) {
+                                            AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                                 .padding(.horizontal)
                                             AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
                                         }
@@ -111,7 +83,7 @@ struct TripView: View {
                                 .padding(.horizontal)
                                 VStack {
                                     if(tripViewModel.transactionList != nil && tripViewModel.tripMemberList != nil) {
-                                        ForEach(tripViewModel.transactionList!) {
+                                        ForEach(tripViewModel.transactionList!.filter({$0.status == "Done"})) {
                                             transaction in NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transaction.id!, formState:getSplitBillState(status: transaction.status!))) {
                                                 RecentTransactionCard(memberPaid: tripViewModel.getUserPaid(userPaidId: transaction.userPaidId ?? "").name!, title: transaction.title ?? "", date: tripViewModel.dateFromString(string: transaction.createdAt ?? ""), time: tripViewModel.timeFromString(string: transaction.createdAt ?? ""), total: transaction.grandTotal ?? 0)
                                                     .padding(.horizontal)
