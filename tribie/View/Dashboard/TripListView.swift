@@ -17,7 +17,7 @@ struct TripListView: View {
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
                 if (tripListViewModel.state == AppState.Loading) {
                     AppLoading()
@@ -57,7 +57,7 @@ struct TripListView: View {
                         Button(action: {
                             showProfile = true
                         }, label: {
-                            AppImage(url: "person.crop.circle",source:AppImageSource.SystemName,component: {})
+                            AppImage(url: "person.crop.circle",source: AppImageSource.SystemName,component: {})
                         }).sheet(isPresented: $showProfile) {
                             ProfileView()
                         }
