@@ -214,8 +214,8 @@ class TripViewModel: ObservableObject {
         var report = ""
         report += trip!.title!
         report += "\n"
-        report += "*DD - MM* to *DD - MM*"
-        report += "\n"
+//        report += "*DD - MM* to *DD - MM*"
+//        report += "\n"
         report += "\n"
         report += "-----------------\n"
         report += "\n"
