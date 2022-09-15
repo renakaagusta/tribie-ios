@@ -32,7 +32,7 @@ struct TripMemberFormView: View {
                 if(tripMemberFormViewModel.user == nil) {
                     Group {
                         AppTextField(placeholder: "Apple id", field: Binding(get: {tripMemberFormViewModel.email ?? ""}, set: {tripMemberFormViewModel.email = $0}))
-                        AppElevatedButton(label: "Search", color: Color.cardColor, onClick: {
+                        AppElevatedButton(label: "Search", color: Color.black , backgroundColor: Color.signifierColor, onClick: {
                             tripMemberFormViewModel.searchUser()
                         })
                     }.padding()
