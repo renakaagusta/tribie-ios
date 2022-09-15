@@ -20,8 +20,8 @@ struct TripMemberFormView: View {
                 if(tripMemberFormViewModel.user != nil) {
                     if(tripMemberFormViewModel.user?.username != nil) {
                             AppCircleImage(component: {})
-                            AppTitle1(text: (tripMemberFormViewModel.user?.username)!)
-                            AppElevatedButton(label: "Add", onClick: {
+                        AppTitle1(text: (tripMemberFormViewModel.user?.username)!, color: Color.primaryColor)
+                        AppElevatedButton(label: "Add", color: Color.black, backgroundColor: Color.signifierColor, onClick: {
                                 tripMemberFormViewModel.addTripMember()
                                 presentationMode.wrappedValue.dismiss()
                             })
@@ -29,10 +29,15 @@ struct TripMemberFormView: View {
                         AppBody1(text: "User not found")
                     }
                 }
-                if(tripMemberFormViewModel.user == nil) { AppTextField(placeholder: "Apple id", field: Binding(get: {tripMemberFormViewModel.email ?? ""}, set: {tripMemberFormViewModel.email = $0}))
-                    AppElevatedButton(label: "Search", onClick: {
-                        tripMemberFormViewModel.searchUser()
-                    })
+                if(tripMemberFormViewModel.user == nil) {
+                    Group {
+                        AppTextField(placeholder: "Apple id", field: Binding(get: {tripMemberFormViewModel.email ?? ""}, set: {tripMemberFormViewModel.email = $0}))
+                        AppElevatedButton(label: "Search", color: Color.black , backgroundColor: Color.signifierColor, onClick: {
+                            tripMemberFormViewModel.searchUser()
+                        })
+                    }.padding()
+                    
+                    Spacer()
                 }
             }
             .navigationTitle("Add Members")
@@ -42,7 +47,7 @@ struct TripMemberFormView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                        AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
                     })
                 }
             }

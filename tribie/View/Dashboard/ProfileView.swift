@@ -22,13 +22,13 @@ struct ProfileView: View {
                     AppCircleImage(size: 40.0, component: {})
                     Spacer().frame(width: 10.0)
                     VStack(alignment: .leading) {
-                        AppBody1(text: profileViewModel.userName)
-                        AppBody1(text: profileViewModel.userMail)
+                        AppBody1(text: profileViewModel.userName, color: Color.primaryColor)
+                        AppBody1(text: profileViewModel.userMail, color: Color.primaryColor)
                     }
                     Spacer()
-                }.padding().background(Color.white).cornerRadius(10)
+                }.padding().background(Color.cardColor).cornerRadius(10)
                 
-                AppElevatedButton(label: "Sign Out", color: Color.cardColor, onClick: profileViewModel.signOut)
+                AppElevatedButton(label: "Sign Out", color: Color.black, backgroundColor: Color.signifierColor, onClick: profileViewModel.signOut)
                 
                 Spacer()
             }.padding().onAppear{
@@ -43,7 +43,7 @@ struct ProfileView: View {
                         //action
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                        AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
                     })
                 }
             } //toolbar

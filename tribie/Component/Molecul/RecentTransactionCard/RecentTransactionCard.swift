@@ -30,7 +30,7 @@ struct RecentTransactionCard: View {
                         
                         Text(memberPaid)
                             .font(.system(size: 13))
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.signifierColor)
                     }
                     
                     Spacer().frame(height: 7)
@@ -60,7 +60,7 @@ struct RecentTransactionCard: View {
                     Text("Rp\(total)")
                         .font(.system(size: 17))
                         .fontWeight(.bold)
-                        .foregroundColor(Color.primaryColor)
+                        .foregroundColor(Color.signifierColor)
                     
                     Spacer().frame(height: 10)
                 }

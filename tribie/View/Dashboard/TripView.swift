@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import UIKit
 
 struct TripView: View {
     
@@ -53,9 +53,9 @@ struct TripView: View {
                                                 selection = "Green"
                                             }
                                             
-                                            Button("Share Group Transactions") {
-                                                selection = "Blue"
-                                            }
+                                            Button("Share Group Transactions", action: {
+                                                tripViewModel.exportReport()
+                                            })
                                         }
                                         
                                     }
@@ -167,12 +167,12 @@ struct TripView: View {
                             Spacer()
                         }
                         
-                        
-                     //Scrollview
                 }
                 if(tripViewModel.state == AppState.Error){
                     AppBody1(text:"Error")
                 }
+            }.sheet(isPresented: Binding(get: {tripViewModel.showReport ?? false}, set: {_ in true})) {
+                ShareSheet(activityItems: [Binding(get: {tripViewModel.reportText ?? "-"}, set: {_ in true}).wrappedValue])
             }
             .background(Color.tertiaryColor)
             .onAppear {
@@ -192,5 +192,27 @@ struct TripView: View {
         static var previews: some View {
             TripView().preferredColorScheme(scheme)
         }
+    }
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+    typealias Callback = (_ activityType: UIActivity.ActivityType?, _ completed: Bool, _ returnedItems: [Any]?, _ error: Error?) -> Void
+    
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]? = nil
+    let excludedActivityTypes: [UIActivity.ActivityType]? = nil
+    let callback: Callback? = nil
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: applicationActivities)
+        controller.excludedActivityTypes = excludedActivityTypes
+        controller.completionWithItemsHandler = callback
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        // nothing to do here
     }
 }
