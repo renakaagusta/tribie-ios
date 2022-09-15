@@ -54,11 +54,11 @@ struct TripFormView: View {
                             presentationMode.wrappedValue.dismiss()
                         }
                     }, label: {
-                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                        AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
                     })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    AppImageButton(height: 100, width: 100, image: AppImage(height: 100, width: 100, url: "person.fill.badge.plus", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick: {
+                    AppImageButton(height: 20, width: 20, image: AppImage(height: 20, width: 20, url: "person.fill.badge.plus", source: AppImageSource.SystemName, color: Color.signifierColor, component: {}), onClick: {
                         self.showAddMemberModalView.toggle()
                     })
                     .sheet(isPresented: $showAddMemberModalView) {

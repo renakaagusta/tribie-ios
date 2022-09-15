@@ -43,7 +43,7 @@ struct ProfileView: View {
                         //action
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                        AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
                     })
                 }
             } //toolbar
