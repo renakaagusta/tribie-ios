@@ -21,7 +21,7 @@ struct AppNumberField: View {
                     Image(systemName: "magnifyingglass")
                 }
                 TextField(placeholder, value: $field, formatter: NumberFormatter()).frame(minWidth:0).frame(minWidth: 0, maxWidth: .infinity, minHeight: 8, maxHeight: 8)
-                    .keyboardType(numberInput ? .decimalPad : .default)
+                    .keyboardType(.decimalPad)
             }.padding()
             Divider()
                 .frame(height: 0.5)

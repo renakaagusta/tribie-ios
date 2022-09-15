@@ -534,7 +534,7 @@ class SplitBillListViewModel: ObservableObject {
     
     public func addItem() {
         transactionItemList!.append(
-            TransactionItem(id: Random.randomString(length: 10), tripId: transaction!.tripId!, transactionId: transaction!.id!,  title: "", price: 0, quantity: 0, saved: false))
+            TransactionItem(id: Random.randomString(length: 10), tripId: transaction!.tripId!, transactionId: transaction!.id!,  title: "", price: 0, quantity: 1, saved: false))
         expensesByItemList.append(0)
     }
     
