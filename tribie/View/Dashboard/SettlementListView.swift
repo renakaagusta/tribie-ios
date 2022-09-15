@@ -28,7 +28,6 @@ struct SettlementListView: View {
                     Text("Error")
                 }
                 if(settlementListViewModel.state == AppState.Exist) {
-                    
                     VStack(alignment:.leading){
                         HStack{
                             VStack (alignment:.leading) {
@@ -36,7 +35,6 @@ struct SettlementListView: View {
                                 AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20)
                             }
                             Spacer()
-                            
                             AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
                                 showingOptions = true
                             })
@@ -55,10 +53,8 @@ struct SettlementListView: View {
                         AppHeader(text: "Settlements", color: Color.primaryColor, textAlign: .leading)
                         AppCaption1(text: "List of transaction you haven’t manage yet")
                     }
-                    
-                    
-                    if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil) {
-                        ForEach(settlementListViewModel.transactionSettlementList!) { transactionSettlement in
+                    if(settlementListViewModel.transactionSettlementList != nil && settlementListViewModel.tripMemberList != nil && settlementListViewModel.groupedSettlementList != nil) {
+                        ForEach(settlementListViewModel.groupedSettlementList!) { transactionSettlement in
                             SettlementCard(userFrom: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userFromId!),
                                            userTo: settlementListViewModel.getUserName(tripMemberId: transactionSettlement.userToId!),
                                            amount: transactionSettlement.nominal ?? 0)

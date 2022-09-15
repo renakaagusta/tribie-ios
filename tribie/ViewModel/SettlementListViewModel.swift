@@ -14,6 +14,7 @@ class SettlementListViewModel: ObservableObject {
     
     @Published var tripMemberList: [TripMember]?
     @Published var transactionSettlementList: [TransactionSettlement]?
+    @Published var groupedSettlementList: [TransactionSettlement]?
     @Published var itemList: [TransactionItem]?
     
     private var repository: NetworkRepository = NetworkRepository()
@@ -29,6 +30,7 @@ class SettlementListViewModel: ObservableObject {
                 } else {
                     self.state = AppState.Empty
                 }
+                self.handleGroupSettlementList()
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
@@ -54,6 +56,7 @@ class SettlementListViewModel: ObservableObject {
                    } else {
                        self.state = AppState.Empty
                    }
+                   self.handleGroupSettlementList()
                }, onError: {error in
                    self.state = AppState.Error
                }).disposed(by: disposeBag)
@@ -64,11 +67,6 @@ class SettlementListViewModel: ObservableObject {
                .observe(on: MainScheduler.instance)
                .subscribe(onNext: { response in
                    self.itemList = response ?? []
-                   if (self.itemList!.count != 0) {
-                       self.state = AppState.Exist
-                   } else {
-                       self.state = AppState.Empty
-                   }
                }, onError: {error in
                    self.state = AppState.Error
                }).disposed(by: disposeBag)
@@ -79,14 +77,41 @@ class SettlementListViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 self.tripMemberList = response ?? []
-                if (self.tripMemberList!.count != 0) {
-                    self.state = AppState.Exist
-                } else {
-                    self.state = AppState.Empty
-                }
+                
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
+    }
+    
+    func handleGroupSettlementList() {
+        if(tripMemberList == nil || transactionSettlementList == nil || itemList == nil) {
+            return
+        }
+        
+        if(groupedSettlementList == nil) {
+            groupedSettlementList = []
+        }
+        
+        for (index, transactionSettlement) in transactionSettlementList!.enumerated() {
+            var sameSettlementIndex =  groupedSettlementList!.firstIndex(where: {$0.userFromId == transactionSettlement.userFromId && $0.userToId == transactionSettlement.userToId})
+            var oppsiteSettlementIndex = groupedSettlementList!.firstIndex(where: {$0.userFromId == transactionSettlement.userToId && $0.userToId == transactionSettlement.userFromId})
+            if (sameSettlementIndex != nil) {
+                Logger.info("------1")
+                groupedSettlementList![sameSettlementIndex!].nominal! += transactionSettlement.nominal!
+            } else if(oppsiteSettlementIndex != nil) {
+                Logger.info("------2")
+                if(groupedSettlementList![oppsiteSettlementIndex!].nominal! - transactionSettlement.nominal! > 0) {
+                    groupedSettlementList![oppsiteSettlementIndex!].nominal! -= transactionSettlement.nominal!
+                } else {
+                    groupedSettlementList![oppsiteSettlementIndex!].nominal! = -1 * (groupedSettlementList![oppsiteSettlementIndex!].nominal! - transactionSettlement.nominal!)
+                    groupedSettlementList![oppsiteSettlementIndex!].userToId = transactionSettlement.userToId
+                    groupedSettlementList![oppsiteSettlementIndex!].userFromId = transactionSettlement.userFromId
+                }
+            } else {
+                Logger.info("------3")
+                groupedSettlementList!.append(transactionSettlement)
+            }
+        }
     }
     
     func getUserName(tripMemberId: String) -> String {
