@@ -1,92 +1,148 @@
-/* 
+/*
   Localizable.strings
   tribie
 
   Created by Arnold Sidiprasetija on 05/09/22.
+ tapi udah di edit dipta dan wini dalam 1 hari slese
   
 */
 
 
 //Phrase that use on
-//Bill Page (TripView)
-//See All Transactions Page (TransactionListView)
-//See All Settlements List (SettlementListView)
+//Login Page
+"Welcome to Tribie!👋" = "Welcome to Tribie!👋";
+"Your Travel Bills & Expenses Manager" = "Your Travel Bills & Expenses Manager";
+"Continue with Apple" = "Continue with Apple";
 
-"Total Spending" = "Total Spending";
-"on this trip" = "on this trip";
-"Recent Transactions" = "Recent Transactions";
-"Settlements" = "Settlements";
+//Trip List Page - Empty State
+"Trip" = "Trip";
+"No trip yet" = "No trip yet";
 
-//Bill Page (TripView)
-
-"See all" = "See all";
-
-//Bill Page (TripView) - Empty State
-
-"No transactions. Go add a new transaction to this group" = "No transactions. Go add a new transaction to this group";
-"No settlements. Go add a new transaction to settle with your freinds." = "No settlements. Go add a new transaction to settle with your freinds.";
-
-//Members Page (MemberListView)
+//New Trip Page - Empty State
+"Group Trip" = "Group Trip";
+"Group Trip Name" = "Group Trip Name";
+"Input Name" = "Input Name";
 "Members" = "Members";
+"Go add some members! You'll need at least 2 members to create a new group" = "Go add some members! You'll need at least 2 members to create a new group";
+
+//New Trip Page - Error
+"No Member Added" = "No Member Added";
+"You haven’t add any member to the group yet. Please add at least 2 members to start tracking." = "You haven’t add any member to the group yet. Please add at least 2 members to start tracking.";
+
+//New Trip Page
+"Spent" = "Spent";
+
+//Add Member Page - Empty State
+"Search" = "Search";
+"Find members using Apple ID" = "Find members using Apple ID";
+
+//Add Member Page - New Member
+"Add" = "Add";
+"Added" = "Added";
+
+//Add Member Page - Error
+"No user found" = "No member found";
+
+//Profile Page
+"Account" = "Account";
+"Sign Out" = "Sign Out";
+
+//Top Nav Bar
+"Active Trip" = "Active Trip";
+    //More Option Button
+    "Group Trip" = "Group Trip";
+    "Share Group Transactions" = "Share Group Transactions";
+    "Cancel" = "Cancel";
+
+//Card Hold Action (Recent Transaction Card, Drafts Card)
+"Edit" = "Edit";
+"Remove" = "Remove";
+
+//Bill Page (TripView)
+"Transactions" = "Transactions";
+"Summary of all transactions you’ve added to this trip" = "Summary of all transactions you’ve added to this trip";
+
+    //Hero Section Card 1
+    "Total Spending" = "Total Spending";
+    "on this trip" = "on this trip";
+
+    //Hero Section Card 2
+    "Debts Rank" = "Debts Rank";
+    "Top 1 in debt better pay the next bill" = "Top 1 in debt better pay the next bill";
+
+"Recent Transactions" = "Recent Transactions";
+"No transactions. Go add a new transaction to this group." = "No transactions. Go add a new transaction to this group.";
+
+//Settlements Page - Empty State
+"Settlements" = "Settlements";
+"Bills of each member need to settle one another based on who paid for a transaction." = "Bills of each member need to settle one another based on who paid for a transaction.";
+"Unpaid" = "Unpaid";
+"No unpaid settlements. Go add a new transaction to settle with other members." = "No unpaid settlements. Go add a new transaction to settle with other members.";
+"Paid" = "Paid";
+"Paid settlement will show up here." = "Paid settlement will show up here.";
+
+    //Settlements Card Action
+    "Are you sure you have done this settlement?" = "Are you sure you have done this settlement?";
+    "Yes" = "Yes";
+
+//Drafts Page
+"Drafts" = "Drafts";
+"List of transaction you haven’t manage yet" = "List of transaction you haven’t manage yet";
+"Unsplitted Bills" = "Unsplitted Bills";
+"No bills to be splitted" = "No bills to be splitted";
 
 //New Transaction Page (Manual)
-
 "New Transaction" = "New Transaction";
+"Cancel" = "Cancel";
 "Save Draft" = "Save Draft";
+"Grand Total" = "Grand Total";
+"Transaction Name" = "Transaction Name";
+"Paid by" = "Paid by";
+"Split Bill" = "Split Bill";
 
 //New Transaction Page (Manual) - Error State
-
-"Transaction Name Hasn’t Filled" = "Transaction Name Hasn’t Filled";
-"You haven’t input your transaction name. Please input your transaction name to continue tracking" = "You haven’t input your transaction name. Please input your transaction name to continue tracking";
-"Grand Total Hasn’t Filled" = "Grand Total Hasn’t Filled";
-"You haven’t input the grand total. Please input the grand total of your bill to continue tracking" = "You haven’t input the grand total. Please input the grand total of your bill to continue tracking";
+"Transaction Name isn’t Filled" = "Transaction Name isn’t Filled";
+"Please input your transaction name to continue tracking" = "Please input your transaction name to continue tracking";
+"Grand Total isn’t Filled" = "Grand Total isn’t Filled";
+"Please input the grand total of your bill to continue tracking" = "Please input the grand total of your bill to continue tracking";
 
 //Split Bill Page (SplitBillView)
-
 "Split Bill" = "Split Bill";
-"Who Paid" = "Who Paid";
-"Split Method" = "Split Method";
-"Equally" = "Equally";
-"Per Item" = "Per Item";
-"Manually" = "Manually";
-"Service Charge/ Tax" = "Service Charge/ Tax";
-"Grand Total" = "Grand Total";
-"Next" = "Next";
+"Back" = "Back";
 
-//Split Bill Page (equally)
-"Grand total amount will be split equally among the selected members." = "Grand total amount will be split equally among the selected members.";
+    //Equally
+    "Equally" = "Equally";
+    "Grand total amount will be split equally among the selected members." = "Grand total amount will be split equally among the selected members.";
+    "Done" = "Done";
 
-//Split Bill Page (equally) - Error State
-"Grand Total can not be Zero" = "Grand Total can not be Zero";
-"Grand Total can not be zero. Please input the amount to continue tracking." = "Grand Total can not be zero. Please input the amount to continue tracking.";
-"Input Transaction Name" = "Input Transaction Name";
-"Transaction Name must be filled." = "Transaction Name must be filled.";
-"No Member Selected" = "No Member Selected";
-"You haven’t select any member to the transaction yet. Please select at least 1 member to continue tracking." = "You haven’t select any member to the transaction yet. Please select at least 1 member to continue tracking.";
+    //Equally - Error State
+    "Grand Total can not be Zero" = "Grand Total can not be Zero";
+    "Please input the amount to continue tracking." = "Please input the amount to continue tracking.";
+    "Input Transaction Name" = "Input Transaction Name";
+    "Transaction Name must be filled." = "Transaction Name must be filled.";
+    "No Member Selected" = "No Member Selected";
+    "Please select at least 1 member to continue tracking." = "Please select at least 1 member to continue tracking.";
 
+    //Per Item
+    "Per Item" = "Per Item";
+    "Each members will pay according to what they buy." = "Each members will pay according to what they buy.";
+    "Item Name" = "Item Name";
+    "Subtotal" = "Subtotal";
+    "Service Charge/ Tax" = "Service Charge/ Tax";
+    "Assign Members" = "Assign Members";
 
-//Split Bill Page (per item)
+    //Per Item - Error State
+    "No Items Added" = "No Items Added";
+    "Please add at least 1 item to continue tracking." = "Please add at least 1 item to continue tracking.";
+    "Subtotal Exceeds Grand Total" = "Subtotal Exceeds Grand Total";
 
-"Select Member" = "Select Member";
-"Item" = "Barang";
-"Each members will pay according to what they buy." = "Each members will pay according to what they buy.";
-"Assign each members with their items. Choose each item to asign it to a member." = "Assign each members with their items. Choose each item to asign it to a member.";
-"Remaining" = "Remaining";
-"Done" = "Done";
+    //Assign Members to Items Page
+    "Assign Members" = "Assign Members";
+    "Select Member" = "Select Member";
+    "Items" = "Items";
+    "Assign each members with their items. Choose each item to asign it to a member." = "Assign each members with their items. Choose each item to asign it to a member.";
+    "Remaining" = "Remaining";
 
-//Split Bill Page (per item) - Error State
+    //Assign Members to Items Page - Error State
+    "There’s item that have not been assigned" = "There’s item that have not been assigned";
 
-"No Items Added" = "No Items Added";
-"You haven’t add any item yet. Please add at least 1 item to continue tracking." = "You haven’t add any item yet. Please add at least 1 item to continue tracking.";
-"Subtotal Exceeds Grand Total" = "Subtotal Exceeds Grand Total";
-"Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total." = "Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total.";
-"There’s item that have not been assigned" ="There’s item that have not been assigned";
-"Please assign the remaining item to the member." = "Please assign the remaining item to the member.";
-"Ok" = "Ok";
-
-//Split Bill Page (manually)
-
-"Sorry this split method is currently under maintainance and will be working soon. Please try the other split method for your current transaction.";
-
-//Who Paid Page
-"Spent" = "Spent";

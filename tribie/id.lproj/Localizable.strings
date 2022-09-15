@@ -1,92 +1,147 @@
-/* 
+/*
   Localizable.strings
   tribie
 
   Created by Arnold Sidiprasetija on 05/09/22.
+ tapi udah di edit dipta dan wini dalam 1 hari slese
   
 */
 
+
 //Phrase that use on
-//Bill Page (TripView)
-//See All Transactions Page (TransactionListView)
-//See All Settlements List (SettlementListView)
+//Login Page
+"Welcome to Tribie!👋" = "Selamat datang di Tribie!👋";
+"Your Travel Bills & Expenses Manager" = "Your Travel Bills & Expenses Manager";
+"Continue with Apple" = "Lanjutkan dengan Apple";
 
-"Total Spending" = "Total Pengeluaran";
-"on this trip" = "dalam perjalanan ini";
-"Recent Transactions" = "Transaksi Terbaru";
-"Settlements" = "Pelunasan";
+//Trip List Page - Empty State
+"Trip" = "Perjalanan";
+"No trip yet" = "Belum ada perjalanan";
 
-//Bill Page (TripView)
-
-"See all" = "Lihat semua";
-
-//Bill Page (TripView) - Empty State
-
-"No transactions. Go add a new transaction to this group" = "Tidak ada transaksi. Tambahkan transaksi baru ke grup ini";
-"No settlements. Go add a new transaction to settle with your freinds." = "Tidak ada pelunasan. Tambahkan transaksi baru untuk dilunaskan dengan teman-teman anda.";
-
-//Members Page (MemberListView)
-
+//New Trip Page - Empty State
+"Group Trip" = "Grup Perjalanan";
+"Group Trip Name" = "Nama Grup Perjalanan";
+"Input Name" = "Masukkan Nama";
 "Members" = "Anggota";
+"Go add some members! You'll need at least 2 members to create a new group" = "Tambahkan anggota! Kamu membutuhkan minimal 2 anggota untuk membuat grup perjalanan baru.";
 
-//New Transaction Page (Manual)
+//New Trip Page - Error
+"No Member Added" = "Belum Ada Anggota Yang Ditambahkan";
+"You haven’t add any member to the group yet. Please add at least 2 members to start tracking." = "Kamu belum menambahkan anggota ke grup. Silahkan menambahkan minimal 2 anggota untuk memulai pencatatan.";
 
-"New Transaction" = "Transaksi Baru";
-"Save Draft" = "Simpan Draf";
-
-//New Transaction Page (Manual) - Error State
-
-"Transaction Name Hasn’t Filled" = "Nama Transaksi Belum Terisi";
-"You haven’t input your transaction name. Please input your transaction name to continue tracking" = "Kamu belum memasukkan nama transaksi. Silahkan masukan nama transaksi untuk melanjutkan pencatatan";
-"Grand Total Hasn’t Filled" = "Grand Total Belum Terisi";
-"You haven’t input the grand total. Please input the grand total of your bill to continue tracking" = "Kamu belum memasukkan total akhir. Silahkan masukan total akhir nota untuk melanjutkan pencatatan";
-
-//Split Bill Page (SplitBillView)
-
-"Who Paid" = "Pembayar";
-"Split Method" = "Metode Pembagian";
-"Equally" = "Bagi Rata";
-"Per Item" = "Per Barang";
-"Manually" = "Manual";
-"Service Charge/ Tax" = "Biaya Layanan/ Pajak";
-"Grand Total" = "Total Akhir";
-"Next" = "Lanjut";
-
-//Split Bill Page (equally)
-"Grand total amount will be split equally among the selected members." = "Total akhir akan dibagi rata dengan seluruh anggota yang dipilih.";
-
-//Split Bill Page (equally) - Error State
-"Grand Total can not be Zero" = "Total Akhir Tidak Boleh Kosong";
-"Grand Total can not be zero. Please input the amount to continue tracking." = "Total akhir harus terisi. Tolong isi nominal untuk melanjutkan pencatatan.";
-"Input Transaction Name" = "Lengkapi Nama Transaksi";
-"Transaction Name must be filled." = "Nama transaksi harus terisi.";
-"No Member Selected" = "Belum Memilih Member";
-"You haven’t select any member to the transaction yet. Please select at least 1 member to continue tracking." = "Kamu belum memilih anggota untuk transaksi ini. Tolong pilih setidaknya 1 anggota untuk melanjutkan pencatatan.";
-
-
-//Split Bill Page (per item)
-
-"Select Member" = "Pilih Anggota";
-"Item" = "Barang";
-"Each members will pay according to what they buy." = "Each members will pay according to what they buy.";
-"Assign each members with their items. Choose each item to asign it to a member." = "Tentukan setiap anggota dengan barang mereka. Pilih tiap barang untuk menetapkannya ke anggota.";
-"Remaining" = "Sisa";
-"Done" = "Selesai";
-
-//Split Bill Page (per item) - Error State
-
-"No Items Added" = "Belum Ada Barang";
-"You haven’t add any item yet. Please add at least 1 item to continue tracking." = "Kamu belum menambahkan barang apapun. Tolong tambahkan setidaknya 1 barang dalam daftar untuk melanjutkan pencatatan.";
-"Subtotal Exceeds Grand Total" = "Subtotal Melebihi Total Akhir";
-"Subtotal can’t exceed Grand Total. Please review and reduce the subtotal ammount to be at lower or the same with Grand Total." = "Subtotal tidak bisa melebihi Total Akhir. Tolong periksa kembali daftar barang dan kurangi nominal subtotal hingga lebih rendah atau sama dengan total akhir";
-"There’s item that have not been assigned" = "Masih ada barang yang belum ditetapkan ke anggota";
-"Please assign the remaining item to the member." = "Silahkan tetapkan sisa barang ke anggota.";
-"Ok" = "Oke";
-
-//Split Bill Page (manually)
-
-"Maaf metode pembagian ini masih dalam perbaikan dan akan segera bekerja. Silahkan coba metode pembagian lainnya untuk transaksi anda saat ini. ";
-
-//Who Paid Page
+//New Trip Page
 "Spent" = "Menghabiskan";
 
+//Add Member Page - Empty State
+"Search" = "Cari";
+"Find members using Apple ID" = "Temukan anggota menggunakan Apple ID";
+
+//Add Member Page - New Member
+"Add" = "Tambahkan";
+"Added" = "Ditambahkan";
+
+//Add Member Page - Error
+"No user found" = "Pengguna tidak ditemukan";
+
+//Profile Page
+"Account" = "Akun";
+"Sign Out" = "Keluar";
+
+//Top Nav Bar
+"Active Trip" = "Perjalanan Aktif";
+    //More Option Button
+    "Group Trip" = "Grup Perjalanan";
+    "Share Group Transactions" = "Bagikan Transaksi grup";
+    "Cancel" = "Batal";
+
+//Card Hold Action (Recent Transaction Card, Drafts Card)
+"Edit" = "Ubah";
+"Remove" = "Hapus";
+
+//Bill Page (TripView)
+"Transactions" = "Transaksi";
+"Summary of all transactions you’ve added to this trip" = "Ringkasan semua transaksi yang kamu tambahkan ke perjalanan ini";
+
+    //Hero Section Card 1
+    "Total Spending" = "Total Pengeluaran";
+    "on this trip" = "di perjalanan ini";
+
+    //Hero Section Card 2
+    "Debts Rank" = "Peringkat Hutang";
+    "Top 1 in debt better pay the next bill" = "Hutang tertinggi disarankan membayar transaksi selanjutnya";
+
+"Recent Transactions" = "Transaksi terakhir";
+"No transactions. Go add a new transaction to this group." = "Tidak ada transaksi. Silahkan tambahkan transaksi baru ke grup ini.";
+
+//Settlements Page - Empty State
+"Settlements" = "Tagihan";
+"Bills of each member need to settle one another based on who paid for a transaction." = "Tagihan masing-masing anggota yang harus dilunasi satu sama lain berdasarkan siapa yang membayar untuk suatu transaksi.";
+"Unpaid" = "Belum dilunasi";
+"No unpaid settlements. Go add a new transaction to settle with your other members." = "Tidak ada tagihan yang belum dilunasi. Silahkan tambahkan transaksi baru untuk dilunasi dengan angggota lainnya.";
+"Paid" = "Lunas";
+"Paid settlement will show up here." = "Tagihan yang sudah dilunasi akan muncul disini.";
+
+    //Settlements Card Action
+    "Are you sure you have done this settlement?" = "Apakah kamu yakin sudah melunasi tagihan ini?";
+    "Yes" = "Ya";
+
+//Drafts Page
+"Drafts" = "Draf";
+"List of transaction you haven’t manage yet" = "Daftar transaksi yang belum Anda kelola";
+"Unsplitted Bills" = "Nota Yang Belum Dibagi";
+"No bills to be splitted" = "Tidak ada nota untuk dibagi";
+
+//New Transaction Page (Manual)
+"New Transaction" = "Transaksi Baru";
+"Cancel" = "Batal";
+"Save Draft" = "Simpan Draf";
+"Grand Total" = "Total Akhir";
+"Transaction Name" = "Nama Transaksi";
+"Paid by" = "Pembayar";
+"Split Bill" = "Pembagian Nota";
+
+//New Transaction Page (Manual) - Error State
+"Transaction Name isn’t Filled" = "Nama Transaksi belum Diisi";
+"Please input your transaction name to continue tracking" = "Mohon masukan nama transaksi untuk melanjutkan pencatatan";
+"Grand Total isn’t Filled" = "Total Akhir belum Diisi";
+"Please input the grand total of your bill to continue tracking" = "Lengkapi total akhir nota kamu untuk melanjutkan pencatatan";
+
+//Split Bill Page (SplitBillView)
+"Split Bill" = "Pembagian Nota";
+"Back" = "Kembali ";
+
+    //Equally
+    "Equally" = "Bagi Rata";
+    "Grand total amount will be split equally among the selected members." = "Jumlah total akhir akan dibagi rata di antara anggota yang dipilih.";
+    "Done" = "Selesai";
+
+    //Equally - Error State
+    "Grand Total can not be Zero" = "Total Akhir Tidak Boleh Kosong";
+    "Please input the amount to continue tracking." = "Silahkan isi nominal untuk melanjutkan pencatatan.";
+    "Input Transaction Name" = "Masukkan Nama Transaksi";
+    "Transaction Name must be filled." = "Nama transaksi harus diisi.";
+    "No Member Selected" = "Tidak ada anggota yang dipilih";
+    "Please select at least 1 member to continue tracking." = "Silahkan pilih setidaknya 1 anggota untuk melanjutkan pencatatan.";
+
+    //Per Item
+    "Per Item" = "Per Barang";
+    "Each members will pay according to what they buy." = "Setiap anggota akan membayar sesuai dengan apa yang mereka beli.";
+    "Item Name" = "Nama Barang";
+    "Subtotal" = "Subtotal";
+    "Service Charge/ Tax" = "Biaya Layanan/ PPN ";
+    "Assign Members" = "Tetapkan Anggota ke Barang";
+
+    //Per Item - Error State
+    "No Items Added" = "Masih Ada Barang Yang Belum Ditetapkan ke Anggota";
+    "Please add at least 1 item to continue tracking." = "Silahkan tetapkan sisa barang ke anggota.";
+    "Subtotal Exceeds Grand Total" = "Subtotal Melebihi Total Akhir";
+
+    //Assign Members to Items Page
+    "Assign Members" = "Tetapkan Anggota ke Barang";
+    "Select Member" = "Pilih Anggota";
+    "Items" = "Barang";
+    "Assign each members with their items. Choose each item to asign it to a member." = "Tentukan setiap anggota dengan barang mereka. Pilih tiap barang untuk menetapkannya ke anggota.";
+    "Remaining" = "Sisa";
+
+    //Assign Members to Items Page - Error State
+    "There’s item that have not been assigned" = "Masih ada barang yang belum ditetapkan ke anggota";

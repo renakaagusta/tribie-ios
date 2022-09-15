@@ -55,7 +55,7 @@ struct TripListView: View {
                         Button(action: {
                             showProfile = true
                         }, label: {
-                            AppImage(url: "person.crop.circle",source: AppImageSource.SystemName,component: {})
+                            AppImage(url: "person.crop.circle", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
                         }).sheet(isPresented: $showProfile) {
                             ProfileView()
                         }
@@ -64,7 +64,7 @@ struct TripListView: View {
                         Button(action: {
                             showGroupMember = true
                         }, label: {
-                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
+                            AppImage(url: "plus", source:AppImageSource.SystemName, color: Color.signifierColor, component: {})
                         }).sheet(isPresented: $showGroupMember) {
                             TripFormView()
                         }
@@ -73,3 +73,4 @@ struct TripListView: View {
         }
     }
 }
+
