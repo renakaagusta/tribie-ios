@@ -110,8 +110,9 @@
 		2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE7877128B8F451002E5F9B /* ItemCard.swift */; };
 		4133DF7A28D060A9009A1F98 /* DebtsRankCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4133DF7928D060A9009A1F98 /* DebtsRankCard.swift */; };
 		41FDD40728C5DDA300A8770A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41FDD40928C5DDA300A8770A /* Localizable.strings */; };
+		B885036828D30DF7001C280B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B885036728D30DF7001C280B /* String.swift */; };
 		B88CFD2628C9D08900A5EB60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CFD2528C9D08900A5EB60 /* MainView.swift */; };
-		B89C57A828D06215004190FE /* TripListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C57A728D06215004190FE /* TripListCard.swift */; };
+		B89C57A828D06215004190FE /* TripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C57A728D06215004190FE /* TripCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,8 +237,9 @@
 		4133DF7928D060A9009A1F98 /* DebtsRankCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsRankCard.swift; sourceTree = "<group>"; };
 		41FDD40828C5DDA300A8770A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41FDD40A28C5DE5F00A8770A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B885036728D30DF7001C280B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B88CFD2528C9D08900A5EB60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B89C57A728D06215004190FE /* TripListCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListCard.swift; sourceTree = "<group>"; };
+		B89C57A728D06215004190FE /* TripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,6 +660,7 @@
 				2FD6227D28BB1DAF0012BA86 /* Constant.swift */,
 				2FD6227F28BB1E040012BA86 /* Keychain.swift */,
 				2F1FC25728BD95F100938D23 /* Screen.swift */,
+				B885036728D30DF7001C280B /* String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -729,7 +732,7 @@
 		B89C57A628D061E1004190FE /* TripListCard */ = {
 			isa = PBXGroup;
 			children = (
-				B89C57A728D06215004190FE /* TripListCard.swift */,
+				B89C57A728D06215004190FE /* TripCard.swift */,
 			);
 			path = TripListCard;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				4133DF7A28D060A9009A1F98 /* DebtsRankCard.swift in Sources */,
 				2FC8FA4428C56B23005B90A9 /* TripFormViewModel.swift in Sources */,
 				2FD6228628BB1F220012BA86 /* SettlementListViewModel.swift in Sources */,
+				B885036828D30DF7001C280B /* String.swift in Sources */,
 				2FD6223828BB081A0012BA86 /* Header.swift in Sources */,
 				2FC8FA3E28C3E185005B90A9 /* Loading.swift in Sources */,
 				2F5A21A728D06FE500EA334A /* TripMemberFormViewModel.swift in Sources */,
@@ -937,7 +941,7 @@
 				2FC8FA3528C372CD005B90A9 /* AuthViewModel.swift in Sources */,
 				2FD6227228BB1AE10012BA86 /* LiveData.swift in Sources */,
 				2F68DC5828BF779E00DB5C2A /* TripMember.swift in Sources */,
-				B89C57A828D06215004190FE /* TripListCard.swift in Sources */,
+				B89C57A828D06215004190FE /* TripCard.swift in Sources */,
 				2FE7877228B8F451002E5F9B /* ItemCard.swift in Sources */,
 				2FA628E528AF6A6800F83B92 /* Colors.swift in Sources */,
 				2FD6223F28BB0B370012BA86 /* MemberSelectCard.swift in Sources */,

@@ -22,13 +22,13 @@ struct ProfileView: View {
                     AppCircleImage(size: 40.0, component: {})
                     Spacer().frame(width: 10.0)
                     VStack(alignment: .leading) {
-                        Text(profileViewModel.userName)
-                        Text(profileViewModel.userMail)
+                        AppBody1(text: profileViewModel.userName)
+                        AppBody1(text: profileViewModel.userMail)
                     }
                     Spacer()
                 }.padding().background(Color.white).cornerRadius(10)
                 
-                AppElevatedButton(label: "Sign Out", onClick: profileViewModel.signOut)
+                AppElevatedButton(label: "Sign Out", color: Color.cardColor, onClick: profileViewModel.signOut)
                 
                 Spacer()
             }.padding().onAppear{

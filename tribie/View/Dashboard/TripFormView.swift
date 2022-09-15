@@ -46,9 +46,13 @@ struct TripFormView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        tripFormViewModel.submitTrip(complete: {
+                        if(tripFormViewModel.trip.title != nil) {
+                            tripFormViewModel.submitTrip(complete: {
+                                presentationMode.wrappedValue.dismiss()
+                            }, tripMemberList: global.tripMemberList)
+                        } else {
                             presentationMode.wrappedValue.dismiss()
-                        }, tripMemberList: global.tripMemberList)
+                        }
                     }, label: {
                         AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
                     })

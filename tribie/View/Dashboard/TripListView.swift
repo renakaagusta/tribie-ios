@@ -29,17 +29,14 @@ struct TripListView: View {
                     AppBody1(text: "Error")
                 }
                 if (tripListViewModel.state == AppState.Exist) {
-                    if(tripListViewModel.filteredTripList != nil) {
+                    if(tripListViewModel.filteredTripList != nil && tripListViewModel.transactionList != nil) {
                             Spacer().frame(height: 10)
                                     ForEach(tripListViewModel.filteredTripList!) { trip in
                                         NavigationLink(destination: MainView(tripId: trip.id!)){
-                                            AppCard(width: UIScreen.width, height: 40, backgroundColor: Color.white, component: {
-                                                AppBody1(text: trip.title!)
+                                            TripListCard(title: trip.title ?? "-", members: tripListViewModel.getTripMemberNameList(tripId: trip.id!), amount: tripListViewModel.getTotalTripSpending(tripId: trip.id!))
                                         }
-                                    )
+                                    }
                                 }
-                            }
-                        }
                     if(tripListViewModel.filteredTripList == nil) {
                             AppLoading()
                         }
@@ -58,7 +55,7 @@ struct TripListView: View {
                         Button(action: {
                             showProfile = true
                         }, label: {
-                            AppImage(url: "person.crop.circle",source: AppImageSource.SystemName,component: {})
+                            AppImage(url: "person.crop.circle", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
                         }).sheet(isPresented: $showProfile) {
                             ProfileView()
                         }
@@ -67,7 +64,7 @@ struct TripListView: View {
                         Button(action: {
                             showGroupMember = true
                         }, label: {
-                            AppImage(url: "plus",source:AppImageSource.SystemName,component: {})
+                            AppImage(url: "plus", source:AppImageSource.SystemName, color: Color.signifierColor, component: {})
                         }).sheet(isPresented: $showGroupMember) {
                             TripFormView()
                         }
@@ -76,3 +73,4 @@ struct TripListView: View {
         }
     }
 }
+
