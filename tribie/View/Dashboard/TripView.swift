@@ -11,6 +11,7 @@ import SwiftUI
 struct TripView: View {
     
     @State private var showingOptions = false
+    @State var showNewTransaction : Bool = false
     @State private var selection = "None"
     @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripViewModel = TripViewModel()
@@ -76,8 +77,10 @@ struct TripView: View {
                                     VStack(alignment: .leading) {
                                         AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                     Spacer()
-                                    NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
-                                        AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
+                                    NavigationLink {
+                                        SplitBillView()
+                                    } label: {
+                                        AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                     }
                                 }
                                 .padding(.horizontal)
@@ -125,7 +128,10 @@ struct TripView: View {
                                     VStack(alignment: .leading) {
                                         AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                     Spacer()
-                                    NavigationLink(destination: SplitBillView(tripId: tripId, formState: SplitbillState.InputTransaction)) {
+                                    
+                                    NavigationLink {
+                                        SplitBillView()
+                                    } label: {
                                         AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                     }
                                 }

@@ -20,8 +20,8 @@ struct AppElevatedButton: View {
         Button(action: {
             self.onClick()
         }, label: {
-            Text(label).foregroundColor(color).padding()
-        }).frame(minWidth: width < 1 ? 0.0 : width, idealWidth: width < 1 ? .infinity : width, maxWidth: width < 1 ? .infinity :width, minHeight: height < 0  ? 0 : height, idealHeight: (height < 1) ? 12 : height,  maxHeight: (height < 1) ? 12 : height).padding().background(backgroundColor).cornerRadius(20)
+            Text(label).fontWeight(.semibold).foregroundColor(color).padding()
+        }).frame(minWidth: width < 1 ? 0.0 : width, idealWidth: width < 1 ? .infinity : width, maxWidth: width < 1 ? .infinity :width, minHeight: height < 0  ? 0 : height, idealHeight: (height < 1) ? 12 : height,  maxHeight: (height < 1) ? 12 : height).padding().background(backgroundColor).cornerRadius(10)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
 }

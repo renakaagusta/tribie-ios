@@ -26,12 +26,14 @@ struct MemberItemListView: View {
                                         MemberAvatarButton(image: AppCircleImage(size: 40.0, component: {}), selected: Binding(get: {memberItemListViewModel.selectedUserId == tripMember.id}, set: { _ in true}), onClick: {
                                             memberItemListViewModel.selectUser(tripMemberId: tripMember.id!)
                                         })
-                                        AppBody1(text: tripMember.name ?? "-")
+                                        AppBody1(text: tripMember.name ?? "-", color: Color.primaryColor)
                                     }
                                 }
                             }
                         }.padding()
-                        AppFootnote(text: "What & how many items did member 1 order?")
+                VStack(alignment:.leading){
+                    AppFootnote(text: "Assign each members with their items. Choose each item to asign it to a member.", color: Color.footnoteColor)
+                }
                         ForEach(memberItemListViewModel.transactionItemList!){
                             transactionItem in HStack {
                                 MemberItemCard(name: transactionItem.title ?? "-", remainingQuantity: Binding(get: {memberItemListViewModel.getRemainingQuantity(itemId: transactionItem.id!)}, set: { _ in true }), quantity: Binding(get: {memberItemListViewModel.getItemExpensesQuantity(itemId: transactionItem.id!, tripMemberId: memberItemListViewModel.selectedUserId!)}, set: {_ in true}), onIncrement: {
@@ -43,7 +45,7 @@ struct MemberItemListView: View {
                         }
                         Spacer()
                     NavigationLink(destination: SplitBillView(tripId: tripId, transactionId: transactionId, formState: SplitbillState.Calculate), isActive: Binding(get: {memberItemListViewModel.moveToSplitBillView == true}, set: { _ in true}) ) {
-                    AppElevatedButton(label: "Next", onClick: {
+                        AppElevatedButton(label: "Next", width: UIScreen.width - 70, color: Color.black, backgroundColor: Color.signifierColor, onClick: {
                         memberItemListViewModel.submitTransactionExpenses()
                         memberItemListViewModel.updateTransaction()
                     })

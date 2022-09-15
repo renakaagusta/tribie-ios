@@ -53,7 +53,7 @@ struct SettlementListView: View {
                         }
                         Spacer()
                         AppHeader(text: "Settlements", color: Color.primaryColor, textAlign: .leading)
-                        AppCaption1(text: "List of transaction you haven’t manage yet")
+                        AppCaption1(text: "Bills of each member needs to settle one another base on who paid for a transaction")
                     }
                     
                     

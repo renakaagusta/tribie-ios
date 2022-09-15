@@ -37,7 +37,7 @@ struct TransactionListView: View {
                                 }
                                 Spacer()
                                 
-                                AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.primaryColor, component: {}), onClick:{
+                                AppImageButton(height:22, width:22, image: AppImage(url: "ellipsis.circle", source: AppImageSource.SystemName, color: Color.signifierColor, component: {}), onClick:{
                                     showingOptions = true
                                 })
                                 .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {

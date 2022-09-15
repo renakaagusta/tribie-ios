@@ -10,7 +10,7 @@ import SwiftUI
 struct MemberCard<Content: View>: View {
     @State var image: AppCircleImage<Content>
     @State var userName: String
-    @State var backgroundColor: Color = Color.white
+    @State var backgroundColor: Color = Color.cardColor
     
     var onClick: () -> Void = {}
     
