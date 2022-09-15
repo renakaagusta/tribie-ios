@@ -29,10 +29,15 @@ struct TripMemberFormView: View {
                         AppBody1(text: "User not found")
                     }
                 }
-                if(tripMemberFormViewModel.user == nil) { AppTextField(placeholder: "Apple id", field: Binding(get: {tripMemberFormViewModel.email ?? ""}, set: {tripMemberFormViewModel.email = $0}))
-                    AppElevatedButton(label: "Search", onClick: {
-                        tripMemberFormViewModel.searchUser()
-                    })
+                if(tripMemberFormViewModel.user == nil) {
+                    Group {
+                        AppTextField(placeholder: "Apple id", field: Binding(get: {tripMemberFormViewModel.email ?? ""}, set: {tripMemberFormViewModel.email = $0}))
+                        AppElevatedButton(label: "Search", color: Color.cardColor, onClick: {
+                            tripMemberFormViewModel.searchUser()
+                        })
+                    }.padding()
+                    
+                    Spacer()
                 }
             }
             .navigationTitle("Add Members")
@@ -42,7 +47,7 @@ struct TripMemberFormView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        AppBody1(text: "Done", color: Color.primaryColor, fontWeight: .bold)
+                        AppBody1(text: "Done", color: Color.signifierColor, fontWeight: .bold)
                     })
                 }
             }
