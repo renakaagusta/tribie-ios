@@ -86,7 +86,7 @@ class TripListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func calculateTotalTripSpending(tripId: String) -> Int {
+    public func getTotalTripSpending(tripId: String) -> Int {
         var totalTripSpending: Int = 0
         
         for transaction in transactionList! {
@@ -96,6 +96,18 @@ class TripListViewModel: ObservableObject {
         }
         
         return totalTripSpending
+    }
+    
+    public func getTripMemberNameList(tripId: String) -> String {
+        var tripMemberNameList = ""
+        
+        for tripMember in tripMemberList! {
+            if(tripMember.tripId == tripId) {
+                tripMemberNameList += (", " + tripMember.name!) ?? ", -"
+            }
+        }
+        
+        return tripMemberNameList
     }
     
     public func fetchData() {
