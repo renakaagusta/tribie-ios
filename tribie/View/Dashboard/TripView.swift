@@ -80,7 +80,7 @@ struct TripView: View {
                                     NavigationLink {
                                         SplitBillView()
                                     } label: {
-                                        AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
+                                        AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
                                     }
                                 }
                                 .padding(.horizontal)
