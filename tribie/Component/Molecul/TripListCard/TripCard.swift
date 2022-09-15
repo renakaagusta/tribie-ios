@@ -14,20 +14,27 @@ struct TripListCard: View {
     var onClick: () -> Void = {}
     
     var body: some View {
+        
         HStack {
-            VStack {
-                AppBody1(text: title)
-                Spacer().frame(width: 10.0)
+            VStack(alignment: .leading) {
+                AppBody1(text: title, color: Color.white, fontWeight: .bold)
                 HStack {
-                    Image(systemName: "person.2.fill")
+                    Image(systemName: "person.2.fill").frame(width: 10, height: 10).foregroundColor(Color.white)
                     AppCaption1(text: members)
                 }
             }
             Spacer()
             VStack(alignment: .trailing) {
                 Text("Total Spending").foregroundColor(.gray)
-                Text("Rp" + String(amount)).fontWeight(.bold).foregroundColor(Color.primaryColor)
+                Text("Rp" + String(amount)).fontWeight(.bold).foregroundColor(Color.signifierColor)
             }
-        }.padding().cornerRadius(10)
+        }.padding().background(Color.cardColor).cornerRadius(10)
+        
+    }
+}
+
+struct TripListCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        TripListCard(title: "Liburan tribie", members: "asdas, adsada, assdas", amount: 10000)
     }
 }
