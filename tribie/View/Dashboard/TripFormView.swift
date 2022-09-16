@@ -44,9 +44,9 @@ struct TripFormView: View {
                         }
                     }
                     if(tripId != nil) {
-                        if(tripFormViewModel.tripMemberList != nil) {
+                        if(tripFormViewModel.tripMemberList != nil && tripFormViewModel.tripSettlementList != nil) {
                             ForEach(tripFormViewModel.tripMemberList) { tripMember in
-                                MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount:0)
+                                MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount: tripFormViewModel.getMemberSpending(tripMemberId: tripMember.id!))
                             }
                         }
                     }

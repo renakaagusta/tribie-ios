@@ -77,6 +77,9 @@ class TripFormViewModel: ObservableObject {
     public func getMemberSpending(tripMemberId: String) -> Int {
         var totalMemberSettlement = 0
         
+        Logger.error(tripMemberId)
+        Logger.error(tripSettlementList)
+        
         for settlement in tripSettlementList {
             if(settlement.userFromId == tripMemberId) {
                 totalMemberSettlement += settlement.nominal!
