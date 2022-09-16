@@ -26,7 +26,7 @@ struct MemberAvatarButton<Content: View>: View {
                             RoundedRectangle(cornerRadius: size/2)
                                 .stroke(selected ? color : Color.clear, lineWidth: 2)
                         )
-            }).frame(minWidth: size < 1 ? 0.0 : size, idealWidth: size < 1 ? .infinity : size, maxWidth: size < 1 ? .infinity : size, minHeight: size < 0  ? 0 : size, idealHeight: (size < 1) ? 12 : size,  maxHeight: (size < 1) ? 12 : size).background(Color.white)
+            }).frame(minWidth: size < 1 ? 0.0 : size, idealWidth: size < 1 ? .infinity : size, maxWidth: size < 1 ? .infinity : size, minHeight: size < 0  ? 0 : size, idealHeight: (size < 1) ? 12 : size,  maxHeight: (size < 1) ? 12 : size).background(Color.tertiaryColor)
         
     }
 }
