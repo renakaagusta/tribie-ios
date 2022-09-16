@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplitBillView: View {
     
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var tripId: String?
     @State var transactionId: String? 
     @StateObject var splitBillViewModel : SplitBillListViewModel = SplitBillListViewModel()
     @State var showSelectUserPay = false
@@ -49,7 +49,7 @@ struct SplitBillView: View {
     //                                        showSelectUserPay = !showSelectUserPay
                                         },
                                         label: {
-                                            MemberCard(image: AppCircleImage(size: 40.0, component: {}), userName: splitBillViewModel.getUserPaid().name ?? "-", backgroundColor: Color.cardColor).padding().frame(width: UIScreen.width)
+                                            MemberCard(image: AppCircleImage(size: 40.0, component: {}), userName: splitBillViewModel.getUserPaid().name ?? "-", backgroundColor: Color.clear)
                                         }
                                     )
                                 }
@@ -187,7 +187,7 @@ struct SplitBillView: View {
                                     }
                                     Spacer().frame(height: 10)
                                     if(splitBillViewModel.transaction != nil) {
-                                        NavigationLink(destination: SettlementListView(), isActive:Binding(get: {splitBillViewModel.moveToSettlementListView}, set: { _ in true})) {
+                                        NavigationLink(destination: SettlementListView(tripId: splitBillViewModel.transaction!.tripId!, showFinish: true), isActive:Binding(get: {splitBillViewModel.moveToSettlementListView}, set: { _ in true})) {
                                                 if(splitBillViewModel.transaction!.status == "Expenses") {
                                                     AppElevatedButton(label: "Done", width: UIScreen.width - 50, color: Color.black, backgroundColor: Color.signifierColor,
                                                                   onClick: {
@@ -206,7 +206,7 @@ struct SplitBillView: View {
     //                                        }
     //                                    }
                                         if(splitBillViewModel.transaction!.status == "Items" || splitBillViewModel.transaction!.status == "Created") {
-                                            NavigationLink(destination: MemberItemListView(tripId: tripId, transactionId: splitBillViewModel.transaction!.id!), isActive: $splitBillViewModel.moveToMemberItemView ) {
+                                            NavigationLink(destination: MemberItemListView(tripId: tripId!, transactionId: splitBillViewModel.transaction!.id!), isActive: $splitBillViewModel.moveToMemberItemView ) {
                                                 AppElevatedButton(label: "Done", width: UIScreen.width - 50, color: Color.black, backgroundColor: Color.signifierColor, onClick: {
                                                     splitBillViewModel.submitTransactionItem()
                                                     splitBillViewModel.updateTransaction()
@@ -242,7 +242,7 @@ struct SplitBillView: View {
 //        } //toolbar
         .frame(height: UIScreen.height)
         .background(Color.tertiaryColor).onAppear {
-            splitBillViewModel.fetchData(tripId: tripId, transactionId: transactionId, formState: formState)
+            splitBillViewModel.fetchData(tripId: tripId!, transactionId: transactionId, formState: formState)
         }
     }
 }

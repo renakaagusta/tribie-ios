@@ -37,7 +37,7 @@ class MemberSpendingListViewModel: ObservableObject {
         }
     }
     
-    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTripMemberList(tripId: String){
         repository.getTripMemberList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -68,9 +68,9 @@ class MemberSpendingListViewModel: ObservableObject {
     }
     
     public func fetchData() {
-        self.state = AppState.Loading
-        fetchTripMemberList()
-        fetchTransactionItemList()
-        fetchTransactionExpensesList()
+//        self.state = AppState.Loading
+//        fetchTripMemberList()
+//        fetchTransactionItemList()
+//        fetchTransactionExpensesList()
     }
 }

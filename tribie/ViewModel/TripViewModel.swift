@@ -33,7 +33,7 @@ class TripViewModel: ObservableObject {
     private var repository: NetworkRepository = NetworkRepository()
     private let disposeBag: DisposeBag =  DisposeBag()
     
-    public func fetchTrip(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
+    public func fetchTrip(tripId: String) {
         repository.getTripData(tripId: tripId)
             .subscribe(onNext: { response in
                 self.trip = response
@@ -42,7 +42,7 @@ class TripViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripTransactionList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTripTransactionList(tripId: String){
         repository.getTripTransactionList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -68,7 +68,7 @@ class TripViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
+    public func fetchTripMemberList(tripId: String) {
         repository.getTripMemberList(tripId: tripId)
             .subscribe(onNext: { response in
                 self.tripMemberList = response ?? []
@@ -94,7 +94,7 @@ class TripViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTransactionSettlementList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTransactionSettlementList(tripId: String){
         repository.getTripTransactionSettlementList(tripId: tripId)
             .subscribe(onNext: { response in
                 self.transactionSettlementList = response ?? []

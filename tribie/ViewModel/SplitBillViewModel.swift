@@ -107,7 +107,7 @@ class SplitBillListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTripMemberList(tripId: String){
         repository.getTripMemberList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -419,8 +419,9 @@ class SplitBillListViewModel: ObservableObject {
             let maxTripMemberIndex = tripMemberList!.firstIndex(where: {$0.id == maxTripMember.id})!
             
             tripMemberList![maxTripMemberIndex].net!+=tripMemberList![minTripMemberIndex].net!
-                    
-            transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1, saved: false, status: "Created"))
+            if(tripMemberList![minTripMemberIndex].id != tripMemberList![maxTripMemberIndex].id) {
+                transactionSettlementList!.append(TransactionSettlement(tripId: transaction!.tripId!, transactionId: transaction!.id!, userFromId: tripMemberList![minTripMemberIndex].id, userToId: tripMemberList![maxTripMemberIndex].id, nominal: tripMemberList![minTripMemberIndex].net! * -1, saved: false, status: "Created"))
+            }
             
             Logger.debug(minTripMember.name)
             Logger.debug(maxTripMember.name)

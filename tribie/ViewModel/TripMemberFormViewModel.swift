@@ -54,7 +54,7 @@ class TripMemberFormViewModel: ObservableObject {
         Logger.error(global.tripMemberList)
     }
     
-    public func updateTrip(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID)  {
+    public func updateTrip(tripId: String)  {
         state = AppState.Loading
         repository.updateTrip(id: tripId, trip: trip!)
             .observe(on: MainScheduler.instance)

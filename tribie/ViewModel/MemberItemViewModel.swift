@@ -34,7 +34,7 @@ class MemberItemListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTripMemberList(tripId: String){
         repository.getTripMemberList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in

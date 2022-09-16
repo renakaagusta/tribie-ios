@@ -10,10 +10,13 @@ import UIKit
 
 struct TripView: View {
     
+    @ObservedObject var global = GlobalVariables.global
+
     @State private var showingOptions = false
+    @State var showGroupMember: Bool = false
     @State var showNewTransaction : Bool = false
     @State private var selection = "None"
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var tripId: String
     @ObservedObject var tripViewModel = TripViewModel()
     
     func getSplitBillState(status: String) -> SplitbillState {
@@ -40,7 +43,8 @@ struct TripView: View {
                                         VStack (alignment:.leading) {
                                             AppFootnote(text: "Active Trip", color: Color.footnoteColor, fontWeight: .regular, textAlign: .leading)
                                                 .padding(.horizontal)
-                                            AppTitle1(text: "Liburan Tribie", color: Color.signifierColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
+                                            AppTitle1(text:
+                                                        tripViewModel.trip!.title!, color: Color.signifierColor, fontWeight: .semibold,fontSize: 20).padding(.horizontal)
                                         }
                                         Spacer()
                                         
@@ -50,7 +54,7 @@ struct TripView: View {
                                         .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .automatic) {
                                             
                                             Button("Members") {
-                                                selection = "Green"
+                                                showGroupMember = true
                                             }
                                             
                                             Button("Share Group Transactions", action: {
@@ -69,8 +73,7 @@ struct TripView: View {
                                 ScrollView(.horizontal,showsIndicators: false){
                                     HStack(spacing:10){
                                         SpendingCard(totalSpending: (tripViewModel.calculateTotalExpenses()), startColor: Color.startColor, endColor: Color.endColor)
-                                        
-                                        DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList![1].name ?? "-", rank3: tripViewModel.tripMemberList![2].name ?? "-", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses ?? 0)", debtsRank2: "\(tripViewModel.tripMemberList![1].expenses ?? 0)", debtsRank3: "\(tripViewModel.tripMemberList![2].expenses ?? 0)")
+                                        DebtsRankCard(startColor: Color.startColor, endColor: Color.endColor, rank1: tripViewModel.tripMemberList![0].name ?? "-", rank2: tripViewModel.tripMemberList!.count > 2 ? tripViewModel.tripMemberList![1].name ?? "-" : "-", rank3: tripViewModel.tripMemberList!.count > 3 ?  tripViewModel.tripMemberList![2].name ?? "-" : "0", debtsRank1: "\(tripViewModel.tripMemberList![0].expenses)" ?? "0", debtsRank2: tripViewModel.tripMemberList!.count > 2 ? "\(tripViewModel.tripMemberList![1].expenses ?? 0)" : "0", debtsRank3: tripViewModel.tripMemberList!.count > 3 ?  "\(tripViewModel.tripMemberList![2].expenses ?? 0)" : "0")
                                     }
                                 }
                                 HStack{
@@ -78,7 +81,7 @@ struct TripView: View {
                                         AppTitle1(text: "Recent Transactions", color: Color.primaryColor, fontWeight: .semibold, fontSize: 22)                                }
                                     Spacer()
                                     NavigationLink {
-                                        SplitBillView()
+                                        SplitBillView(tripId: tripId)
                                     } label: {
                                         AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.signifierColor, component: {})
                                     }
@@ -110,7 +113,7 @@ struct TripView: View {
                                             .padding(.horizontal)
                                         Spacer()
                                     }
-                                    AppTitle1(text: "Liburan Tribie", color: Color.primaryColor, fontWeight: .semibold, fontSize: 20).padding(.horizontal)
+                                    AppTitle1(text: tripViewModel.trip!.title ?? "-", color: Color.primaryColor, fontWeight: .semibold, fontSize: 20).padding(.horizontal)
                                     Spacer()
                                     AppHeader(text: "Transactions", color: Color.primaryColor, textAlign: .leading)
                                         .padding(.horizontal)
@@ -130,7 +133,7 @@ struct TripView: View {
                                     Spacer()
                                     
                                     NavigationLink {
-                                        SplitBillView()
+                                        SplitBillView(tripId:tripId)
                                     } label: {
                                         AppImage(height: 22, width: 22, url: "plus.circle.fill", source: AppImageSource.SystemName, color: Color.primaryColor, component: {})
                                     }
@@ -173,6 +176,8 @@ struct TripView: View {
                 }
             }.sheet(isPresented: Binding(get: {tripViewModel.showReport ?? false}, set: {_ in true})) {
                 ShareSheet(activityItems: [Binding(get: {tripViewModel.reportText ?? "-"}, set: {_ in true}).wrappedValue])
+            }.sheet(isPresented: $showGroupMember) {
+                TripFormView(tripId: tripId)
             }
             .background(Color.tertiaryColor)
             .onAppear {
@@ -190,7 +195,7 @@ struct TripView: View {
     
     struct TripView_Previews: PreviewProvider {
         static var previews: some View {
-            TripView().preferredColorScheme(scheme)
+            TripView(tripId: "-").preferredColorScheme(scheme)
         }
     }
 }

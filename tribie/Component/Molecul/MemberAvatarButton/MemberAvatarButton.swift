@@ -10,7 +10,7 @@ import SwiftUI
 struct MemberAvatarButton<Content: View>: View {
     @State var image: AppCircleImage<Content>
     @Binding var selected: Bool
-    @State var color: Color = Color.primaryColor
+    @State var color: Color = Color.signifierColor
     @State var size: CGFloat = 40
     
     var onClick: () -> Void = {}
@@ -30,9 +30,11 @@ struct MemberAvatarButton<Content: View>: View {
         
     }
 }
-
+//
 //struct MemberAvatarButton_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MemberAvatarButton(image: AppCircleImage(size: 40.0, component: {}))
+//        VStack {
+//            MemberAvatarButton(image: AppCircleImage(size: 40.0, component: {}), selected: .constant(true))
+//        }.frame().background(Color.red)
 //    }
 //}

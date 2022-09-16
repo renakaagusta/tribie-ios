@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MemberItemListView: View {
     
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var tripId: String
     @State var transactionId: String = AppConstant.DUMMY_DATA_TRANSACTION_ID
     @ObservedObject var memberItemListViewModel : MemberItemListViewModel = MemberItemListViewModel()
     
@@ -65,6 +65,6 @@ struct MemberItemListView: View {
 
 struct MemberItemListView_Previews: PreviewProvider {
     static var previews: some View {
-        MemberItemListView().preferredColorScheme(scheme)
+        MemberItemListView(tripId: "").preferredColorScheme(scheme)
     }
 }

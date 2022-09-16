@@ -14,6 +14,7 @@ class AppConstant {
     static let KEYCHAIN_ON_BOARDING_STATUS = "on_boarding_status"
     static let KEYCHAIN_USER_ID = "user_id"
     static let KEYCHAIN_TRIP_ID = "trip_id"
+    static let KEYCHAIN_TRIP_ACTIVE = "trip_active"
     
     /* For network related*/
     static let APPLICATION_JSON  = "application/json"
@@ -48,7 +49,7 @@ class AppConstant {
     static let DEFAULT_DATE_FORMAT = "yyyy-MM-dd"
     
     /* ID FOR DUMMY DATA*/
-    static let DUMMY_DATA_TRIP_ID = "9b321fcb-164c-46c1-86ae-ccabb4eb46ad"
+//    static let DUMMY_DATA_TRIP_ID = "9b321fcb-164c-46c1-86ae-ccabb4eb46ad"
     static let DUMMY_DATA_TRANSACTION_ID = "08828e41-ea94-46d7-be2a-aa5a6a4f1088"
     
     /* DUMMY USER */

@@ -9,11 +9,9 @@ import SwiftUI
 
 struct TripListView: View {
     
-    //variable for modal
     @State var showGroupMember: Bool = false
     @State var showProfile: Bool = false
 
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
     @ObservedObject var tripListViewModel: TripListViewModel = TripListViewModel()
     
     var body: some View {
@@ -45,9 +43,8 @@ struct TripListView: View {
             }
             .background(Color.tertiaryColor)
             .onAppear {
-                if(tripListViewModel.tripList == nil) {
-                    tripListViewModel.fetchData()
-                }
+                Logger.debug("should be refresh1")
+                tripListViewModel.fetchData()
             }.navigationTitle("Trips")
             .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -65,7 +62,11 @@ struct TripListView: View {
                             showGroupMember = true
                         }, label: {
                             AppImage(url: "plus", source:AppImageSource.SystemName, color: Color.signifierColor, component: {})
-                        }).sheet(isPresented: $showGroupMember) {
+                        }).sheet(isPresented: $showGroupMember, onDismiss: {
+                            
+                                Logger.debug("should be refresh1")
+                                tripListViewModel.fetchData()
+                        }) {
                             TripFormView()
                         }
                     }

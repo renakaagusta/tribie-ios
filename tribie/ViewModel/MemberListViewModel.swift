@@ -39,7 +39,7 @@ class MemberListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTripMemberList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID){
+    public func fetchTripMemberList(tripId: String){
         repository.getTripMemberList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -54,7 +54,7 @@ class MemberListViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func fetchTransactionExpensesList(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
+    public func fetchTransactionExpensesList(tripId: String) {
         repository.getTripTransactionExpensesList(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
@@ -122,10 +122,10 @@ class MemberListViewModel: ObservableObject {
     }
     
     public func fetchData() {
-        self.state = AppState.Exist
-        fetchTripMemberList()
-        fetchTransactionItemList()
-        fetchTransactionExpensesList()
-        fetchTransactionItemList()
+//        self.state = AppState.Exist
+//        fetchTripMemberList()
+//        fetchTransactionItemList()
+//        fetchTransactionExpensesList()
+//        fetchTransactionItemList()
     }
 }

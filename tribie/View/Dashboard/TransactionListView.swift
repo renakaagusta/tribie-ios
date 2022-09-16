@@ -10,7 +10,7 @@ import SwiftyBeaver
 
 struct TransactionListView: View {
     
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var tripId: String
     @ObservedObject var transactionViewModel: TransactionListViewModel = TransactionListViewModel()
     @ObservedObject var tripViewModel: TripViewModel = TripViewModel()
     @State private var showingOptions = false
@@ -93,6 +93,6 @@ struct TransactionListView: View {
 
 struct TransactionListView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListView().preferredColorScheme(scheme)
+        TransactionListView(tripId: "").preferredColorScheme(scheme)
     }
 }

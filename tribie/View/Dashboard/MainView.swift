@@ -10,7 +10,7 @@ import SystemConfiguration
 
 struct MainView: View {
     
-    @State var tripId: String = AppConstant.DUMMY_DATA_TRIP_ID
+    @State var tripId: String
     
     var body: some View {
         
@@ -36,6 +36,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(tripId: "")
     }
 }

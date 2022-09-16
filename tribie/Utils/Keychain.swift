@@ -62,11 +62,11 @@ class AppKeychain {
         self.keyChain.save(userId, forKey: AppConstant.KEYCHAIN_USER_ID)
     }
     
-    func tripId() -> String {
-        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_USER_ID) ?? "")
+    func tripActive() -> String {
+        return String(describing: keyChain.value(forKey: AppConstant.KEYCHAIN_TRIP_ACTIVE) ?? "")
     }
     
-    func setTripId(tripId: String) {
-        self.keyChain.save(tripId, forKey: AppConstant.KEYCHAIN_TRIP_ID)
+    func setTripActive(tripActive: String) {
+        self.keyChain.save(tripActive, forKey: AppConstant.KEYCHAIN_TRIP_ACTIVE)
     }
 }

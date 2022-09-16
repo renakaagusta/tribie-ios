@@ -14,8 +14,9 @@ class TripListViewModel: ObservableObject {
     
     @Published var userId: String = AppKeychain().userId()
     
+    @Published var moveToTripView: Bool = false
+    
     @Published var transactionList: [Transaction]?
-
     @Published var tripList: [Trip]?
     @Published var filteredTripList: [Trip]?
     @Published var tripMemberList: [TripMember]?

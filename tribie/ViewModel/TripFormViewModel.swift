@@ -21,12 +21,30 @@ class TripFormViewModel: ObservableObject {
     
     @Published var successSendCounter = 0
     
-    public func fetchTrip(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) {
+    public func fetchTrip(tripId: String) {
         repository.getTripData(tripId: tripId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 self.trip = response ?? Trip()
                 self.state = AppState.Exist
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    public func fetchTripMemberList(tripId: String) {
+        repository.getTripMemberList(tripId: tripId)
+            .subscribe(onNext: { response in
+                self.tripMemberList = response ?? []
+            }, onError: {error in
+                self.state = AppState.Error
+            }).disposed(by: disposeBag)
+    }
+    
+    public func fetchTripSettlementList(tripId: String){
+        repository.getTripTransactionSettlementList(tripId: tripId)
+            .subscribe(onNext: { response in
+                self.tripSettlementList = response ?? []
             }, onError: {error in
                 self.state = AppState.Error
             }).disposed(by: disposeBag)
@@ -44,7 +62,7 @@ class TripFormViewModel: ObservableObject {
             }).disposed(by: disposeBag)
     }
     
-    public func updateTrip(tripId: String = AppConstant.DUMMY_DATA_TRIP_ID) async {
+    public func updateTrip(tripId: String) async {
         state = AppState.Loading
         repository.updateTrip(id: tripId, trip: trip)
             .observe(on: MainScheduler.instance)
@@ -139,10 +157,11 @@ class TripFormViewModel: ObservableObject {
             )
         } else {
             fetchTrip(tripId: tripId!)
+            fetchTripMemberList(tripId: tripId!)
+            fetchTripSettlementList(tripId: tripId!)
         }
         
         self.tripMemberList = tripMemberList
         self.state = AppState.Loading
-        fetchTrip()
     }
 }

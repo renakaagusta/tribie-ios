@@ -47,8 +47,6 @@ struct TripFormView: View {
                         if(tripFormViewModel.tripMemberList != nil) {
                             ForEach(tripFormViewModel.tripMemberList) { tripMember in
                                 MemberSpendingCard(image: AppCircleImage(size: 40.0, component: {}), userName: tripMember.name ?? "", amount:0)
-                            }.onAppear {
-                                tripFormViewModel.fetchData(tripId: tripId, tripMemberList: global.tripMemberList)
                             }
                         }
                     }
@@ -59,7 +57,7 @@ struct TripFormView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        if(tripFormViewModel.trip.title != nil) {
+                        if(tripId == nil) {
                             tripFormViewModel.submitTrip(complete: {
                                 presentationMode.wrappedValue.dismiss()
                             }, tripMemberList: global.tripMemberList)
@@ -71,14 +69,18 @@ struct TripFormView: View {
                     })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    if(tripId == nil) {
                     AppImageButton(height: 20, width: 20, image: AppImage(height: 20, width: 20, url: "person.fill.badge.plus", source: AppImageSource.SystemName, color: Color.signifierColor, component: {}), onClick: {
                         self.showAddMemberModalView.toggle()
                     })
                     .sheet(isPresented: $showAddMemberModalView) {
                         TripMemberFormView()
                     }
+                    }
                 }
             }
+        }.onAppear{
+            tripFormViewModel.fetchData(tripId: tripId, tripMemberList: global.tripMemberList)
         }
     }
 }
